@@ -7,7 +7,7 @@ class ImageGameObject {
     }
 
     createImage(src){
-        return $("<img>", {src: src});
+        return $("<div>", {class: "draggable"}).append($("<img>", {src: src}));
     }
 
     createTitle(text){
@@ -28,6 +28,7 @@ class ImageGameObject {
         ev.dataTransfer.setData("text", ev.target.id);
     }
 }
+
 ImageGameObject.folder = 'img/';
 ImageGameObject.sources = [
     {

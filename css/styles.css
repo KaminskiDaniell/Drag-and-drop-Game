@@ -1,0 +1,11 @@
+#game-area {
+    height: 1000px;
+}
+
+.draggable {
+    float: left;
+}
+
+.draggable img{
+    height: 70px;
+}
