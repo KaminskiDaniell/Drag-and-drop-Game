@@ -1,9 +1,11 @@
 class ImageGameObject {
-    constructor(val, name, id, i) {
+    constructor(val, name, id) {
         this.val = ImageGameObject.folder + val;
         this.name = name;
-        this.image = $("#" + id).append(this.createImage(this.val));
-        this.title = $("#" + id).append(this.createTitle(this.name));
+        this.image = this.createImage(this.val);
+        this.title = this.createTitle(this.name);
+        $("#" + id).append(this.image);
+        $("#" + id).append(this.title);
     }
 
     createImage(src){
@@ -13,9 +15,28 @@ class ImageGameObject {
     createTitle(text){
         return $("<div>",{class: "draggable right", html: text} );
     }
+
+    moveImage(i) {
+        console.log(this.image[0]);
+        this.image[0]['style']="transform: translate(0px," + i * 100 + "px)";
+        this.image.attr('data-y', i * 100);
+        this.image.attr('data-x', 0);
+        console.log(this.image[0]);
+
+    }
+
+    moveTitle(i) {
+
+    }
     
     static setData(id) {
         ImageGameObject.images = [];
+        ImageGameObject.sources.forEach(function (entry, i) {
+            if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
+                ImageGameObject.images.push(new ImageGameObject(entry.fileName, entry.title, id));
+            } 
+        });
+
         var shuffle = function(array) {
             for (let i = array.length - 1; i > 0; i--) {
                 const j = Math.floor(Math.random() * (i + 1));
@@ -23,13 +44,13 @@ class ImageGameObject {
             }
         }
 
-        shuffle(ImageGameObject.sources);
-
-        ImageGameObject.sources.forEach(function (entry, i) {
-            if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
-                var image = new ImageGameObject(entry.fileName, entry.title, id, i);
-                ImageGameObject.images.push(image);
-            } 
+        shuffle(ImageGameObject.images);
+        ImageGameObject.images.forEach(function (entry, i) {
+            entry.moveImage(i);
+        });
+        shuffle(ImageGameObject.images);
+        ImageGameObject.images.forEach(function (entry, i) {
+            entry.moveTitle(i);
         });
     }
     
