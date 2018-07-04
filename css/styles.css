@@ -2,7 +2,11 @@
     height: 1000px;
 }
 
-.draggable {
+.right { 
+    float: right;
+}
+
+.left { 
     float: left;
 }
 

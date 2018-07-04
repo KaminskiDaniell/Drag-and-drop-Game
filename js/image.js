@@ -1,5 +1,5 @@
 class ImageGameObject {
-    constructor(val, name, id) {
+    constructor(val, name, id, i) {
         this.val = ImageGameObject.folder + val;
         this.name = name;
         this.image = $("#" + id).append(this.createImage(this.val));
@@ -7,18 +7,27 @@ class ImageGameObject {
     }
 
     createImage(src){
-        return $("<div>", {class: "draggable"}).append($("<img>", {src: src}));
+        return $("<div>", {class: "draggable left"}).append($("<img>", {src: src}));
     }
 
     createTitle(text){
-        return $("<div>",{class: "draggable", html: text} );
+        return $("<div>",{class: "draggable right", html: text} );
     }
     
     static setData(id) {
         ImageGameObject.images = [];
-        ImageGameObject.sources.forEach(function (entry) {
+        var shuffle = function(array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        shuffle(ImageGameObject.sources);
+
+        ImageGameObject.sources.forEach(function (entry, i) {
             if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
-                var image = new ImageGameObject(entry.fileName, entry.title, id);
+                var image = new ImageGameObject(entry.fileName, entry.title, id, i);
                 ImageGameObject.images.push(image);
             } 
         });
@@ -27,6 +36,7 @@ class ImageGameObject {
     static drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
     }
+
 }
 
 ImageGameObject.folder = 'img/';
