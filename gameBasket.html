@@ -29,14 +29,14 @@
 </body>
 <script>
     $(document).ready(function () {
-        ImageGameObject.setData('game-area');
         TextGameObject.setData('game-area');
     });
 
     function buttonClick() {
-        $('.dropped-into').each(function (i, obj) {
-            showMessage('success', 'Brawo!');
-        });
+        if (TextGameObject.checkWin($('.dropped-into')))
+            showMessage("success", "Brawo kurde!");
+        else
+            showMessage("error", "Postaraj sie debilu");
     }
 </script>
 </html>

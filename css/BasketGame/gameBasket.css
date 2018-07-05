@@ -11,15 +11,8 @@
     cursor: pointer;
 }
 
-
-.drop-active {
-    border-color: #ffffff;
-}
-
 .drop-target {
-    background-color: #29e;
-    border-color: #fff;
-    border-style: solid;
+    border: solid #fff 5px;
 }
 
 .drag-drop {
@@ -44,3 +37,6 @@
     border: 5px dotted red;
 }
 
+.drop-active {
+    border-color: #ffffff;
+}

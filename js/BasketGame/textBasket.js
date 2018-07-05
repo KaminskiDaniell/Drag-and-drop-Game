@@ -1,16 +1,19 @@
 class TextGameObject {
-    constructor(val, name, id) {
+    constructor(file, val, name, id) {
+        this.file = ImageGameObject.folder + file;
         this.display = val;
         this.name = name;
-        this.object = this.createObject(this.display);
+        this.object = this.createObject(this.file, this.display);
         $("#" + id).append(this.object);
     }
 
     static setData(id) {
         TextGameObject.objects = [];
         TextGameObject.sources.forEach(function (entry, i) {
-            if (entry.display) {
-                TextGameObject.objects.push(new TextGameObject(entry.display, entry.name, id));
+            if (entry.fileName) {
+                TextGameObject.objects.push(new TextGameObject(entry.fileName, entry.display, entry.name, id));
+            } else {
+                TextGameObject.objects.push(new TextGameObject(null, entry.display, entry.name, id));
             }
         });
 
@@ -19,7 +22,7 @@ class TextGameObject {
                 const j = Math.floor(Math.random() * (i + 1));
                 [array[i], array[j]] = [array[j], array[i]];
             }
-        }
+        };
 
         shuffle(TextGameObject.objects);
         TextGameObject.objects.forEach(function (entry, i) {
@@ -27,12 +30,36 @@ class TextGameObject {
         });
     }
 
+    static checkWin(list) {
+        var answers = [];
+        $.each(list, function (index, value) {
+            answers.push(value.firstChild.title)
+        });
+        var matches = 0;
+        this.sources.forEach(function (entry) {
+            if (answers.indexOf(entry.display) >= 0) {
+                console.log(entry.name);
+                if (entry.name === 'BAD')
+                    matches--;
+                else
+                    matches++;
+            }
+        });
+        console.log(matches === this.countGoodAnswers);
+        return matches === this.countGoodAnswers;
+
+    }
+
     static drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
     }
 
-    createObject(display) {
-        return $("<div>", {class: "draggable left yes-drop text"}).append(display);
+    createObject(src, display) {
+        return $("<div>", {class: "draggable left yes-drop text"}).append($("<img>", {
+            src: src,
+            title: display,
+            alt: display
+        }));
     }
 
     move(item, i) {
@@ -49,15 +76,15 @@ class TextGameObject {
 }
 
 TextGameObject.folder = 'img/';
-TextGameObject.goodSources = 2;
+TextGameObject.countGoodAnswers = 3;
 TextGameObject.sources = [
     {
         'display': 'To wrzuć',
-        'name': 'GOOD1'
+        'name': 'GOOD'
     },
     {
         'display': 'To też',
-        'name': 'GOOD2',
+        'name': 'GOOD',
     },
     {
         'display': 'Tego nie',
@@ -70,5 +97,10 @@ TextGameObject.sources = [
     {
         'display': 'Ani tego',
         'name': 'BAD'
+    },
+    {
+        'fileName': "1.jpg",
+        'display': "Obrazek 1",
+        'name': 'GOOD'
     }
 ];
