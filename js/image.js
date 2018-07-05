@@ -56,7 +56,7 @@ class ImageGameObject {
 
             // update the posiion attributes
             item.setAttribute('data-x', sign * Math.ceil(((i + 1) % Math.sqrt(maxHeight)) - 1) * 150);
-            item.setAttribute('data-y', Math.ceil((i + 1) / Math.sqrt(maxHeight) - 1) * 100);
+            item.setAttribute('data-y', Math.ceil((i + 1) / Math.sqrt(maxHeight) - 1) * 100 );
         }
 
         shuffle(ImageGameObject.imageObjects);
