@@ -21,10 +21,6 @@ interact('.draggable')
     onmove: dragMoveListener,
     // call this function on every dragend event
     onend: function (event) {
-      var textEl = event.target.querySelector('p');
-
-      textEl && (textEl.textContent =
-        'moved a distance of ' + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0)) .toFixed(2) + 'px');
     }
   });
 
@@ -96,8 +92,14 @@ interact('.dropzone').dropzone({
             dropzoneElement = event.target;
         if(!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
         //event.relatedTarget.textContent = 'Dropped';
-            draggableElement.classList.add('dropped-into');
-            dropzoneElement.classList.add('dropped-into');
+            if(ImageGameObject.match(draggableElement, dropzoneElement)){
+                draggableElement.classList.add('matched');
+                dropzoneElement.classList.add('matched');
+            }
+            else {
+                draggableElement.classList.add('dropped-into');
+                dropzoneElement.classList.add('dropped-into');
+            }
         }
     },
     ondropdeactivate: function (event) {
