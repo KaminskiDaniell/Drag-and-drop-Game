@@ -1,37 +1,42 @@
 class ImageGameObject {
     constructor(val, name, id) {
+        this.id = id;
         this.val = ImageGameObject.folder + val;
         this.name = name;
-        this.image = this.createImage(this.val);
-        this.title = this.createTitle(this.name);
+        this.image = this.createImage(this.val)[0];
+        this.title = this.createTitle(this.name)[0];
+        this.matched = false;
         $("#" + id).append(this.image);
         $("#" + id).append(this.title);
     }
 
     createImage(src){
-        return $("<div>", {class: "draggable left yes-drop dropzone"}).append($("<img>", {src: src}));
+        return $("<div>", {class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src}));
     }
 
     createTitle(text){
-        return $("<div>", {class: "draggable right yes-drop dropzone", html: text});
+        return $("<div>", {class: "title draggable right yes-drop dropzone", html: text});
     }
 
-    move(item, i) {
-        // translate the element
-        item.style.webkitTransform =
-        item.style.transform =
-          'translate(0px, ' + i * 100 + 'px)';
-
-        // update the posiion attributes
-        item.setAttribute('data-x', 0);
-        item.setAttribute('data-y', i * 100);
+    markAsMatched() {
+        var label = $("<div>", {html: this.name})[0];
+        if(++ImageGameObject.matched == ImageGameObject.imageObjects.length){
+            finishGame();
+        }
+        this.image.append(label);
+        this.image.classList.remove('dragged-in');
+        this.image.classList.remove('dropzone');
+        this.image.classList.remove('yes-drop');
+        this.title.remove();
     }
     
     static setData(id) {
-        ImageGameObject.images = [];
+        ImageGameObject.imageObjects = [];
+        ImageGameObject.zIndex = 0;
+        ImageGameObject.matched = 0;
         ImageGameObject.sources.forEach(function (entry, i) {
             if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
-                ImageGameObject.images.push(new ImageGameObject(entry.fileName, entry.title, id));
+                ImageGameObject.imageObjects.push(new ImageGameObject(entry.fileName, entry.title, id));
             } 
         });
 
@@ -42,20 +47,45 @@ class ImageGameObject {
             }
         }
 
-        shuffle(ImageGameObject.images);
-        ImageGameObject.images.forEach(function (entry, i) {
-            entry.move(entry.image[0], i);
+        var move = function(item, i) {
+            // translate the element
+            item.style.webkitTransform =
+            item.style.transform =
+              'translate(0px, ' + i * 100 + 'px)';
+
+            // update the posiion attributes
+            item.setAttribute('data-x', 0);
+            item.setAttribute('data-y', i * 100);
+        }
+
+        shuffle(ImageGameObject.imageObjects);
+        ImageGameObject.imageObjects.forEach(function (entry, i) {
+            move(entry.image, i);
         });
-        shuffle(ImageGameObject.images);
-        ImageGameObject.images.forEach(function (entry, i) {
-            entry.move(entry.title[0], i);
+        shuffle(ImageGameObject.imageObjects);
+        ImageGameObject.imageObjects.forEach(function (entry, i) {
+            move(entry.title, i);
         });
+    }
+
+    static match(element1, element2) {
+        for(var i = 0; i < ImageGameObject.imageObjects.length; i++) {
+            var entry = ImageGameObject.imageObjects[i];
+            if((entry.image === element1 && entry.title === element2) || (entry.image === element2 && entry.title === element1)){
+                entry.markAsMatched();
+                return true;
+            }
+        }
+        return false;
     }
     
     static drag(ev) {
         ev.dataTransfer.setData("text", ev.target.id);
     }
 
+    static getZIndex() {
+        return ++ImageGameObject.zIndex;
+    }
 }
 
 ImageGameObject.folder = 'img/';

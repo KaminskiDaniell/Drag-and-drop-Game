@@ -1,5 +1,13 @@
+.container {
+    height: 1500px;
+}
+
 #game-area {
-    height: 1000px;
+    height: 1500px;
+}
+
+#game-area div {
+    user-select: none;
 }
 
 .right { 
@@ -16,5 +24,17 @@
 }
 
 .draggable img{
+    display:block;
+    margin:auto;
     height: 70px;
+    border-radius: 10px;
+}
+
+.matched {
+    background-color: #ccc;
+    border: 5px dotted green;
+    border-radius: 4px;
+    margin: 10px auto 30px;
+    padding: 10px;
+    transition: background-color 0.3s;
 }
