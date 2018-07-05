@@ -1,13 +1,23 @@
+.header {
+    height: 150px;
+}
+
 .container {
-    height: 1500px;
+    height: 600px;
 }
 
 #game-area {
-    height: 1500px;
+    height: 600px;
+    background-color: YellowGreen;
 }
 
 #game-area div {
     user-select: none;
+    max-width: 250px;
+    text-align: center;
+    font-size: 12px;
+    max-width: 100px;
+    background-color: Orange;
 }
 
 .right { 
@@ -26,15 +36,64 @@
 .draggable img{
     display:block;
     margin:auto;
-    height: 70px;
+    max-height: 70px;
+    max-width: 100px;
     border-radius: 10px;
 }
 
-.matched {
+.dropzone, .matched {
     background-color: #ccc;
-    border: 5px dotted green;
     border-radius: 4px;
     margin: 10px auto 30px;
     padding: 10px;
     transition: background-color 0.3s;
 }
+
+.dropzone {
+    border: dashed 4px transparent;
+}
+
+.drop-active {
+    border-color: #aaa;
+}
+
+.drop-target {
+    background-color: #29e;
+    border-style: solid;
+}
+
+
+.drag-drop {
+    display: inline-block;
+    min-width: 40px;
+    padding: 2em 0.5em;
+
+    color: #fff;
+    background-color: #29e;
+    border: solid 2px #fff;
+
+    -webkit-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    transition: background-color 0.3s;
+}
+
+.drag-drop.can-drop {
+    color: #000;
+    background-color: #4e4;
+}
+
+.matched {
+    border: 5px solid green;
+}
+
+.dragged-in {
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+    border: 5px solid blue;
+}
+
+.dropped-into {
+    border: 5px solid red;
+}
+

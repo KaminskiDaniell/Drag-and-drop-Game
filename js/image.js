@@ -11,17 +11,17 @@ class ImageGameObject {
     }
 
     createImage(src){
-        return $("<div>", {class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src}));
+        return $("<div>", {class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src, alt: src}));
     }
 
     createTitle(text){
-        return $("<div>", {class: "title draggable right yes-drop dropzone", html: text});
+        return $("<div>", {class: "title draggable right yes-drop dropzone"}).append($("<img>", {alt: text}));
     }
 
     markAsMatched() {
         var label = $("<div>", {html: this.name})[0];
         if(++ImageGameObject.matched == ImageGameObject.imageObjects.length){
-            finishGame();
+            showMessage('success', 'Brawo!');
         }
         this.image.append(label);
         this.image.classList.remove('dragged-in');
@@ -47,24 +47,25 @@ class ImageGameObject {
             }
         }
 
-        var move = function(item, i) {
+        var move = function(item, i, maxHeight) {
+            var sign = item.classList.contains('right') ? -1 : 1;
             // translate the element
             item.style.webkitTransform =
             item.style.transform =
-              'translate(0px, ' + i * 100 + 'px)';
+              'translate(' + sign * Math.ceil(((i + 1) % Math.sqrt(maxHeight)) - 1) * 150 + 'px, ' + Math.ceil((i + 1) / Math.sqrt(maxHeight) - 1) * 100 + 'px)';
 
             // update the posiion attributes
-            item.setAttribute('data-x', 0);
-            item.setAttribute('data-y', i * 100);
+            item.setAttribute('data-x', sign * Math.ceil(((i + 1) % Math.sqrt(maxHeight)) - 1) * 150);
+            item.setAttribute('data-y', Math.ceil((i + 1) / Math.sqrt(maxHeight) - 1) * 100);
         }
 
         shuffle(ImageGameObject.imageObjects);
         ImageGameObject.imageObjects.forEach(function (entry, i) {
-            move(entry.image, i);
+            move(entry.image, i, ImageGameObject.maxHeight);
         });
         shuffle(ImageGameObject.imageObjects);
         ImageGameObject.imageObjects.forEach(function (entry, i) {
-            move(entry.title, i);
+            move(entry.title, i, ImageGameObject.maxHeight);
         });
     }
 
@@ -88,6 +89,7 @@ class ImageGameObject {
     }
 }
 
+ImageGameObject.maxHeight = 5;
 ImageGameObject.folder = 'img/';
 ImageGameObject.sources = [
     {
