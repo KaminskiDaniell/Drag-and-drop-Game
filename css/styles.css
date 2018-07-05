@@ -1,13 +1,21 @@
+.header {
+    height: 150px;
+}
+
 .container {
-    height: 1500px;
+    height: 100%;
 }
 
 #game-area {
-    height: 1500px;
+    height: 100%;
 }
 
 #game-area div {
     user-select: none;
+    max-width: 250px;
+    text-align: center;
+    font-size: 12px;
+    max-width: 100px;
 }
 
 .right { 
@@ -26,7 +34,8 @@
 .draggable img{
     display:block;
     margin:auto;
-    height: 70px;
+    max-height: 70px;
+    max-width: 100px;
     border-radius: 10px;
 }
 
