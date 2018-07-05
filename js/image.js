@@ -9,11 +9,11 @@ class ImageGameObject {
     }
 
     createImage(src){
-        return $("<div>", {class: "draggable left yes-drop"}).append($("<img>", {src: src}));
+        return $("<div>", {class: "draggable left yes-drop dropzone"}).append($("<img>", {src: src}));
     }
 
     createTitle(text){
-        return $("<div>", {class: "draggable right yes-drop", html: text});
+        return $("<div>", {class: "draggable right yes-drop dropzone", html: text});
     }
 
     move(item, i) {
