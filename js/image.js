@@ -9,11 +9,11 @@ class ImageGameObject {
     }
 
     createImage(src){
-        return $("<div>", {class: "draggable left yes-drop dropzone"}).append($("<img>", {src: src}));
+        return $("<div>", {class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src}));
     }
 
     createTitle(text){
-        return $("<div>", {class: "draggable right yes-drop dropzone", html: text});
+        return $("<div>", {class: "title draggable right yes-drop dropzone", html: text});
     }
 
     move(item, i) {
@@ -29,6 +29,7 @@ class ImageGameObject {
     
     static setData(id) {
         ImageGameObject.images = [];
+        ImageGameObject.zIndex = 0;
         ImageGameObject.sources.forEach(function (entry, i) {
             if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
                 ImageGameObject.images.push(new ImageGameObject(entry.fileName, entry.title, id));
@@ -56,6 +57,9 @@ class ImageGameObject {
         ev.dataTransfer.setData("text", ev.target.id);
     }
 
+    static getZIndex() {
+        return ++ImageGameObject.zIndex;
+    }
 }
 
 ImageGameObject.folder = 'img/';

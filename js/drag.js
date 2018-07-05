@@ -12,6 +12,11 @@ interact('.draggable')
     // enable autoScroll
     autoScroll: true,
 
+    onstart: function (event) {
+        var target = event.target;
+        target.style.zIndex = ImageGameObject.getZIndex();
+    },
+
     // call this function on every dragmove event
     onmove: dragMoveListener,
     // call this function on every dragend event
@@ -19,10 +24,7 @@ interact('.draggable')
       var textEl = event.target.querySelector('p');
 
       textEl && (textEl.textContent =
-        'moved a distance of '
-        + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
-                     Math.pow(event.pageY - event.y0, 2) | 0))
-            .toFixed(2) + 'px');
+        'moved a distance of ' + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) + Math.pow(event.pageY - event.y0, 2) | 0)) .toFixed(2) + 'px');
     }
   });
 
@@ -52,39 +54,60 @@ interact('.draggable')
 interact('.dropzone').dropzone({
     // only accept elements matching this CSS selector
     accept: '.yes-drop',
-    // Require a 75% element overlap for a drop to be possible
+    // Require a 30% element overlap for a drop to be possible
     overlap: 0.30,
 
     // listen for drop related events:
 
     ondropactivate: function (event) {
-        // add active dropzone feedback
-        event.target.classList.add('drop-active');
+        var draggableElement = event.relatedTarget,
+            dropzoneElement = event.target;
+        if(!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')))) {
+            // add active dropzone feedback
+            dropzoneElement.classList.add('drop-active');
+        }
     },
     ondragenter: function (event) {
         var draggableElement = event.relatedTarget,
             dropzoneElement = event.target;
-
-        // feedback the possibility of a drop
-        dropzoneElement.classList.add('drop-target');
-        draggableElement.classList.add('can-drop');
-        draggableElement.classList.add('dragged-in');
+        if(!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
+            // feedback the possibility of a drop
+            dropzoneElement.classList.add('drop-target');
+            draggableElement.classList.add('can-drop');
+            draggableElement.classList.add('dragged-in');
+        }
     },
     ondragleave: function (event) {
+        var draggableElement = event.relatedTarget,
+            dropzoneElement = event.target;
+        if(draggableElement.classList.contains('dropped-into')) {
+            dropzoneElement.classList.remove('dropped-into');
+            draggableElement.classList.remove('dropped-into');
+        }   
         // remove the drop feedback style
-        event.target.classList.remove('drop-target');
-        event.relatedTarget.classList.remove('can-drop');
-        event.relatedTarget.classList.remove('dropped-into');
-        event.relatedTarget.classList.remove('dragged-in');
+        dropzoneElement.classList.remove('drop-target');
+        dropzoneElement.classList.remove('can-drop');
+        dropzoneElement.classList.remove('dragged-in');
+        draggableElement.classList.remove('can-drop');
+        draggableElement.classList.remove('dragged-in');
     },
     ondrop: function (event) {
+        var draggableElement = event.relatedTarget,
+            dropzoneElement = event.target;
+        if(!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
         //event.relatedTarget.textContent = 'Dropped';
-        event.relatedTarget.classList.add('dropped-into');
+            draggableElement.classList.add('dropped-into');
+            dropzoneElement.classList.add('dropped-into');
+        }
     },
     ondropdeactivate: function (event) {
+        var draggableElement = event.relatedTarget,
+            dropzoneElement = event.target;
         // remove active dropzone feedback
-        event.target.classList.remove('drop-active');
-        event.target.classList.remove('drop-target');
+        dropzoneElement.classList.remove('drop-active');
+        dropzoneElement.classList.remove('drop-target');
+        draggableElement.classList.remove('drop-active');
+        draggableElement.classList.remove('drop-target');
     }
 });
 
