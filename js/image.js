@@ -16,17 +16,15 @@ class ImageGameObject {
         return $("<div>",{class: "draggable right", html: text} );
     }
 
-    moveImage(i) {
-        console.log(this.image[0]);
-        this.image[0]['style']="transform: translate(0px," + i * 100 + "px)";
-        this.image.attr('data-y', i * 100);
-        this.image.attr('data-x', 0);
-        console.log(this.image[0]);
+    move(item, i) {
+        // translate the element
+        item.style.webkitTransform =
+        item.style.transform =
+          'translate(0px, ' + i * 100 + 'px)';
 
-    }
-
-    moveTitle(i) {
-
+        // update the posiion attributes
+        item.setAttribute('data-x', 0);
+        item.setAttribute('data-y', i * 100);
     }
     
     static setData(id) {
@@ -46,11 +44,11 @@ class ImageGameObject {
 
         shuffle(ImageGameObject.images);
         ImageGameObject.images.forEach(function (entry, i) {
-            entry.moveImage(i);
+            entry.move(entry.image[0], i);
         });
         shuffle(ImageGameObject.images);
         ImageGameObject.images.forEach(function (entry, i) {
-            entry.moveTitle(i);
+            entry.move(entry.title[0], i);
         });
     }
     

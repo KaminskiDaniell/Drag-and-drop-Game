@@ -4,10 +4,15 @@
 
 .right { 
     float: right;
+    right: 0;
 }
 
 .left { 
     float: left;
+}
+
+.draggable {
+    position: absolute;
 }
 
 .draggable img{
