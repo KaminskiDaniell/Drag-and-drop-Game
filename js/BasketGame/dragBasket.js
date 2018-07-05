@@ -68,14 +68,12 @@ interact('.dropzone').dropzone({
         // feedback the possibility of a drop
         dropzoneElement.classList.add('drop-target');
         draggableElement.classList.add('can-drop');
-        draggableElement.classList.add('dragged-in');
     },
     ondragleave: function (event) {
         // remove the drop feedback style
         event.target.classList.remove('drop-target');
         event.relatedTarget.classList.remove('can-drop');
         event.relatedTarget.classList.remove('dropped-into');
-        event.relatedTarget.classList.remove('dragged-in');
     },
     ondrop: function (event) {
         //event.relatedTarget.textContent = 'Dropped';
