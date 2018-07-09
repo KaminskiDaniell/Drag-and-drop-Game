@@ -1,24 +1,27 @@
+#game-container div {
+    user-select: none;
+}
+
 .header {
     height: 150px;
 }
 
-.container {
-    height: 600px;
-}
-
 #game-area {
     text-align: center;
-    height: 600px;
+    height: 100%;
     position: relative;
     background-color: YellowGreen;
 }
 
-#game-area > .draggable {
-    margin: 20px;
+#game-area>.draggable {
+    margin-left: 20px;
+    margin-right: 20px;
     text-align: center;
     color: white;
     font: bold 20px Helvetica, Arial, Sans-Serif;
     max-width: 100px;
+    background-color: gold;
+    position: absolute;
 }
 
 .right { 
@@ -30,11 +33,8 @@
     float: left;
 }
 
-.draggable {
-    position: absolute;
-}
-
 .draggable img{
+    user-select: none;
     display:block;
     margin:auto;
     max-height: 70px;
@@ -49,9 +49,8 @@
 }
 
 .title {
-    border-radius: 2px;
     margin: 10px auto 30px;
-    padding: 3px;
+    padding: 10px;
 }
 
 .dropzone {
@@ -93,6 +92,10 @@
     border-radius: 0px;
 }
 
+.matched img {
+    border-radius: 0px;
+}
+
 .dragged-in {
 }
 
@@ -100,3 +103,6 @@
     outline: 5px solid red;
 }
 
+@media only screen and (max-width: 600px) {
+    background-color: #fff;
+}

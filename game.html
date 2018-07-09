@@ -15,7 +15,7 @@
         <script src="js/Game/drag.js"></script>
     </head>
     <body>
-        <div class="container">
+        <div id="game-container">
             <div class="header">
                 <h2 align="center">_match_pictures</h2>
             </div>
@@ -27,7 +27,7 @@
     </body>
 </html>
 <script>
-$(document).ready(function () {
+$(function () {
     ImageGameObject.setData('game-area');
     showMessage('info', 'Brawo!');
 });
