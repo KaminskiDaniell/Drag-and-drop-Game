@@ -3,26 +3,22 @@
 }
 
 .container {
-    height: 600px;
+    height: 1000px;
 }
 
 #game-area {
     text-align: center;
-    height: 600px;
+    height: 710px;
     position: relative;
     background-color: YellowGreen;
 }
 
-#game-area>div {
+#game-area>.draggable {
     margin: 20px;
     text-align: center;
     font-size: 12px;
     max-width: 100px;
     background-color: Orange;
-}
-
-div {
-    margin-top: 10px;
 }
 
 .right { 
@@ -97,6 +93,10 @@ div {
     border-radius: 0px;
 }
 
+.matched img {
+    border-radius: 0px;
+}
+
 .dragged-in {
 }
 
@@ -104,3 +104,6 @@ div {
     outline: 5px solid red;
 }
 
+@media only screen and (max-width: 600px) {
+    background-color: #fff;
+}

@@ -49,8 +49,11 @@ class ImageGameObject {
 
         var getDimensions = function(imageObject) {
             var gameArea = $('#' + imageObject.id);
-            ImageGameObject.maxHeight = (gameArea.outerHeight(true) - imageObject.image.css('margin')) / (imageObject.image.css('margin') + imageObject.image.outerHeight(true));
-            ImageGameObject.maxHeight = gameArea.outerHeight(true) / ImageGameObject.verticalOffset;
+            imageObject.image.css('margin', 20);
+            ImageGameObject.maxHeight = (gameArea.height() - imageObject.image.css('margin')) / (imageObject.image.css('margin') + imageObject.image.height());
+            console.log("Image height: " + imageObject.image.outerHeight());
+            console.log(gameArea.height());
+            console.log(ImageGameObject.maxHeight);
         }
         getDimensions(ImageGameObject.imageObjects[0]);
         console.log(ImageGameObject.maxHeight);
@@ -58,12 +61,12 @@ class ImageGameObject {
         var move = function(item, i, maxHeight) {
             var sign = item.hasClass('right') ? -1 : 1;
             // translate the element
-            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px, ' + Math.ceil(((i + 1) % maxHeight) - 1) * ImageGameObject.verticalOffset + 'px)');
+            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) % Math.sqrt(maxHeight)) - 1) * ImageGameObject.verticalOffset + 'px, ' + Math.ceil((i + 1) / Math.sqrt(maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px)');
             item.css('webkitTransform', item.css('transform'));
 
             // update the posiion attributes
-            item.attr('data-x', sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset);
-            item.attr('data-y', Math.ceil(((i + 1) % maxHeight) - 1) * ImageGameObject.verticalOffset);
+            item.attr('data-x', sign * Math.ceil(((i + 1) % Math.sqrt(maxHeight)) - 1) * ImageGameObject.verticalOffset);
+            item.attr('data-y', Math.ceil((i + 1) / Math.sqrt(maxHeight) - 1) * ImageGameObject.horizontalOffset);
         }
 
         shuffle(ImageGameObject.imageObjects);
@@ -96,8 +99,7 @@ class ImageGameObject {
     }
 }
 
-ImageGameObject.horizontalOffset = 120;
-ImageGameObject.verticalOffset = 80;
+ImageGameObject.maxHeight = 5;
 
 ImageGameObject.folder = 'img/';
 ImageGameObject.sources = [
