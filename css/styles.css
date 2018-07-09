@@ -18,8 +18,8 @@
     margin-right: 20px;
     text-align: center;
     font-size: 12px;
-    max-width: 100px;
-    background-color: Orange;
+    -width: 100px;
+    background-color: gold;
     position: absolute;
 }
 
@@ -48,9 +48,8 @@
 }
 
 .title {
-    border-radius: 2px;
     margin: 10px auto 30px;
-    padding: 3px;
+    padding: 10px;
 }
 
 .dropzone {

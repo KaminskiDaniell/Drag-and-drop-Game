@@ -94,7 +94,7 @@ class ImageGameObject {
     }
 }
 
-ImageGameObject.horizontalOffset = 120;
+ImageGameObject.horizontalOffset = 140;
 ImageGameObject.verticalOffset = 80;
 
 ImageGameObject.folder = 'img/';
