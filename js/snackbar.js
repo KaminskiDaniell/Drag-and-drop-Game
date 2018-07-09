@@ -3,13 +3,14 @@ function showMessage(type, message) {
     if (type === 'success') {
         x.style.background = "#55ff66";
     }
+    else if (type === 'error') {
+        x.style.background = "#ff0000";
+    }
+    else if (type === 'info') {
+        x.style.background = "#00CED1";
+    }
     else {
-        if (type === 'error') {
-            x.style.background = "#ff0000";
-        }
-        else {
-            x.style.background = "#ffff00";
-        }
+        x.style.background = "#ffff00";
     }
     x.innerText = message;
     x.className = "show";
