@@ -24,6 +24,10 @@
     position: absolute;
 }
 
+.draggable img:hover {
+    color: #fff;
+}
+
 .right { 
     float: right;
     right: 0;

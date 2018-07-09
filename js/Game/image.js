@@ -46,22 +46,25 @@ class ImageGameObject {
             }
         }
 
+        var gameArea = $('#' + ImageGameObject.imageObjects[0].id);
+        var numberOfImages = ImageGameObject.imageObjects.length;
+
         var getDimensions = function(imageObject) {
-            var gameArea = $('#' + imageObject.id);
-            ImageGameObject.maxHeight = gameArea.outerHeight(true) / ImageGameObject.verticalOffset;
+            ImageGameObject.maxHeight = Math.floor(gameArea.outerHeight(true) / ImageGameObject.verticalOffset);
             ImageGameObject.offset = (gameArea.outerHeight(true) - ((Math.floor(ImageGameObject.maxHeight) - 1) * ImageGameObject.verticalOffset + imageObject.image.outerHeight(true))) / 2;
+            ImageGameObject.maxHeight = Math.ceil(numberOfImages / Math.ceil(numberOfImages / ImageGameObject.maxHeight));
         }
         getDimensions(ImageGameObject.imageObjects[0]);
 
         var move = function(item, i, maxHeight) {
             var sign = item.hasClass('right') ? -1 : 1;
             // translate the element
-            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px, ' + (ImageGameObject.offset + Math.ceil(((i + 1) % maxHeight) - 1) * ImageGameObject.verticalOffset) + 'px)');
+            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px, ' + (ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, ImageGameObject.maxHeight / (ImageGameObject.maxHeight + 1))) + 'px)');
             item.css('webkitTransform', item.css('transform'));
 
             // update the posiion attributes
             item.attr('data-x', sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset);
-            item.attr('data-y', ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * ImageGameObject.verticalOffset);
+            item.attr('data-y', ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, ImageGameObject.maxHeight / (numberOfImages + 1)));
         }
 
         shuffle(ImageGameObject.imageObjects);
