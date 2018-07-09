@@ -3,8 +3,6 @@
 <head>
     <meta charset="UTF-8">
     <title>Game Baset</title>
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/skeleton.css">
     <link rel="stylesheet" href="css/styles.css">
 
     <link rel="stylesheet" href="css/snackbar.css">
@@ -22,18 +20,18 @@
 <body>
 <div id="game-area">
     <div id="snackbar"></div>
-    <div class="basket-center dropzone">
+    <div class="basket-center dropzone" style="left: 50%">
         <button class="button" onclick="buttonClick()">Check</button>
     </div>
 </div>
 </body>
 <script>
     $(document).ready(function () {
-        TextGameObject.setData('game-area');
+        BasketGameObject.setData('game-area');
     });
 
     function buttonClick() {
-        if (TextGameObject.checkWin($('.dropped-into')))
+        if (BasketGameObject.checkWin())
             showMessage("success", "Brawo kurde!");
         else
             showMessage("error", "Postaraj sie debilu");

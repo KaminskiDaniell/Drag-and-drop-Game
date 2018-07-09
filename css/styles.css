@@ -13,16 +13,12 @@
     background-color: YellowGreen;
 }
 
-#game-area>div {
+#game-area > .draggable {
     margin: 20px;
     text-align: center;
-    font-size: 12px;
+    color: white;
+    font: bold 20px Helvetica, Arial, Sans-Serif;
     max-width: 100px;
-    background-color: Orange;
-}
-
-div {
-    margin-top: 10px;
 }
 
 .right { 
