@@ -1,24 +1,26 @@
+#game-container div {
+    user-select: none;
+}
+
 .header {
     height: 150px;
 }
 
-.container {
-    height: 1000px;
-}
-
 #game-area {
     text-align: center;
-    height: 710px;
+    height: 100%;
     position: relative;
     background-color: YellowGreen;
 }
 
 #game-area>.draggable {
-    margin: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
     text-align: center;
     font-size: 12px;
     max-width: 100px;
     background-color: Orange;
+    position: absolute;
 }
 
 .right { 
@@ -30,11 +32,8 @@
     float: left;
 }
 
-.draggable {
-    position: absolute;
-}
-
 .draggable img{
+    user-select: none;
     display:block;
     margin:auto;
     max-height: 70px;

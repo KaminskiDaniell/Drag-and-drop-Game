@@ -94,7 +94,9 @@ interact('.dropzone').dropzone({
         //event.relatedTarget.textContent = 'Dropped';
             if(ImageGameObject.match(draggableElement, dropzoneElement)){
                 draggableElement.classList.add('matched');
+                draggableElement.style.zIndex = ImageGameObject.getZIndex();
                 dropzoneElement.classList.add('matched');
+                dropzoneElement.style.zIndex = ImageGameObject.getZIndex();
             }
             else {
                 draggableElement.classList.add('dropped-into');

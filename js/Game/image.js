@@ -19,15 +19,14 @@ class ImageGameObject {
     }
 
     markAsMatched() {
-        var label = $("<div>", {html: this.name})[0];
         if(++ImageGameObject.matched == ImageGameObject.imageObjects.length){
             showMessage('success', 'Brawo!');
         }
-        this.image[0].append(label);
+        this.title.remove();
+        this.image.append(this.title.children('img'));
         this.image.removeClass('dragged-in');
         this.image.removeClass('dropzone');
         this.image.removeClass('yes-drop');
-        this.title.remove();
     }
     
     static setData(id) {
@@ -49,21 +48,20 @@ class ImageGameObject {
 
         var getDimensions = function(imageObject) {
             var gameArea = $('#' + imageObject.id);
-            ImageGameObject.maxHeight = (gameArea.outerHeight(true) - imageObject.image.css('margin')) / (imageObject.image.css('margin') + imageObject.image.outerHeight(true));
             ImageGameObject.maxHeight = gameArea.outerHeight(true) / ImageGameObject.verticalOffset;
+            ImageGameObject.offset = (gameArea.outerHeight(true) - ((Math.floor(ImageGameObject.maxHeight) - 1) * ImageGameObject.verticalOffset + imageObject.image.outerHeight(true))) / 2;
         }
         getDimensions(ImageGameObject.imageObjects[0]);
-        console.log(ImageGameObject.maxHeight);
 
         var move = function(item, i, maxHeight) {
             var sign = item.hasClass('right') ? -1 : 1;
             // translate the element
-            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px, ' + Math.ceil(((i + 1) % maxHeight) - 1) * ImageGameObject.verticalOffset + 'px)');
+            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px, ' + (ImageGameObject.offset + Math.ceil(((i + 1) % maxHeight) - 1) * ImageGameObject.verticalOffset) + 'px)');
             item.css('webkitTransform', item.css('transform'));
 
             // update the posiion attributes
             item.attr('data-x', sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset);
-            item.attr('data-y', Math.ceil(((i + 1) % maxHeight) - 1) * ImageGameObject.verticalOffset);
+            item.attr('data-y', ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * ImageGameObject.verticalOffset);
         }
 
         shuffle(ImageGameObject.imageObjects);
