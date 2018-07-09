@@ -102,7 +102,3 @@
 .dropped-into {
     outline: 5px solid red;
 }
-
-@media only screen and (max-width: 600px) {
-    background-color: #fff;
-}
