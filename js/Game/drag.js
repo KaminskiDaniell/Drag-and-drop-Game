@@ -1,30 +1,30 @@
 // target elements with the "draggable" class
 interact('.draggable')
-  .draggable({
-    // enable inertial throwing
-    inertia: true,
-    // keep the element within the area of it's parent
-    restrict: {
-      restriction: "parent",
-      endOnly: true,
-      elementRect: { top: 0, left: 0, bottom: 1, right: 1 }
-    },
-    // enable autoScroll
-    autoScroll: true,
+    .draggable({
+        // enable inertial throwing
+        inertia: true,
+        // keep the element within the area of it's parent
+        restrict: {
+            restriction: "parent",
+            endOnly: true,
+            elementRect: {top: 0, left: 0, bottom: 1, right: 1}
+        },
+        // enable autoScroll
+        autoScroll: true,
 
-    onstart: function (event) {
-        var target = event.target;
-        target.style.zIndex = ImageGameObject.getZIndex();
-    },
+        onstart: function (event) {
+            var target = event.target;
+            target.style.zIndex = ImageGameObject.getZIndex();
+        },
 
-    // call this function on every dragmove event
-    onmove: dragMoveListener,
-    // call this function on every dragend event
-    onend: function (event) {
-    }
-  });
+        // call this function on every dragmove event
+        onmove: dragMoveListener,
+        // call this function on every dragend event
+        onend: function (event) {
+        }
+    });
 
-  function dragMoveListener (event) {
+function dragMoveListener(event) {
     var target = event.target,
         // keep the dragged position in the data-x/data-y attributes
         x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx,
@@ -32,16 +32,16 @@ interact('.draggable')
 
     // translate the element
     target.style.webkitTransform =
-    target.style.transform =
-      'translate(' + x + 'px, ' + y + 'px)';
+        target.style.transform =
+            'translate(' + x + 'px, ' + y + 'px)';
 
     // update the posiion attributes
     target.setAttribute('data-x', x);
     target.setAttribute('data-y', y);
-  }
+}
 
-  // this is used later in the resizing and gesture demos
-  window.dragMoveListener = dragMoveListener;
+// this is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener;
 
 /* The dragging code for '.draggable' from the demo above
  * applies to this demo as well so it doesn't have to be repeated. */
@@ -87,7 +87,7 @@ interact('.dropzone').dropzone({
             if(dragConnections[draggableElement.getAttribute('id')]) {
                 dragConnections[draggableElement.getAttribute('id')].classList.remove('dropped-into');
             }
-        }   
+        }
         // remove the drop feedback style
         dropzoneElement.classList.remove('drop-target');
         dropzoneElement.classList.remove('can-drop');
@@ -99,7 +99,7 @@ interact('.dropzone').dropzone({
         var draggableElement = event.relatedTarget,
             dropzoneElement = event.target;
         if(!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
-        //event.relatedTarget.textContent = 'Dropped';
+            //event.relatedTarget.textContent = 'Dropped';
             if(ImageGameObject.match(draggableElement, dropzoneElement)){
                 draggableElement.classList.add('matched');
                 draggableElement.style.zIndex = ImageGameObject.getZIndex();

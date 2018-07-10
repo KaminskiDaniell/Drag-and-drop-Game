@@ -25,6 +25,7 @@ html, body {
 #game-area>.draggable {
     transition: border-color 0.3s;
     transition: background-color 0.3s;
+    background-color: gold;
     border: 4px solid transparent;
     background-clip: padding-box;
     margin-left: 20px;
@@ -34,6 +35,7 @@ html, body {
     font: bold 14px Helvetica, Arial, Sans-Serif;
     max-width: 100px;
     position: absolute;
+    border-radius: 10px;
 }
 
 .draggable img:hover {
@@ -113,4 +115,64 @@ html, body {
 #game-area > .dropped-into {
     border: 4px solid firebrick;
     background-color: firebrick;
+}
+
+.basket {
+    border-radius: 50px;
+    padding: 20px;
+    width: 100px;
+    height: 175px;
+    background-image: url(../img/basketTexture.jpg);
+    border: dashed 15px black;
+    transition: background-color 0.3s;
+    position: absolute;
+    top: 50%;
+    margin: 10px -50% 30px auto;
+    transform: translate(-50%, -50%);
+}
+
+.basket-text {
+    margin-top: 175px; /* same as basket class height*/
+    margin-left: -15px;
+    background: forestgreen;
+}
+
+#game-area input {
+    padding: 15px 25px;
+    font-size: 24px;
+    font-family: cursive;
+    text-transform: capitalize;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #4CAF50;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 0 9px #999;
+    position: absolute;
+    width: 200px;
+    height: 60px;
+    left: 50%;
+    margin: 0 0 0 -100px;
+}
+
+#game-area input:hover {
+    background-color: #3e8e41
+}
+
+#game-area input:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+}
+
+.text {
+    border-radius: 10%;
+    color: white;
+    padding: 16px 32px;
+    text-align: center;
+    font-size: 16px;
+    display: inline-block;
+    text-decoration: none;
 }

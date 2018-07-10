@@ -129,12 +129,12 @@ class BasketGameObject {
 
     createObject(src, display) {
         if (src)
-            return $("<div>", {class: "draggable left yes-drop"}).append($("<img>", {
+            return $("<div>", {class: "draggable left yes-drop image"}).append($("<img>", {
                 src: BasketGameObject.folder + src,
                 title: display,
                 alt: display
             }));
-        return $("<div>", {class: "draggable left yes-drop title"}).append(display);
+        return $("<div>", {class: "draggable left yes-drop text"}).append(display);
     }
 }
 
