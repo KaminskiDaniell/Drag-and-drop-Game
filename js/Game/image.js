@@ -23,7 +23,7 @@ class ImageGameObject {
         if(++ImageGameObject.matched == ImageGameObject.imageObjects.length){
             clearInterval(ImageGameObject.timeInterval);
             modal.style.display = "block";
-            showMessage('success', 'Brawo!');
+            Snackbar.showMessage("success", "Brawo");
         }
         ImageGameObject.addScore();
         this.title.remove();
