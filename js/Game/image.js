@@ -1,21 +1,22 @@
 class ImageGameObject {
-    constructor(val, name, id) {
+    constructor(val, name, id, gameAreaId) {
         this.id = id;
+        this.gameAreaId = gameAreaId;
         this.val = ImageGameObject.folder + val;
         this.name = name;
-        this.image = this.createImage(this.val);
-        this.title = this.createTitle(this.name);
+        this.image = this.createImage(id, this.val);
+        this.title = this.createTitle(id, this.name);
         this.matched = false;
-        $("#" + id).append(this.image);
-        $("#" + id).append(this.title);
+        $("#" + gameAreaId).append(this.image);
+        $("#" + gameAreaId).append(this.title);
     }
 
-    createImage(src){
-        return $("<div>", {class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src, alt: src}));
+    createImage(id, src){
+        return $("<div>", {id: id + '-image' , class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src, alt: src}));
     }
 
-    createTitle(text){
-        return $("<div>", {class: "title draggable right yes-drop dropzone"}).append($("<img>", {alt: text}));
+    createTitle(id, text){
+        return $("<div>", {id: id + '-title', class: "title draggable right yes-drop dropzone"}).append($("<img>", {alt: text}));
     }
 
     markAsMatched() {
@@ -29,13 +30,13 @@ class ImageGameObject {
         this.image.removeClass('yes-drop');
     }
     
-    static setData(id) {
+    static setData(gameAreaId) {
         ImageGameObject.imageObjects = [];
         ImageGameObject.zIndex = 0;
         ImageGameObject.matched = 0;
         ImageGameObject.sources.forEach(function (entry, i) {
             if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
-                ImageGameObject.imageObjects.push(new ImageGameObject(entry.fileName, entry.title, id));
+                ImageGameObject.imageObjects.push(new ImageGameObject(entry.fileName, entry.title, i, gameAreaId));
             } 
         });
 
@@ -46,7 +47,7 @@ class ImageGameObject {
             }
         }
 
-        var gameArea = $('#' + ImageGameObject.imageObjects[0].id);
+        var gameArea = $('#' + gameAreaId);
         var numberOfImages = ImageGameObject.imageObjects.length;
 
         var getDimensions = function(imageObject) {
@@ -58,13 +59,15 @@ class ImageGameObject {
 
         var move = function(item, i, maxHeight) {
             var sign = item.hasClass('right') ? -1 : 1;
+            var x = sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset;
+            var y = ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, gameArea.outerHeight(true) / (ImageGameObject.maxHeight + 1));
             // translate the element
-            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px, ' + (ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, gameArea.outerHeight(true) / (ImageGameObject.maxHeight + 1))) + 'px)');
+            item.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
             item.css('webkitTransform', item.css('transform'));
 
             // update the posiion attributes
-            item.attr('data-x', sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset);
-            item.attr('data-y', ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, gameArea.outerHeight(true) / (ImageGameObject.maxHeight + 1)));
+            item.attr('data-x', x);
+            item.attr('data-y', y);
         }
 
         shuffle(ImageGameObject.imageObjects);
