@@ -17,6 +17,12 @@ function showMessage(type, message) {
     snackbar_body.style.color = "#FFFFFF"
 }
 
+function welcomeMessage(message) {
+    if (message) {
+        showMessage("info", message)
+    }
+}
+
 function prepareModal() {
 
     // Get the modal
@@ -41,16 +47,4 @@ function prepareModal() {
         modal.style.display = 'block';
         showMessage("info", BasketGameObject.welcomeMessage);
     });
-}
-
-function prepareButton() {
-    // Get the button that opens the modal
-    var btn = document.getElementById("button");
-    btn.onclick = function () {
-        modal.style.display = "block";
-        if (BasketGameObject.checkWin())
-            showMessage("success", BasketGameObject.successMessage);
-        else
-            showMessage("error", BasketGameObject.failureMessage);
-    }
 }

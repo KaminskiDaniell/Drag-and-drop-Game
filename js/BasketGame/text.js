@@ -58,7 +58,19 @@ class BasketGameObject {
         });
 
         prepareModal();
-        prepareButton()
+        this.prepareButton()
+    }
+
+    static prepareButton() {
+        // Get the button that opens the modal
+        var btn = document.getElementById("button");
+        btn.onclick = function () {
+            modal.style.display = "block";
+            if (BasketGameObject.checkWin())
+                showMessage("success", BasketGameObject.successMessage);
+            else
+                showMessage("error", BasketGameObject.failureMessage);
+        }
     }
 
     static checkWin() {
