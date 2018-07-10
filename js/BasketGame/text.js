@@ -134,7 +134,7 @@ class BasketGameObject {
                 title: display,
                 alt: display
             }));
-        return $("<div>", {class: "draggable left yes-drop text"}).append(display);
+        return $("<div>", {class: "draggable left yes-drop text title"}).append(display);
     }
 }
 
