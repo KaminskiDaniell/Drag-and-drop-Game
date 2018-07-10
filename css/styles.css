@@ -202,3 +202,22 @@ html, body {
     display: inline-block;
     text-decoration: none;
 }
+
+.timer {
+    color: white;
+    padding: 17px;
+    font: bold 30px Helvetica, Arial, Sans-Serif;
+}
+
+.scores {
+    color: white;
+    padding: 17px;
+    font: bold 30px Helvetica, Arial, Sans-Serif;
+}
+
+::selection {
+    background: transparent; 
+}
+::-moz-selection { 
+    background: transparent; 
+}
