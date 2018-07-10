@@ -53,7 +53,7 @@ interact('.dropzone').dropzone({
     // only accept elements matching this CSS selector
     accept: '.yes-drop',
     // Require a 75% element overlap for a drop to be possible
-    overlap: 0.30,
+    overlap: 0.90,
 
     // listen for drop related events:
 
@@ -73,7 +73,7 @@ interact('.dropzone').dropzone({
         // remove the drop feedback style
         event.target.classList.remove('drop-target');
         event.relatedTarget.classList.remove('can-drop');
-        event.relatedTarget.classList.remove('matched');
+        event.relatedTarget.classList.remove('in_basket');
         var idT = event.target.id;
         if (BasketGameObject.droppedList && BasketGameObject.droppedList[idT]) {
             var idToDelete = BasketGameObject.droppedList[idT].indexOf(event.relatedTarget);
@@ -92,7 +92,7 @@ interact('.dropzone').dropzone({
         }
         if (BasketGameObject.droppedList[idT].indexOf(event.relatedTarget) < 0) {
             BasketGameObject.droppedList[idT].push(event.relatedTarget);
-            event.relatedTarget.classList.add('matched');
+            event.relatedTarget.classList.add('in_basket');
         }
     },
     ondropdeactivate: function (event) {
