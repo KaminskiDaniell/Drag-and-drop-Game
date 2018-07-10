@@ -21,19 +21,47 @@ class ImageGameObject {
 
     markAsMatched() {
         if(++ImageGameObject.matched == ImageGameObject.imageObjects.length){
+            clearInterval(ImageGameObject.timeInterval);
+            modal.style.display = "block";
             showMessage('success', 'Brawo!');
         }
+        ImageGameObject.addScore();
         this.title.remove();
         this.image.append(this.title.children("div"));
         this.image.removeClass('dragged-in');
         this.image.removeClass('dropzone');
         this.image.removeClass('yes-drop');
     }
+
+    static setTimer(gameAreaId) {
+        if(!ImageGameObject.timeInterval) {
+            var start = new Date;
+            var timer = $('<div>', {class : 'timer left'}).append('0');
+            $('#' + gameAreaId).append(timer);
+
+            ImageGameObject.timeInterval = setInterval(function() {
+                timer.text(parseInt((new Date - start) / 1000));
+            }, 1000);
+        }
+    }
+
+    static setScores(gameAreaId) {
+        ImageGameObject.scores = $('<div>', {class : 'scores right'}).append('0');
+        $('#' + gameAreaId).append(ImageGameObject.scores);
+    }
+
+    static addScore() {
+        ImageGameObject.scores.text(ImageGameObject.matched);
+    }
     
     static setData(gameAreaId) {
         ImageGameObject.imageObjects = [];
         ImageGameObject.zIndex = 0;
         ImageGameObject.matched = 0;
+
+        var gameArea = $('#' + gameAreaId);
+        
+
         ImageGameObject.sources.forEach(function (entry, i) {
             if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
                 ImageGameObject.imageObjects.push(new ImageGameObject(entry.fileName, entry.title, i, gameAreaId));
@@ -47,7 +75,6 @@ class ImageGameObject {
             }
         }
 
-        var gameArea = $('#' + gameAreaId);
         var numberOfImages = ImageGameObject.imageObjects.length;
 
         var getDimensions = function(imageObject) {

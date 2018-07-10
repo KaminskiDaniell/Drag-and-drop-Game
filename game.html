@@ -20,6 +20,12 @@
                 <h2 align="center">_match_pictures</h2>
             </div>
             <div id="game-area">
+                <div id="modal" class="modal">
+                    <div id="snackbar">
+                        <span class="close">&times;</span>
+                        <span id="snackbar-body"></span>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
@@ -27,5 +33,25 @@
 <script>
 $(function () {
     ImageGameObject.setData('game-area');
+    modal.style.display = "block";
+    showMessage("info", "Dopasuj filmy do tytułów");
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
+
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+        modal.style.display = "none";
+        ImageGameObject.setTimer('game-area');
+        ImageGameObject.setScores('game-area');
+    }
+
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+            ImageGameObject.setTimer('game-area');
+            ImageGameObject.setScores('game-area');
+        }
+    }
 });
 </script>
