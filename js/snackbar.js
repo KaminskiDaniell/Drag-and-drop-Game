@@ -14,32 +14,16 @@ function showMessage(type, message) {
     }
     var snackbar_body = document.getElementById("snackbar-body");
     snackbar_body.innerHTML = message;
+    snackbar_body.style.color = "#FFFFFF"
 }
 
-function prepareModalAndButton() {
-    var span = document.getElementsByClassName("close")[0];
-
-    span.onclick = function () {
-        modal.style.display = "none";
-    }
+function prepareModal() {
 
     // Get the modal
     var modal = document.getElementById('modal');
 
-    // Get the button that opens the modal
-    var btn = document.getElementById("button");
-
     // Get the <span> element that closes the modal
     var span = document.getElementsByClassName("close")[0];
-
-    // When the user clicks on the button, open the modal
-    btn.onclick = function () {
-        modal.style.display = "block";
-        if (BasketGameObject.checkWin())
-            showMessage("success", BasketGameObject.successMessage);
-        else
-            showMessage("error", BasketGameObject.failureMessage);
-    }
 
     // When the user clicks on <span> (x), close the modal
     span.onclick = function () {
@@ -57,4 +41,16 @@ function prepareModalAndButton() {
         modal.style.display = 'block';
         showMessage("info", BasketGameObject.welcomeMessage);
     });
+}
+
+function prepareButton() {
+    // Get the button that opens the modal
+    var btn = document.getElementById("button");
+    btn.onclick = function () {
+        modal.style.display = "block";
+        if (BasketGameObject.checkWin())
+            showMessage("success", BasketGameObject.successMessage);
+        else
+            showMessage("error", BasketGameObject.failureMessage);
+    }
 }

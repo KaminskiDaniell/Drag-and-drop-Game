@@ -57,7 +57,8 @@ class BasketGameObject {
             move(entry.object, i, BasketGameObject.maxWidth);
         });
 
-        prepareModalAndButton();
+        prepareModal();
+        prepareButton()
     }
 
     static checkWin() {
