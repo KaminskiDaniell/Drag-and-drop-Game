@@ -9,7 +9,7 @@
     border-radius: 15px; /* Rounded borders */
     /* Padding */
     position: absolute; /* Sit on top of the screen */
-    z-index: 1; /* Add a z-index if needed */
+    z-index: 9999999999999999999; /* Sit on top */
     left: 50%;
     bottom: 70%;
     width: 1%;
@@ -28,7 +28,7 @@
 .modal {
     display: none; /* Hidden by default */
     position: absolute; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    z-index: 9999999999999999999; /* Sit on top */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -41,7 +41,7 @@
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
 
 .close {
-    z-index: 1;
+    z-index: 9999999999999999999; /* Sit on top */
     padding: 5px;
     color: #aaa;
     float: right;

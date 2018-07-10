@@ -214,3 +214,10 @@ html, body {
     padding: 17px;
     font: bold 30px Helvetica, Arial, Sans-Serif;
 }
+
+::selection {
+    background: transparent; 
+}
+::-moz-selection { 
+    background: transparent; 
+}

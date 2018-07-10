@@ -46,8 +46,10 @@ class ImageGameObject {
     }
 
     static setScores(gameAreaId) {
-        ImageGameObject.scores = $('<div>', {class : 'scores right'}).append('0');
-        $('#' + gameAreaId).append(ImageGameObject.scores);
+        if(!ImageGameObject.scores) {
+            ImageGameObject.scores = $('<div>', {class : 'scores right'}).append('0');
+            $('#' + gameAreaId).append(ImageGameObject.scores);
+        }
     }
 
     static addScore() {
