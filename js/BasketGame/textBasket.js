@@ -46,9 +46,12 @@ class BasketGameObject {
             $.each(value, function (x, value) {
                 if (!answers[basket])
                     answers[basket] = [];
-                answers[basket].push(value.firstChild.alt);
+                if (value.firstChild.alt)
+                    answers[basket].push(value.firstChild.alt);
+                else answers[basket].push(value.innerHTML);
             });
         });
+        console.log(answers);
         $.each(BasketGameObject.sources, function (basket, value) {
             $.each(value, function (x, value) {
                 if (value.name === 'GOOD')
@@ -73,10 +76,13 @@ class BasketGameObject {
         var coords = this.layoutBaskets();
         $.each(BasketGameObject.sources, function (basket, value) {
             $("#" + id).append($("<div>", {
+                id: "basket-container" + basket,
+                class: 'basket-container'
+            }).append($("<div>", {
                 class: "basket dropzone",
                 style: "left: " + coords[basket] + "%" + (height === null ? '' : '; top: ' + height + '%'),
                 id: basket
-            }));
+            }).append($('<div>', {class: 'basket-text text'}).append(basket))));
         });
     }
 
@@ -96,7 +102,8 @@ class BasketGameObject {
             id: 'button',
             type: 'button',
             class: "button",
-            value: text
+            value: text,
+            style: "top: " + BasketGameObject.buttonHeight + '%'
         }))
 
     }
@@ -119,24 +126,23 @@ class BasketGameObject {
                 title: display,
                 alt: display
             }));
-        return $("<div>", {class: "draggable left yes-drop text"}).append($("<img>", {
-            title: display,
-            alt: display
-        }));
+        return $("<div>", {class: "draggable left yes-drop text"}).append(display);
     }
 }
 
 BasketGameObject
-    .basketHeight = 75;
+    .basketHeight = 75; //percentage
 
 BasketGameObject
-    .buttonText = "Przycisk";
+    .buttonText = "Przycisk"; //text displayed on button
+BasketGameObject
+    .buttonHeight = 50; //percentage
 
 BasketGameObject
     .folder = 'img/';
 BasketGameObject
     .sources = {
-    '1': [
+    'Te co chca byc wrzucone': [
         {
             'display': 'To wrzuć',
             'name': 'GOOD',
@@ -146,7 +152,7 @@ BasketGameObject
             'name': 'GOOD',
         }
     ],
-    '2': [
+    'Obrazki': [
         {
             'display': 'Tego nie',
             'name': 'BAD',
@@ -163,12 +169,6 @@ BasketGameObject
             'fileName': "1.jpg",
             'display': "Obrazek 1",
             'name': 'GOOD',
-        }
-    ],
-    '3': [
-        {
-            'display': 'LOL',
-            'name': 'GOOD'
         }
     ]
 };
