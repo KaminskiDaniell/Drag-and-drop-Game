@@ -53,7 +53,7 @@ interact('.dropzone').dropzone({
     // only accept elements matching this CSS selector
     accept: '.yes-drop',
     // Require a 75% element overlap for a drop to be possible
-    overlap: 0.30,
+    overlap: 0.90,
 
     // listen for drop related events:
 

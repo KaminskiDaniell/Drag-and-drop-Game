@@ -36,11 +36,6 @@ html, body {
     position: absolute;
 }
 
-.in_basket.image {
-    background-color: forestgreen !important;
-    border-color: forestgreen !important;
-}
-
 .draggable img:hover {
     color: #fff;
 }
@@ -134,6 +129,19 @@ html, body {
     padding: 4px;
     border: 0px solid transparent;
 }
+
+#game-area > .in_basket.image {
+    transition: background-color 0.0s;
+    background-color: forestgreen;
+    padding: 4px;
+    border: 0px solid transparent;
+}
+
+#game-area > .in_basket.title {
+    transition: background-color 0.0s;
+    background-color: forestgreen;
+}
+
 
 .basket {
     border-radius: 50px;
