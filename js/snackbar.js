@@ -21,7 +21,7 @@ class Snackbar {
     static setSnackbar(gameAreaId, callback = function(){}) {
         var modal = $('<div>', {id:'modal', class: "modal"}).append($('<div>', {id: "snackbar"}).append($('<span>', {class:'close'}).append('&times;')).append($('<span>', {id: 'snackbar-body'})));
         $('#' + gameAreaId).append(modal);
-        
+
         modal = modal[0];
 
         // Get the <span> element that closes the modal
