@@ -16,7 +16,7 @@ class ImageGameObject {
     }
 
     createTitle(id, text){
-        return $("<div>", {id: id + '-title', class: "title draggable right yes-drop dropzone"}).append($("<img>", {alt: text}));
+        return $("<div>", {id: id + '-title', class: "title draggable right yes-drop dropzone"}).append(text);
     }
 
     markAsMatched() {
@@ -24,7 +24,7 @@ class ImageGameObject {
             showMessage('success', 'Brawo!');
         }
         this.title.remove();
-        this.image.append(this.title.children('img'));
+        this.image.append(this.title.text());
         this.image.removeClass('dragged-in');
         this.image.removeClass('dropzone');
         this.image.removeClass('yes-drop');
