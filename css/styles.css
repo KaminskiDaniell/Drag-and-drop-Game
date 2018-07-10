@@ -17,7 +17,6 @@ html, body {
 }
 
 #game-area {
-    text-align: center;
     height: 100%;
     position: relative;
     background-color: YellowGreen;
@@ -32,7 +31,6 @@ html, body {
     color: white;
     font: bold 20px Helvetica, Arial, Sans-Serif;
     max-width: 100px;
-    background-color: gold;
     position: absolute;
 }
 

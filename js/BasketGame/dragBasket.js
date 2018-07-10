@@ -73,7 +73,7 @@ interact('.dropzone').dropzone({
         // remove the drop feedback style
         event.target.classList.remove('drop-target');
         event.relatedTarget.classList.remove('can-drop');
-        event.relatedTarget.classList.remove('dropped-into');
+        event.relatedTarget.classList.remove('matched');
         var idT = event.target.id;
         if (BasketGameObject.droppedList && BasketGameObject.droppedList[idT]) {
             var idToDelete = BasketGameObject.droppedList[idT].indexOf(event.relatedTarget);
@@ -92,7 +92,7 @@ interact('.dropzone').dropzone({
         }
         if (BasketGameObject.droppedList[idT].indexOf(event.relatedTarget) < 0) {
             BasketGameObject.droppedList[idT].push(event.relatedTarget);
-            event.relatedTarget.classList.add('dropped-into');
+            event.relatedTarget.classList.add('matched');
         }
     },
     ondropdeactivate: function (event) {

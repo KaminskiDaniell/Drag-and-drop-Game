@@ -1,8 +1,7 @@
 class BasketGameObject {
     constructor(file, val, name, id) {
-        this.file = ImageGameObject.folder + file;
+        this.id = id;
         this.display = val;
-        this.name = name;
         this.object = this.createObject(file, this.display);
         $("#" + id).append(this.object);
     }
@@ -23,18 +22,39 @@ class BasketGameObject {
                     BasketGameObject.objects.push(new BasketGameObject(null, val.display, val.name, id));
                 }
             });
+        });
 
-            var shuffle = function (array) {
-                for (let i = array.length - 1; i > 0; i--) {
-                    const j = Math.floor(Math.random() * (i + 1));
-                    [array[i], array[j]] = [array[j], array[i]];
-                }
-            };
+        var shuffle = function (array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
 
-            shuffle(BasketGameObject.objects);
-            BasketGameObject.objects.forEach(function (entry, i) {
-                entry.move(entry.object[0], i);
-            });
+        var gameArea = $('#' + BasketGameObject.objects[0].id);
+        var numberOfImages = BasketGameObject.objects.length;
+
+
+        var getDimensions = function (imageObject) {
+            BasketGameObject.maxWidth = Math.floor(gameArea.outerWidth(true) / BasketGameObject.horizontalOffset);
+            BasketGameObject.offset = (gameArea.outerWidth(true) - ((Math.floor(BasketGameObject.maxWidth) - 1) * BasketGameObject.horizontalOffset + imageObject.object.outerHeight(true))) / 2;
+            BasketGameObject.maxWidth = Math.ceil(numberOfImages / Math.ceil(numberOfImages / BasketGameObject.maxWidth));
+        };
+        getDimensions(BasketGameObject.objects[0]);
+
+        var move = function (item, i, maxHeight) {
+            // translate the element
+            item.css('transform', 'translate(' + (BasketGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(BasketGameObject.horizontalOffset, gameArea.outerHeight(true) / (BasketGameObject.maxWidth + 1))) + 'px, ' + (Math.ceil(((i + 1) / maxHeight) - 1) * BasketGameObject.verticalOffset) + 'px)');
+            item.css('webkitTransform', item.css('transform'));
+
+            // update the posiion attributes
+            item.attr('data-y', Math.ceil(((i + 1) / maxHeight) - 1) * BasketGameObject.verticalOffset);
+            item.attr('data-x', BasketGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(BasketGameObject.horizontalOffset, gameArea.outerHeight(true) / (BasketGameObject.maxWidth + 1)));
+        };
+
+        shuffle(BasketGameObject.objects);
+        BasketGameObject.objects.forEach(function (entry, i) {
+            move(entry.object, i, BasketGameObject.maxWidth);
         });
     }
 
@@ -51,7 +71,6 @@ class BasketGameObject {
                 else answers[basket].push(value.innerHTML);
             });
         });
-        console.log(answers);
         $.each(BasketGameObject.sources, function (basket, value) {
             $.each(value, function (x, value) {
                 if (value.name === 'GOOD')
@@ -86,17 +105,6 @@ class BasketGameObject {
         });
     }
 
-    move(item, i) {
-        // translate the element
-        item.style.webkitTransform =
-            item.style.transform =
-                'translate(0px, ' + i * 100 + 'px)';
-
-        // update the posiion attributes
-        item.setAttribute('data-x', 0);
-        item.setAttribute('data-y', i * 100);
-    }
-
     static createButton(id, text) {
         $("#" + id).append($("<input>", {
             id: 'button',
@@ -122,11 +130,11 @@ class BasketGameObject {
     createObject(src, display) {
         if (src)
             return $("<div>", {class: "draggable left yes-drop"}).append($("<img>", {
-                src: ImageGameObject.folder + src,
+                src: BasketGameObject.folder + src,
                 title: display,
                 alt: display
             }));
-        return $("<div>", {class: "draggable left yes-drop text"}).append(display);
+        return $("<div>", {class: "draggable left yes-drop title"}).append(display);
     }
 }
 
@@ -137,6 +145,9 @@ BasketGameObject
     .buttonText = "Przycisk"; //text displayed on button
 BasketGameObject
     .buttonHeight = 50; //percentage
+
+BasketGameObject.horizontalOffset = 140;
+BasketGameObject.verticalOffset = 100;
 
 BasketGameObject
     .folder = 'img/';
