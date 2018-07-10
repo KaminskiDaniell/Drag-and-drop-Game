@@ -77,7 +77,12 @@ html, body {
 
 #game-area > .drop-target {
     background-color: cornflowerblue;
-    border: 4px solid cornflowerblue;
+}
+
+#game-area > .drop-target.image{
+    transition: background-color 0.0s;
+    padding: 4px;
+    border: 0px solid transparent;
 }
 
 
@@ -108,11 +113,17 @@ html, body {
 }
 
 #game-area > .dragged-in {
+
 }
 
 #game-area > .dropped-into {
-    border: 4px solid firebrick;
     background-color: firebrick;
+}
+
+#game-area > .dropped-into.image{
+    transition: background-color 0.0s;
+    padding: 4px;
+    border: 0px solid transparent;
 }
 
 .basket {
