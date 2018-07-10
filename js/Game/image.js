@@ -23,7 +23,7 @@ class ImageGameObject {
         if(++ImageGameObject.matched == ImageGameObject.imageObjects.length){
             clearInterval(ImageGameObject.timeInterval);
             modal.style.display = "block";
-            Snackbar.showMessage("success", "Brawo");
+            Snackbar.showMessage("success", Locale.get('_success'));
         }
         ImageGameObject.addScore();
         this.title.remove();
@@ -128,7 +128,6 @@ class ImageGameObject {
         return ++ImageGameObject.zIndex;
     }
 }
-
 ImageGameObject.horizontalOffset = 140;
 ImageGameObject.verticalOffset = 80;
 
