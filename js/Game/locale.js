@@ -1,9 +1,11 @@
 class Locale {
-    static get(locale) {
-        return Locale.locales[locale];
+    static get(lang, locale) {
+        return Locale.locales[lang][locale];
     }
 }
 Locale.locales = {
-    '_match_pictures': 'Dopasuj filmy do tytułów',
-    '_success': 'Brawo!'
+    'pl' : {
+        '_match_pictures': 'Dopasuj filmy do tytułów',
+        '_success': 'Brawo!'
+    }
 }

@@ -204,12 +204,14 @@ html, body {
 }
 
 .timer {
+    z-index: 9999999999999999998; /* Sit on top */
     color: white;
     padding: 17px;
     font: bold 30px Helvetica, Arial, Sans-Serif;
 }
 
 .scores {
+    z-index: 9999999999999999998; /* Sit on top */
     color: white;
     padding: 17px;
     font: bold 30px Helvetica, Arial, Sans-Serif;
