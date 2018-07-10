@@ -15,6 +15,7 @@
 .basket-text {
     margin-top: 175px; /* same as basket class height*/
     margin-left: -15px;
+    background: forestgreen;
 }
 
 #game-area input {

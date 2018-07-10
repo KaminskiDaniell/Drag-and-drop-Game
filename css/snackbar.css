@@ -8,7 +8,7 @@
     font-size: 16px;
     border-radius: 15px; /* Rounded borders */
     /* Padding */
-    position: fixed; /* Sit on top of the screen */
+    position: absolute; /* Sit on top of the screen */
     z-index: 1; /* Add a z-index if needed */
     left: 40%;
     bottom: 83%;
@@ -19,8 +19,7 @@
     padding: 15px;
     display: -webkit-flex; /* Safari */
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
-    display: inline-block;
-    width: auto;
+    display: flex;
     flex-wrap: wrap;
     text-align: center;
     vertical-align: middle;
