@@ -56,6 +56,8 @@ class BasketGameObject {
         BasketGameObject.objects.forEach(function (entry, i) {
             move(entry.object, i, BasketGameObject.maxWidth);
         });
+
+        prepareModalAndButton();
     }
 
     static checkWin() {
@@ -75,13 +77,20 @@ class BasketGameObject {
             $.each(value, function (x, value) {
                 if (value.name === 'GOOD')
                     correctAnswers++;
-                if (answers[basket] && answers[basket].indexOf(value.display) >= 0) {
-                    if (value.name === 'BAD')
-                        matches--;
-                    else
-                        matches++;
+                if (answers[basket]) {
+                    var index = answers[basket].indexOf(value.display);
+                    if (index >= 0) {
+                        if (value.name === 'BAD')
+                            matches--;
+                        else {
+                            matches++;
+                            answers[basket].splice(index, 1);
+                        }
+                    }
                 }
             });
+            if (answers[basket])
+                matches = matches - answers[basket].length;
         });
         return correctAnswers === matches;
     }
@@ -146,14 +155,14 @@ BasketGameObject
 BasketGameObject
     .buttonHeight = 50; //percentage
 
-BasketGameObject.horizontalOffset = 140;
+BasketGameObject.horizontalOffset = 100;
 BasketGameObject.verticalOffset = 100;
 
 BasketGameObject
     .folder = 'img/';
 BasketGameObject
     .sources = {
-    'Te co chca byc wrzucone': [
+    'Te napisy, co chca byc wrzucone': [
         {
             'display': 'To wrzuć',
             'name': 'GOOD',
@@ -163,7 +172,7 @@ BasketGameObject
             'name': 'GOOD',
         }
     ],
-    'Obrazki': [
+    'Wrzuć tu obrazki': [
         {
             'display': 'Tego nie',
             'name': 'BAD',
@@ -181,5 +190,23 @@ BasketGameObject
             'display': "Obrazek 1",
             'name': 'GOOD',
         }
+    ],
+    "Co lubi Wojtek?": [
+        {
+            'display': 'BROK',
+            'name': 'GOOD'
+        },
+        {
+            'display': 'SLODKIE JAK PIJE ALKO',
+            'name': 'BAD'
+        },
+        {
+            'display': "POLENG",
+            'name': 'BAD'
+        }
     ]
 };
+
+BasketGameObject.welcomeMessage = "Witaj podróżniku, powrzucaj prawidłowo obrazki i napisy do koszyków przeciągając je na te koszyki. Powodzenia!";
+BasketGameObject.successMessage = "Brawo!";
+BasketGameObject.failureMessage = "Nie udało się, zastanów się co wrzuciłeś żle.";
