@@ -59,12 +59,12 @@ class ImageGameObject {
         var move = function(item, i, maxHeight) {
             var sign = item.hasClass('right') ? -1 : 1;
             // translate the element
-            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px, ' + (ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, ImageGameObject.maxHeight / (ImageGameObject.maxHeight + 1))) + 'px)');
+            item.css('transform', 'translate(' + sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset + 'px, ' + (ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, gameArea.outerHeight(true) / (ImageGameObject.maxHeight + 1))) + 'px)');
             item.css('webkitTransform', item.css('transform'));
 
             // update the posiion attributes
             item.attr('data-x', sign * Math.ceil(((i + 1) / maxHeight) - 1) * ImageGameObject.horizontalOffset);
-            item.attr('data-y', ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, ImageGameObject.maxHeight / (numberOfImages + 1)));
+            item.attr('data-y', ImageGameObject.offset + Math.ceil(((i + 1) % (maxHeight + 0.0001)) - 1) * Math.max(ImageGameObject.verticalOffset, gameArea.outerHeight(true) / (ImageGameObject.maxHeight + 1)));
         }
 
         shuffle(ImageGameObject.imageObjects);
