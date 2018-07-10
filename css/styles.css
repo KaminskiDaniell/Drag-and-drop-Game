@@ -17,20 +17,21 @@ html, body {
 }
 
 #game-area {
-    text-align: center;
     height: 100%;
     position: relative;
     background-color: YellowGreen;
 }
 
 #game-area>.draggable {
+    transition: border-color 0.3s;
+    transition: background-color 0.3s;
     border: 4px solid transparent;
     background-clip: padding-box;
     margin-left: 20px;
     margin-right: 20px;
     text-align: center;
     color: white;
-    font: bold 20px Helvetica, Arial, Sans-Serif;
+    font: bold 14px Helvetica, Arial, Sans-Serif;
     max-width: 100px;
     background-color: gold;
     position: absolute;
@@ -50,7 +51,6 @@ html, body {
 }
 
 .draggable img{
-    transition: filter 0.6s;
     user-select: none;
     display:block;
     margin:auto;
@@ -73,12 +73,7 @@ html, body {
     outline: 0px;
 }
 
-#game-area > .drop-active {
-
-}
-
 #game-area > .drop-active img {
-    filter: brightness(120%);
 }
 
 #game-area > .drop-target {
@@ -96,8 +91,6 @@ html, body {
     background-color: #29e;
     outline: solid 2px #fff;
 
-    -webkit-transform: translate(0px, 0px);
-    transform: translate(0px, 0px);
     transition: background-color 0.3s;
 }
 
