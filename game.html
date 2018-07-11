@@ -10,11 +10,15 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
 
     <script src="js/jquery-3.3.1.min.js"></script>
-    <script src="js/snackbar.js"></script>
     <script src="js/interact.min.js"></script>
+    <script src="js/gameManager.js"></script>
+    <script src="js/gameObject.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/snackbar.js"></script>
     <script src="js/dropdown.js"></script>
     <script src="js/Game/locale.js"></script>
-    <script src="js/Game/image.js"></script>
+    <script src="js/Game/imageGame.js"></script>
+    <script src="js/Game/imageGameObject.js"></script>
     <script src="js/Game/drag.js"></script>
 </head>
 <body>
@@ -29,10 +33,10 @@
 </html>
 <script>
     $(function () {
-        ImageGameObject.setData('game-area');
+        GameManager.set(ImageGame, 'game-area');
         Snackbar.setSnackbar('game-area', function () {
-            ImageGameObject.setTimer('game-area');
-            ImageGameObject.setScores('game-area');
+            GameManager.get().setTimer('game-area');
+            GameManager.get().setScores('game-area');
         });
         Dropdown.setDropdown('game-area');
         Snackbar.show("info", Locale.get('game', '_match_pictures'));

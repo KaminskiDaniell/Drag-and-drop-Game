@@ -14,7 +14,7 @@ interact('.draggable')
 
         onstart: function (event) {
             var target = event.target;
-            target.style.zIndex = ImageGameObject.getZIndex();
+            target.style.zIndex = GameManager.get().getZIndex();
         },
 
         // call this function on every dragmove event
@@ -100,11 +100,11 @@ interact('.dropzone').dropzone({
             dropzoneElement = event.target;
         if (!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
             //event.relatedTarget.textContent = 'Dropped';
-            if (ImageGameObject.match(draggableElement, dropzoneElement)) {
+            if (GameManager.get().match(draggableElement, dropzoneElement)) {
                 draggableElement.classList.add('matched');
-                draggableElement.style.zIndex = ImageGameObject.getZIndex();
+                draggableElement.style.zIndex = GameManager.get().getZIndex();
                 dropzoneElement.classList.add('matched');
-                dropzoneElement.style.zIndex = ImageGameObject.getZIndex();
+                dropzoneElement.style.zIndex = GameManager.get().getZIndex();
             }
             else {
                 draggableElement.classList.add('dropped-into');

@@ -8,7 +8,7 @@ class Dropdown {
             var input = $('<input>', {
                 type: 'image',
                 class: 'flag',
-                src: ImageGameObject.folder + entry + ".svg",
+                src: GameManager.get().getFolder() + entry + ".svg",
             })
             input.on('click', function () {
                 //GameObject.reloadLocale();
@@ -19,7 +19,7 @@ class Dropdown {
         var modal = $('<div>', {class: "dropdown"}).append($("<input>", {
             id: 'buttonMenu',
             type: 'image',
-            src: ImageGameObject.folder + "cog.svg"
+            src: GameManager.get().getFolder() + "cog.svg"
         })).append(dropdown);
 
         $('#' + gameAreaId).append(modal);
