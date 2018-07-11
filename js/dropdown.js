@@ -1,18 +1,26 @@
 class Dropdown {
     static setDropdown(gameAreaId) {
+
+        var inputs = [];
+        var dropdown = $('<div>', {id: "dropdown", class: 'dropdown-content'});
+
+        Locale.getLanguages().forEach(function (entry) {
+            var input = $('<input>', {
+                type: 'image',
+                class: 'flag',
+                src: ImageGameObject.folder + entry + ".svg",
+            })
+            input.on('click', function () {
+                //GameObject.reloadLocale();
+            });
+            dropdown.append(input);
+        });
+
         var modal = $('<div>', {class: "dropdown"}).append($("<input>", {
             id: 'buttonMenu',
             type: 'image',
-            src: BasketGameObject.folder + "cog.svg"
-        })).append($('<div>', {id: "dropdown", class: 'dropdown-content'}).append($('<input>', {
-            type: 'image',
-            class: 'flag',
-            src: BasketGameObject.folder + "poland.svg"
-        })).append($('<input>', {
-            type: 'image',
-            class: 'flag',
-            src: BasketGameObject.folder + "uk.svg"
-        })));
+            src: ImageGameObject.folder + "cog.svg"
+        })).append(dropdown);
 
         $('#' + gameAreaId).append(modal);
 
@@ -20,6 +28,7 @@ class Dropdown {
         button.on('click', function () {
             $('#dropdown').toggleClass('showDropdown');
         });
+
 
         window.onclick = function (event) {
             if (!event.target.matches('#buttonMenu')) {

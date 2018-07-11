@@ -11,6 +11,10 @@ class Locale {
     static setLanguage(lang) {
         Locale.current = lang;
     }
+    
+    static getLanguages() {
+        return Object.keys(Locale.locales);
+    }
 }
 
 Locale.current = 'pl'
