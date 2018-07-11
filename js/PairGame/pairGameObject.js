@@ -42,7 +42,7 @@ class PairGameObject extends GameObject {
     }
 
     loadLocale(){
-        this.title.text(Locale.get('title', this.name));
+        this.title.children('div').text(Locale.get('title', this.name));
     }
 }
 

@@ -67,11 +67,12 @@ class PairGame extends Game {
     setTimer() {
         if(!this.timeInterval) {
             var start = new Date;
-            var timer = $('<div>', {class : 'timer left'}).append('0');
+            var timer = $('<div>', {class : 'timer left'}).append('0:00');
             this.getGameArea().append(timer);
 
             this.timeInterval = setInterval(function() {
-                timer.text(parseInt((new Date - start) / 1000));
+                var time = parseInt((new Date - start) / 1000);
+                timer.text(parseInt(time / 60) + ':' + (time % 60 < 10 ? '0' : '') + time % 60);
             }, 1000);
         }
     }
