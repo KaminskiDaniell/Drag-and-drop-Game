@@ -118,6 +118,12 @@ class ImageGameObject {
         });
     }
 
+    static reloadLocale(){
+        ImageGameObject.imageObjects.forEach(function(entry) {
+            entry.title.text(Locale.get('title', entry.name));
+        });
+    }
+
     static match(element1, element2) {
         for(var i = 0; i < ImageGameObject.imageObjects.length; i++) {
             var entry = ImageGameObject.imageObjects[i];
