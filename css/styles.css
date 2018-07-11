@@ -22,7 +22,7 @@ html, body {
     background-color: YellowGreen;
 }
 
-#game-area>.draggable {
+#game-area > .draggable {
     transition: background-color 0.3s ease, border-color 0.3s ease;
     border: 4px solid transparent;
     background-color: #e27e36;
@@ -40,12 +40,12 @@ html, body {
     color: #fff;
 }
 
-.right { 
+.right {
     float: right;
     right: 0;
 }
 
-.left { 
+.left {
     float: left;
 }
 
@@ -53,10 +53,10 @@ html, body {
     border-radius: 15px;
 }
 
-.draggable img{
+.draggable img {
     user-select: none;
-    display:block;
-    margin:auto;
+    display: block;
+    margin: auto;
     max-height: 70px;
     max-width: 100px;
     border-radius: 10px;
@@ -83,12 +83,11 @@ html, body {
     background-color: cornflowerblue;
 }
 
-#game-area > .drop-target.image{
+#game-area > .drop-target.image {
     transition: background-color 0.0s;
     padding: 4px;
     border: 0px solid transparent;
 }
-
 
 #game-area > .drag-drop {
     display: inline-block;
@@ -112,7 +111,7 @@ html, body {
     background-color: forestgreen;
 }
 
-#game-area > .matched div{
+#game-area > .matched div {
     padding: 8px 4px;
 }
 
@@ -124,7 +123,7 @@ html, body {
     background-color: firebrick;
 }
 
-#game-area > .dropped-into.image{
+#game-area > .dropped-into.image {
     transition: background-color 0.0s;
     padding: 4px;
     border: 0px solid transparent;
@@ -141,7 +140,6 @@ html, body {
     transition: background-color 0.0s;
     background-color: forestgreen;
 }
-
 
 .basket {
     border-radius: 50px;
@@ -163,7 +161,7 @@ html, body {
     background: crimson;
 }
 
-#game-area input {
+#button {
     padding: 15px 25px;
     font-size: 24px;
     font-family: cursive;
@@ -183,11 +181,11 @@ html, body {
     margin: 0 0 0 -100px;
 }
 
-#game-area input:hover {
+#button:hover {
     background-color: #3e8e41
 }
 
-#game-area input:active {
+#button:active {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
@@ -216,8 +214,9 @@ html, body {
 }
 
 ::selection {
-    background: transparent; 
+    background: transparent;
 }
-::-moz-selection { 
-    background: transparent; 
+
+::-moz-selection {
+    background: transparent;
 }

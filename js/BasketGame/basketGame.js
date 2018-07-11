@@ -57,19 +57,21 @@ class BasketGameObject {
             move(entry.object, i, BasketGameObject.maxWidth);
         });
 
-        prepareModal();
-        this.prepareButton()
+        this.prepareButton();
     }
 
     static prepareButton() {
         // Get the button that opens the modal
         var btn = document.getElementById("button");
         btn.onclick = function () {
-            modal.style.display = "block";
-            if (BasketGameObject.checkWin())
-                showMessage("success", BasketGameObject.successMessage);
+            var ret = BasketGameObject.checkWin();
+            var score = (Math.round((ret[1] / ret[0]) * 100));
+            score = score >= 0 ? score : 0;
+            score += "%";
+            if (ret[0] === ret[1])
+                Snackbar.show("success", BasketGameObject.successMessage + " Twój wynik to: " + score);
             else
-                showMessage("error", BasketGameObject.failureMessage);
+                Snackbar.show("error", BasketGameObject.failureMessage + " Twój wynik to: " + score);
         }
     }
 
@@ -93,9 +95,7 @@ class BasketGameObject {
                 if (answers[basket]) {
                     var index = answers[basket].indexOf(value.display);
                     if (index >= 0) {
-                        if (value.name === 'BAD')
-                            matches--;
-                        else {
+                        if (value.name === 'GOOD') {
                             matches++;
                             answers[basket].splice(index, 1);
                         }
@@ -105,7 +105,7 @@ class BasketGameObject {
             if (answers[basket])
                 matches = matches - answers[basket].length;
         });
-        return correctAnswers === matches;
+        return [correctAnswers, matches];
     }
 
 
@@ -168,14 +168,14 @@ BasketGameObject
 BasketGameObject
     .buttonHeight = 50; //percentage
 
-BasketGameObject.horizontalOffset = 100;
-BasketGameObject.verticalOffset = 100;
+BasketGameObject.horizontalOffset = 150;
+BasketGameObject.verticalOffset = 140;
 
 BasketGameObject
     .folder = 'img/';
 BasketGameObject
     .sources = {
-    'Te napisy, co chca byc wrzucone': [
+    'Te napisy, co chcą być wrzucone': [
         {
             'display': 'To wrzuć',
             'name': 'GOOD',
@@ -202,22 +202,13 @@ BasketGameObject
             'fileName': "1.jpg",
             'display': "Obrazek 1",
             'name': 'GOOD',
+        },
+        {
+            'fileName': "brok.png",
+            'display': "Brok",
+            'name': 'GOOD'
         }
     ],
-    "Co lubi Wojtek?": [
-        {
-            'display': 'BROK',
-            'name': 'GOOD'
-        },
-        {
-            'display': 'SLODKIE JAK PIJE ALKO',
-            'name': 'BAD'
-        },
-        {
-            'display': "POLENG",
-            'name': 'BAD'
-        }
-    ]
 };
 
 BasketGameObject.welcomeMessage = "Witaj podróżniku, powrzucaj prawidłowo obrazki i napisy do koszyków przeciągając je na te koszyki. Powodzenia!";

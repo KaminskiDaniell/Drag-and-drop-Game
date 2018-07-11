@@ -60,7 +60,7 @@ interact('.dropzone').dropzone({
     ondropactivate: function (event) {
         var draggableElement = event.relatedTarget,
             dropzoneElement = event.target;
-        if(!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')))) {
+        if (!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')))) {
             // add active dropzone feedback
             dropzoneElement.classList.add('drop-active');
         }
@@ -68,7 +68,7 @@ interact('.dropzone').dropzone({
     ondragenter: function (event) {
         var draggableElement = event.relatedTarget,
             dropzoneElement = event.target;
-        if(!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
+        if (!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
             // feedback the possibility of a drop
             dropzoneElement.classList.add('drop-target');
             draggableElement.classList.add('can-drop');
@@ -78,13 +78,13 @@ interact('.dropzone').dropzone({
     ondragleave: function (event) {
         var draggableElement = event.relatedTarget,
             dropzoneElement = event.target;
-        if(draggableElement.classList.contains('dropped-into')) {
+        if (draggableElement.classList.contains('dropped-into')) {
             dropzoneElement.classList.remove('dropped-into');
-            if(dragConnections[dropzoneElement.getAttribute('id')]) {
+            if (dragConnections[dropzoneElement.getAttribute('id')]) {
                 dragConnections[dropzoneElement.getAttribute('id')].classList.remove('dropped-into');
             }
             draggableElement.classList.remove('dropped-into');
-            if(dragConnections[draggableElement.getAttribute('id')]) {
+            if (dragConnections[draggableElement.getAttribute('id')]) {
                 dragConnections[draggableElement.getAttribute('id')].classList.remove('dropped-into');
             }
         }
@@ -98,9 +98,9 @@ interact('.dropzone').dropzone({
     ondrop: function (event) {
         var draggableElement = event.relatedTarget,
             dropzoneElement = event.target;
-        if(!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
+        if (!((dropzoneElement.classList.contains('title') && draggableElement.classList.contains('title')) || (dropzoneElement.classList.contains('image') && draggableElement.classList.contains('image')) || dropzoneElement.classList.contains('dropped-into'))) {
             //event.relatedTarget.textContent = 'Dropped';
-            if(ImageGameObject.match(draggableElement, dropzoneElement)){
+            if (ImageGameObject.match(draggableElement, dropzoneElement)) {
                 draggableElement.classList.add('matched');
                 draggableElement.style.zIndex = ImageGameObject.getZIndex();
                 dropzoneElement.classList.add('matched');

@@ -18,8 +18,12 @@ class Snackbar {
         snackbar_body.style.color = "#FFFFFF"
     }
 
-    static setSnackbar(gameAreaId, callback = function(){}) {
-        var modal = $('<div>', {id:'modal', class: "modal"}).append($('<div>', {id: "snackbar"}).append($('<span>', {class:'close'}).append('&times;')).append($('<span>', {id: 'snackbar-body'})));
+    static setSnackbar(gameAreaId, callback = function () {
+    }) {
+        var modal = $('<div>', {
+            id: 'modal',
+            class: "modal"
+        }).append($('<div>', {id: "snackbar"}).append($('<span>', {class: 'close'}).append('&times;')).append($('<span>', {id: 'snackbar-body'})));
         $('#' + gameAreaId).append(modal);
 
         modal = modal[0];
@@ -27,38 +31,15 @@ class Snackbar {
         // Get the <span> element that closes the modal
         var span = modal.getElementsByClassName("close")[0];
 
-        console.log(span);
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";
             callback();
         }
-
-        // When the user clicks anywhere outside of the modal, close it
-        window.onclick = function (event) {
-            if (event.target == modal) {
-                modal.style.display = "none";
-                callback();
-            }
-        }
-
     }
 
-    static show(type, message){
+    static show(type, message) {
         modal.style.display = 'block';
         Snackbar.showMessage(type, message);
-    }
-
-
-    static prepareButton() {
-        // Get the button that opens the modal
-        var btn = document.getElementById("button");
-        btn.onclick = function () {
-            modal.style.display = "block";
-            if (BasketGameObject.checkWin())
-                showMessage("success", BasketGameObject.successMessage);
-            else
-                showMessage("error", BasketGameObject.failureMessage);
-        }
     }
 }
