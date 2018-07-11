@@ -31,7 +31,7 @@ html, body {
     margin-right: 20px;
     text-align: center;
     color: white;
-    font: bold 14px Helvetica, Arial, Sans-Serif;
+    font: bold 13px Helvetica, Arial, Sans-Serif;
     max-width: 100px;
     position: absolute;
 }
@@ -202,12 +202,14 @@ html, body {
 }
 
 .timer {
+    z-index: 9999999999999999998; /* Sit on top */
     color: white;
     padding: 17px;
     font: bold 30px Helvetica, Arial, Sans-Serif;
 }
 
 .scores {
+    z-index: 9999999999999999998; /* Sit on top */
     color: white;
     padding: 17px;
     font: bold 30px Helvetica, Arial, Sans-Serif;

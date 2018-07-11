@@ -11,6 +11,7 @@
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/snackbar.js"></script>
     <script src="js/interact.min.js"></script>
+    <script src="js/Game/locale.js"></script>
     <script src="js/Game/image.js"></script>
     <script src="js/Game/drag.js"></script>
 </head>
@@ -31,6 +32,6 @@
             ImageGameObject.setTimer('game-area');
             ImageGameObject.setScores('game-area');
         });
-        Snackbar.show("info", "Dopasuj filmy do tytułów");
+        Snackbar.show("info", Locale.get('game', '_match_pictures'));
     });
 </script>

@@ -20,10 +20,12 @@ class Snackbar {
 
     static setSnackbar(gameAreaId, callback = function () {
     }) {
-        var modal = $('<div>', {
-            id: 'modal',
-            class: "modal"
-        }).append($('<div>', {id: "snackbar"}).append($('<span>', {class: 'close'}).append('&times;')).append($('<span>', {id: 'snackbar-body'})));
+        var modal = $('<div>', {id: 'modal', class: "modal"})
+            .append($('<div>', {id: "snackbar"})
+                .append($('<span>', {class: 'close'})
+                    .append('&times;'))
+                .append($('<span>', {id: 'snackbar-body'})));
+
         $('#' + gameAreaId).append(modal);
 
         modal = modal[0];
@@ -41,5 +43,17 @@ class Snackbar {
     static show(type, message) {
         modal.style.display = 'block';
         Snackbar.showMessage(type, message);
+    }
+
+    static prepareButton() {
+        // Get the button that opens the modal
+        var btn = document.getElementById("button");
+        btn.onclick = function () {
+            modal.style.display = "block";
+            if (BasketGameObject.checkWin())
+                showMessage("success", BasketGameObject.successMessage);
+            else
+                showMessage("error", BasketGameObject.failureMessage);
+        }
     }
 }
