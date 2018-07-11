@@ -1,4 +1,4 @@
-class ImageGameObject extends GameObject {
+class PairGameObject extends GameObject {
     constructor(val, name, id, game) {
         super();
         this.id = id;

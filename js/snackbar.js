@@ -18,7 +18,7 @@ class Snackbar {
         snackbar_body.style.color = "#FFFFFF"
     }
 
-    static setSnackbar(gameAreaId, callback = function () {
+    static setSnackbar(callback = function () {
     }) {
         var modal = $('<div>', {id: 'modal', class: "modal"})
             .append($('<div>', {id: "snackbar"})
@@ -26,7 +26,7 @@ class Snackbar {
                     .append('&times;'))
                 .append($('<span>', {id: 'snackbar-body'})));
 
-        $('#' + gameAreaId).append(modal);
+        GameManager.get().getGameArea().append(modal);
 
         modal = modal[0];
 

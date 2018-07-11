@@ -1,5 +1,5 @@
 class Dropdown {
-    static setDropdown(gameAreaId) {
+    static setDropdown() {
 
         var inputs = [];
         var dropdown = $('<div>', {id: "dropdown", class: 'dropdown-content'});
@@ -22,7 +22,7 @@ class Dropdown {
             src: GameManager.get().getFolder() + "cog.svg"
         })).append(dropdown);
 
-        $('#' + gameAreaId).append(modal);
+        GameManager.get().getGameArea().append(modal);
 
         var button = $('#buttonMenu');
         button.on('click', function () {

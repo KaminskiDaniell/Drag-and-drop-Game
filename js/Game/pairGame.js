@@ -1,4 +1,4 @@
-class ImageGame extends Game {
+class PairGame extends Game {
     constructor(gameAreaId) {
         super(gameAreaId);
 
@@ -10,10 +10,10 @@ class ImageGame extends Game {
         this.verticalOffset = 80;
 
         
-        for(var i in ImageGame.sources) {
-            var entry = ImageGame.sources[i];
+        for(var i in PairGame.sources) {
+            var entry = PairGame.sources[i];
             if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
-                this.gameObjects.push(new ImageGameObject(entry.fileName, entry.title, i, this));
+                this.gameObjects.push(new PairGameObject(entry.fileName, entry.title, i, this));
             } 
         }
 
@@ -61,11 +61,11 @@ class ImageGame extends Game {
         item.attr('data-y', y);
     }
 
-    setTimer(gameAreaId) {
+    setTimer() {
         if(!this.timeInterval) {
             var start = new Date;
             var timer = $('<div>', {class : 'timer left'}).append('0');
-            $('#' + gameAreaId).append(timer);
+            this.gameArea.append(timer);
 
             this.timeInterval = setInterval(function() {
                 timer.text(parseInt((new Date - start) / 1000));
@@ -73,10 +73,10 @@ class ImageGame extends Game {
         }
     }
 
-    setScores(gameAreaId) {
+    setScores() {
         if(!this.scores) {
             this.scores = $('<div>', {class : 'scores right'}).append('0');
-            $('#' + gameAreaId).append(this.scores);
+            this.gameArea.append(this.scores);
         }
     }
 
@@ -109,13 +109,9 @@ class ImageGame extends Game {
     getZIndex() {
         return ++this.zIndex;
     }
-
-    getGameArea() {
-        return this.gameArea;
-    }
 }
 
-ImageGame.sources = [
+PairGame.sources = [
     {
         'fileName': '1.jpg',
         'title': '_citizen_kane'

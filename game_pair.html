@@ -17,8 +17,8 @@
     <script src="js/snackbar.js"></script>
     <script src="js/dropdown.js"></script>
     <script src="js/Game/locale.js"></script>
-    <script src="js/Game/imageGame.js"></script>
-    <script src="js/Game/imageGameObject.js"></script>
+    <script src="js/Game/pairGame.js"></script>
+    <script src="js/Game/pairGameObject.js"></script>
     <script src="js/Game/drag.js"></script>
 </head>
 <body>
@@ -33,12 +33,12 @@
 </html>
 <script>
     $(function () {
-        GameManager.set(ImageGame, 'game-area');
+        GameManager.set(PairGame, 'game-area');
         Snackbar.setSnackbar('game-area', function () {
-            GameManager.get().setTimer('game-area');
-            GameManager.get().setScores('game-area');
+            GameManager.get().setTimer();
+            GameManager.get().setScores();
         });
-        Dropdown.setDropdown('game-area');
+        Dropdown.setDropdown();
         Snackbar.show("info", Locale.get('game', '_match_pictures'));
     });
 </script>
