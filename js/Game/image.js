@@ -7,16 +7,23 @@ class ImageGameObject {
         this.image = this.createImage(id, this.val);
         this.title = this.createTitle(id, this.name);
         this.matched = false;
-        $("#" + gameAreaId).append(this.image);
-        $("#" + gameAreaId).append(this.title);
     }
 
     createImage(id, src){
-        return $("<div>", {id: id + '-image' , class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src, alt: src}));
+        return $("<div>", {id: src, class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src, alt: src}));
     }
 
     createTitle(id, text){
-        return $("<div>", {id: id + '-title', class: "title draggable right yes-drop dropzone"}).append($("<div>").append(Locale.get('title', text)));
+        return $("<div>", {id: text, class: "title draggable right yes-drop dropzone"}).append($("<div>").append(Locale.get('title', text)));
+    }
+
+    attach(item){
+        if(item === 'image') {
+            $("#" + this.gameAreaId).append(this.image);
+        }
+        if(item === 'title') {
+            $("#" + this.gameAreaId).append(this.title);
+        }
     }
 
     markAsMatched() {
@@ -101,10 +108,12 @@ class ImageGameObject {
 
         shuffle(ImageGameObject.imageObjects);
         ImageGameObject.imageObjects.forEach(function (entry, i) {
+            entry.attach('image');
             move(entry.image, i, ImageGameObject.maxHeight);
         });
         shuffle(ImageGameObject.imageObjects);
         ImageGameObject.imageObjects.forEach(function (entry, i) {
+            entry.attach('title');
             move(entry.title, i, ImageGameObject.maxHeight);
         });
     }
