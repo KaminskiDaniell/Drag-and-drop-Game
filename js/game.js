@@ -13,7 +13,7 @@ class Game {
     }
 
     loadLocale(){
-        this.gameObjects.forEach(function(entry) {
+        this.gameObjects.forEach(function(gameObject) {
             gameObject.loadLocale();
         });
     }

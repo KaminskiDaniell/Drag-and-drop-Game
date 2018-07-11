@@ -11,7 +11,8 @@ class Dropdown {
                 src: GameManager.get().getFolder() + entry + ".svg",
             })
             input.on('click', function () {
-                //GameObject.reloadLocale();
+                Locale.setLanguage(entry);
+                GameManager.get().loadLocale();
             });
             dropdown.append(input);
         });
