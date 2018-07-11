@@ -34,7 +34,7 @@
 <script>
     $(function () {
         GameManager.set(PairGame, 'game-area');
-        Snackbar.setSnackbar('game-area', function () {
+        Snackbar.setSnackbar(function () {
             GameManager.get().setTimer();
             GameManager.get().setScores();
         });
