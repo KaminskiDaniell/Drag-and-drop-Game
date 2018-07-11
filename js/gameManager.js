@@ -3,7 +3,7 @@ class GameManager {
         GameManager.game = new className(gameAreaId);
         Dropdown.setDropdown();
         Snackbar.setSnackbar();
-        Snackbar.show("info", Locale.get('game', '_match_pictures'));
+        Snackbar.show("info", Locale.get('game', '_start'));
     }
     
     static get(){
