@@ -1,19 +1,26 @@
-<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-    <meta charset="UTF-8">
-    <title>Game Baset</title>
-    <link rel="stylesheet" href="css/styles.css">
+    <meta charset="utf-8"/>
+    <title>Test html game</title>
 
+    <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="css/snackbar.css">
     <link rel="stylesheet" href="css/dropdown.css">
 
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
     <script src="js/jquery-3.3.1.min.js"></script>
     <script src="js/interact.min.js"></script>
-    <script src="js/BasketGame/basketGame.js"></script>
-    <script src="js/BasketGame/drag.js"></script>
+    <script src="js/locale.js"></script>
+    <script src="js/gameManager.js"></script>
+    <script src="js/gameObject.js"></script>
+    <script src="js/game.js"></script>
     <script src="js/snackbar.js"></script>
     <script src="js/dropdown.js"></script>
+    <script src="js/BasketGame/locale.js"></script>
+    <script src="js/BasketGame/basketGame.js"></script>
+    <script src="js/BasketGame/basketGameObject.js"></script>
+    <script src="js/BasketGame/drag.js"></script>
 </head>
 <body>
 <div id="game-container">
@@ -21,12 +28,10 @@
     </div>
 </div>
 </body>
+</html>
 <script>
-    $(document).ready(function () {
-        BasketGameObject.setData('game-area');
-        Snackbar.setSnackbar('game-area');
-        Dropdown.setDropdown('game-area');
-        Snackbar.show("info", BasketGameObject.welcomeMessage);
+    $(function () {
+        GameManager.set(BasketGame, 'game-area');
     });
 </script>
 </html>

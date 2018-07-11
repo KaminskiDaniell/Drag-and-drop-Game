@@ -75,23 +75,23 @@ interact('.dropzone').dropzone({
         event.relatedTarget.classList.remove('can-drop');
         event.relatedTarget.classList.remove('in_basket');
         var idT = event.target.id;
-        if (BasketGameObject.droppedList && BasketGameObject.droppedList[idT]) {
-            var idToDelete = BasketGameObject.droppedList[idT].indexOf(event.relatedTarget);
+        if (GameManager.get().droppedList && GameManager.get().droppedList[idT]) {
+            var idToDelete = GameManager.get().droppedList[idT].indexOf(event.relatedTarget);
             if (idToDelete !== -1)
-                BasketGameObject.droppedList[idT].splice(idToDelete, 1);
+                GameManager.get().droppedList[idT].splice(idToDelete, 1);
         }
     },
 
     ondrop: function (event) {
         //event.relatedTarget.textContent = 'Dropped';
         var idT = event.target.id;
-        if (!BasketGameObject.droppedList)
-            BasketGameObject.droppedList = {};
-        if (!BasketGameObject.droppedList[idT]) {
-            BasketGameObject.droppedList[idT] = [];
+        if (!GameManager.get().droppedList)
+            GameManager.get().droppedList = {};
+        if (!GameManager.get().droppedList[idT]) {
+            GameManager.get().droppedList[idT] = [];
         }
-        if (BasketGameObject.droppedList[idT].indexOf(event.relatedTarget) < 0) {
-            BasketGameObject.droppedList[idT].push(event.relatedTarget);
+        if (GameManager.get().droppedList[idT].indexOf(event.relatedTarget) < 0) {
+            GameManager.get().droppedList[idT].push(event.relatedTarget);
             event.relatedTarget.classList.add('in_basket');
         }
     },
