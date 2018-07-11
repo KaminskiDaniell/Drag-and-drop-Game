@@ -18,8 +18,7 @@ class Snackbar {
         snackbar_body.style.color = "#FFFFFF"
     }
 
-    static setSnackbar(callback = function () {
-    }) {
+    static setSnackbar() {
         var modal = $('<div>', {id: 'modal', class: "modal"})
             .append($('<div>', {id: "snackbar"})
                 .append($('<span>', {class: 'close'})
@@ -36,7 +35,9 @@ class Snackbar {
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";
-            Snackbar.callback();
+            if(Snackbar.callback) {
+                Snackbar.callback();
+            }
         }
     }
     
