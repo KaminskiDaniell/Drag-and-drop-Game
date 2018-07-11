@@ -36,8 +36,12 @@ class Snackbar {
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";
-            callback();
+            Snackbar.callback();
         }
+    }
+    
+    static setCallback(callback){
+        Snackbar.callback = callback; 
     }
 
     static show(type, message) {

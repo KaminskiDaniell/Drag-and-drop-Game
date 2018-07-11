@@ -1,8 +1,7 @@
 class PairGameObject extends GameObject {
     constructor(val, name, id, game) {
-        super();
+        super(game);
         this.id = id;
-        this.game = game;
         this.val = game.getFolder() + val;
         this.name = name;
         this.image = this.createImage(id, this.val);
@@ -15,25 +14,25 @@ class PairGameObject extends GameObject {
     }
 
     createTitle(id, text){
-        return $("<div>", {id: text, class: "title draggable right yes-drop dropzone"}).append($("<div>").append(Locale.get('title', text)));
+        return $("<div>", {id: text, class: "title draggable right yes-drop dropzone"}).append($("<div>").append(this.loadLocale()));
     }
 
     attach(item){
         if(item === 'image') {
-            this.game.getGameArea().append(this.image);
+            this.getGame().getGameArea().append(this.image);
         }
         if(item === 'title') {
-            this.game.getGameArea().append(this.title);
+            this.getGame().getGameArea().append(this.title);
         }
     }
 
     markAsMatched() {
-        if(++this.game.matched == this.game.gameObjects.length){
-            clearInterval(this.game.timeInterval);
+        if(++this.getGame().matched == this.getGame().gameObjects.length){
+            clearInterval(this.getGame().timeInterval);
             modal.style.display = "block";
             Snackbar.showMessage("success", Locale.get('game', '_success'));
         }
-        this.game.addScore();
+        this.getGame().addScore();
         this.title.remove();
         this.image.append(this.title.children("div"));
         this.image.removeClass('dragged-in');
@@ -41,5 +40,8 @@ class PairGameObject extends GameObject {
         this.image.removeClass('yes-drop');
     }
 
+    loadLocale(){
+        this.title.text(Locale.get('title', this.name));
+    }
 }
 

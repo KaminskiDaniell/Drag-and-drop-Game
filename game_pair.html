@@ -34,11 +34,5 @@
 <script>
     $(function () {
         GameManager.set(PairGame, 'game-area');
-        Snackbar.setSnackbar(function () {
-            GameManager.get().setTimer();
-            GameManager.get().setScores();
-        });
-        Dropdown.setDropdown();
-        Snackbar.show("info", Locale.get('game', '_match_pictures'));
     });
 </script>

@@ -2,13 +2,16 @@ class PairGame extends Game {
     constructor(gameAreaId) {
         super(gameAreaId);
 
-        this.gameObjects = [];
         this.zIndex = 0;
         this.matched = 0;
 
         this.horizontalOffset = 140;
         this.verticalOffset = 80;
 
+        Snackbar.setCallback(function () {
+            GameManager.get().setTimer();
+            GameManager.get().setScores();
+        });
         
         for(var i in PairGame.sources) {
             var entry = PairGame.sources[i];
@@ -28,8 +31,8 @@ class PairGame extends Game {
 
         var imageObject = this.gameObjects[0];
 
-        this.maxHeight = Math.floor(this.gameArea.outerHeight(true) /this.verticalOffset);
-        this.offset = (this.gameArea.outerHeight(true) - ((Math.floor(this.maxHeight) - 1) * this.verticalOffset + imageObject.image.outerHeight(true))) / 2;
+        this.maxHeight = Math.floor(this.getGameArea().outerHeight(true) /this.verticalOffset);
+        this.offset = (this.getGameArea().outerHeight(true) - ((Math.floor(this.maxHeight) - 1) * this.verticalOffset + imageObject.image.outerHeight(true))) / 2;
         this.maxHeight = Math.ceil(numberOfImages / Math.ceil(numberOfImages /this.maxHeight));
 
 
@@ -51,7 +54,7 @@ class PairGame extends Game {
         i = parseInt(i);
         var sign = item.hasClass('right') ? -1 : 1;
         var x = sign * Math.ceil(((i + 1) / this.maxHeight) - 1) * this.horizontalOffset;
-        var y = this.offset + Math.ceil(((i + 1) % (this.maxHeight + 0.0001)) - 1) * Math.max(this.verticalOffset, this.gameArea.outerHeight(true) / (this.maxHeight + 1));
+        var y = this.offset + Math.ceil(((i + 1) % (this.maxHeight + 0.0001)) - 1) * Math.max(this.verticalOffset, this.getGameArea().outerHeight(true) / (this.maxHeight + 1));
         // translate the element
         item.css('transform', 'translate(' + x + 'px, ' + y + 'px)');
         item.css('webkitTransform', item.css('transform'));
@@ -65,7 +68,7 @@ class PairGame extends Game {
         if(!this.timeInterval) {
             var start = new Date;
             var timer = $('<div>', {class : 'timer left'}).append('0');
-            this.gameArea.append(timer);
+            this.getGameArea().append(timer);
 
             this.timeInterval = setInterval(function() {
                 timer.text(parseInt((new Date - start) / 1000));
@@ -76,7 +79,7 @@ class PairGame extends Game {
     setScores() {
         if(!this.scores) {
             this.scores = $('<div>', {class : 'scores right'}).append('0');
-            this.gameArea.append(this.scores);
+            this.getGameArea().append(this.scores);
         }
     }
 
@@ -84,12 +87,6 @@ class PairGame extends Game {
         this.scores.text(this.matched);
     }
     
-
-    reloadLocale(){
-        this.gameObjects.forEach(function(entry) {
-            entry.title.text(Locale.get('title', entry.name));
-        });
-    }
 
     match(element1, element2) {
         for(var i = 0; i < this.gameObjects.length; i++) {
@@ -100,10 +97,6 @@ class PairGame extends Game {
             }
         }
         return false;
-    }
-    
-    drag(ev) {
-        ev.dataTransfer.setData("text", ev.target.id);
     }
 
     getZIndex() {
