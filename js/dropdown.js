@@ -16,14 +16,13 @@ class Dropdown {
 
         $('#' + gameAreaId).append(modal);
 
-        $('#buttonMenu').on('click', function () {
-            $('#dropdown').addClass('showDropdown');
-            console.log($(".showDropdown"));
+        var button = $('#buttonMenu');
+        button.on('click', function () {
+            $('#dropdown').toggleClass('showDropdown');
         });
 
         window.onclick = function (event) {
             if (!event.target.matches('#buttonMenu')) {
-
                 var dropdowns = document.getElementsByClassName("dropdown-content");
                 var i;
                 for (i = 0; i < dropdowns.length; i++) {

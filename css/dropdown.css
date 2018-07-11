@@ -1,8 +1,7 @@
 .dropdown {
+    padding: 10px;
     top: 5px;
-    left: 94%;
-    position: relative;
-    display: inline-block;
+    float: right;
 }
 
 .dropdown-content {
@@ -30,7 +29,6 @@
 }
 
 #buttonMenu {
-    position: absolute;
     width: 40px;
     height: 40px;
 }
