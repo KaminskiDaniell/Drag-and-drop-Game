@@ -16,14 +16,14 @@ class ImageGameObject {
     }
 
     createTitle(id, text){
-        return $("<div>", {id: id + '-title', class: "title draggable right yes-drop dropzone"}).append($("<div>").append(text));
+        return $("<div>", {id: id + '-title', class: "title draggable right yes-drop dropzone"}).append($("<div>").append(Locale.get('title', text)));
     }
 
     markAsMatched() {
         if(++ImageGameObject.matched == ImageGameObject.imageObjects.length){
             clearInterval(ImageGameObject.timeInterval);
             modal.style.display = "block";
-            Snackbar.showMessage("success", Locale.get('_success'));
+            Snackbar.showMessage("success", Locale.get('game', '_success'));
         }
         ImageGameObject.addScore();
         this.title.remove();
@@ -135,42 +135,42 @@ ImageGameObject.folder = 'img/';
 ImageGameObject.sources = [
     {
         'fileName': '1.jpg',
-        'title': 'Citizen Kane (1941)'
+        'title': '_citizen_kane'
     },
     {
         'fileName': '2.jpg',
-        'title' : 'Vertigo (1958)',
+        'title' : '_vertigo',
     },
     {
         'fileName': '3.jpg',
-        'title': 'La Règle du jeu (1939)',
+        'title': '_la_regle_du_jeu',
     },
     {
         'fileName': '4.jpg',
-        'title': '2001: A Space Odyssey (1968)',
+        'title': '_2001_a_space_odyssey',
     },
     {
         'fileName': '5.jpg',
-        'title': 'Tokyo monogatari (1953)'
+        'title': '_tokyo_monogatari'
     },
     {
         'fileName': '6.jpg',
-        'title': 'Otto e mezzo (1963)'
+        'title': '_otto_e_mezzo'
     },
     {
         'fileName': '7.jpg',
-        'title': 'The Godfather (1972)'
+        'title': '_the_godfather'
     },
     {
         'fileName': '8.jpg',
-        'title': 'Sunrise: A Song of Two Humans (1927)'
+        'title': '_sunrise_a_song_of_two_humans'
     },
     {
         'fileName': '9.jpg',
-        'title': 'The Searchers (1956)'
+        'title': '_the_searchers'
     },
     {
         'fileName': '10.jpg',
-        'title': 'Shichinin no samurai (1954)'
+        'title': '_shichinin_no_samurai'
     },
 ];
