@@ -6,6 +6,7 @@ class PairGameObject extends GameObject {
         this.name = name;
         this.image = this.createImage(id, this.val);
         this.title = this.createTitle(id, this.name);
+        this.loadLocale();
         this.matched = false;
     }
 
@@ -14,7 +15,7 @@ class PairGameObject extends GameObject {
     }
 
     createTitle(id, text){
-        return $("<div>", {id: text, class: "title draggable right yes-drop dropzone"}).append($("<div>").append(this.loadLocale()));
+        return $("<div>", {id: text, class: "title draggable right yes-drop dropzone"}).append($("<div>"));
     }
 
     attach(item){

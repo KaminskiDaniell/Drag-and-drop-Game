@@ -7,7 +7,7 @@ class GameObject {
         return this.game;
     }
 
-    loadLocale()[
+    loadLocale(){
 
     }
 }
