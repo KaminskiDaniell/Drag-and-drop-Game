@@ -71,9 +71,9 @@ class BasketGame extends Game {
             score = score >= 0 ? score : 0;
             score += "%";
             if (ret[0] === ret[1])
-                Snackbar.show("success", Locale.get('game', '_success') + Locale.get('game', '_score') + score);
+                Snackbar.show("success", Locale.get('game', '_success') + Locale.get('game', '_score') + score, true);
             else
-                Snackbar.show("error", Locale.get('game', '_failure') + Locale.get('game', '_score') + score);
+                Snackbar.show("error", Locale.get('game', '_failure') + Locale.get('game', '_score') + score, true);
         }
     }
 

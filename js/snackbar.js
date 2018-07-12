@@ -1,5 +1,5 @@
 class Snackbar {
-    static showMessage(type, message) {
+    static showMessage(type, message, localized = false) {
         var snackbar = document.getElementById("snackbar");
         if (type === 'success') {
             snackbar.style.background = "#55ff66";
@@ -14,8 +14,11 @@ class Snackbar {
             snackbar.style.background = "#ffff00";
         }
         var snackbar_body = document.getElementById("snackbar-body");
-        snackbar_body.innerHTML = Locale.get('game', message);
-        snackbar_body.style.color = "#FFFFFF"
+        if (!localized)
+            snackbar_body.innerHTML = Locale.get('game', message);
+        else
+            snackbar_body.innerHTML = message;
+        snackbar_body.style.color = "#FFFFFF";
 
         Snackbar.message = message;
     }
@@ -36,7 +39,7 @@ class Snackbar {
         // When the user clicks on <span> (x), close the modal
         span.onclick = function () {
             modal.style.display = "none";
-            if(Snackbar.callback) {
+            if (Snackbar.callback) {
                 Snackbar.callback();
             }
         }
@@ -45,14 +48,14 @@ class Snackbar {
             $('#snackbar-body').text(Locale.get('game', Snackbar.message));
         });
     }
-    
-    static setCallback(callback){
-        Snackbar.callback = callback; 
+
+    static setCallback(callback) {
+        Snackbar.callback = callback;
     }
 
-    static show(type, message) {
+    static show(type, message, localized) {
         modal.style.display = 'block';
-        Snackbar.showMessage(type, message);
+        Snackbar.showMessage(type, message, localized);
     }
 
     static prepareButton() {

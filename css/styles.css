@@ -27,11 +27,10 @@ html, body {
     border: 4px solid transparent;
     background-color: #e27e36;
     background-clip: padding-box;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin: 10px 20px;
     text-align: center;
     color: white;
-    font: bold 13px Helvetica, Arial, Sans-Serif;
+    font: bold 13px 'Work Sans', Arial, Sans-Serif;
     max-width: 100px;
     position: absolute;
 }
@@ -68,7 +67,6 @@ html, body {
 }
 
 .title {
-    margin: 10px auto 30px;
     padding: 10px;
 }
 
@@ -158,7 +156,9 @@ html, body {
 .basket-text {
     margin-top: 175px; /* same as basket class height*/
     margin-left: -15px;
+    width: 120px; /* .basket width + padding */
     background: crimson;
+    padding: 10px 0;
 }
 
 #button {
@@ -193,7 +193,6 @@ html, body {
 
 .text {
     color: white;
-    padding: 16px 32px;
     text-align: center;
     font-size: 16px;
     border-radius: 15px;
@@ -221,4 +220,56 @@ html, body {
 
 ::-moz-selection {
     background: transparent;
+}
+
+#questionDiv {
+    position: absolute;
+    width: 70%; /* 100% - #prizesDiv.width */
+    height: 50%; /* 100% - #gameDiv.height */
+    top: 50%; /* #gameDiv.height */
+    border: black 2px solid;
+}
+
+#question {
+    height: 30%; /*100% - #answersDiv.height */
+    border: blue 2px solid;
+}
+
+#answersDiv {
+    top: 30%; /* #question.height */
+    height: 70%; /*100% - #question.height */
+    border: green 2px solid;
+}
+
+.answer {
+    display: inline-block;
+    width: 50%;
+    height: 50%;
+}
+
+#prizesDiv {
+    position: absolute;
+    border: black 2px dotted;
+    width: 30%; /*check with #questionDiv */
+    left: 70%;
+    height: 100%;
+}
+
+#hintsDiv {
+    height: 10%;
+    border: blue 2px dotted;
+}
+
+#prizes {
+    height: 90%;
+    border: green 2px dotted;
+}
+
+#gameDiv {
+    height: 50%;
+    width: 70%; /*same as answersDiv */
+}
+
+.correct {
+    background-color: #4CAF50;
 }
