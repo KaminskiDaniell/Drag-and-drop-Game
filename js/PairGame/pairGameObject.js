@@ -30,8 +30,7 @@ class PairGameObject extends GameObject {
     markAsMatched() {
         if(++this.getGame().matched == this.getGame().gameObjects.length){
             clearInterval(this.getGame().timeInterval);
-            modal.style.display = "block";
-            Snackbar.showMessage("success", '_success');
+            Snackbar.show("success", '_success');
         }
         this.getGame().addScore();
         this.title.remove();
@@ -47,4 +46,3 @@ class PairGameObject extends GameObject {
         this.image.children('div').text(Locale.get('title', this.name));
     }
 }
-

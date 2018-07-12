@@ -1,0 +1,39 @@
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <title>Test html game</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/snackbar.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+
+    <link rel="icon" type="image/png" href="img/favicon.png">
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/interact.min.js"></script>
+    <script src="js/locale.js"></script>
+    <script src="js/snackbar.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/gameManager.js"></script>
+    <script src="js/gameObject.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/HangmanGame/locale.js"></script>
+    <script src="js/HangmanGame/input.js"></script>
+    <script src="js/HangmanGame/hangmanGame.js"></script>
+    <script src="js/HangmanGame/letterGameObject.js"></script>
+</head>
+<body>
+<div id="game-container">
+    <div class="header">
+        <h2 align="center">_match_pictures</h2>
+    </div>
+    <div id="game-area">
+    </div>
+</div>
+</body>
+</html>
+<script>
+    $(function () {
+        GameManager.set(HangmanGame, 'game-area');
+    });
+</script>

@@ -8,7 +8,7 @@ class PairGame extends Game {
         this.horizontalOffset = 140;
         this.verticalOffset = 80;
 
-        Snackbar.setCallback(function () {
+        Snackbar.addCallback(function () {
             GameManager.get().setTimer();
             GameManager.get().setScores();
         });

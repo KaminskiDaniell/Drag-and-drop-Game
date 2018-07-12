@@ -17,7 +17,7 @@ class Dropdown {
             dropdown.append(input);
         });
 
-        GameManager.get().getGameArea().append($('<div>', {class: "dropdown"}).append($("<input>", {
+        GameManager.get().getGameArea().prepend($('<div>', {class: "dropdown"}).append($("<input>", {
             id: 'buttonMenu',
             type: 'image',
             src: GameManager.get().getFolder() + "cog.svg"

@@ -34,25 +34,38 @@ class Snackbar {
         var span = modal.getElementsByClassName("close")[0];
 
         // When the user clicks on <span> (x), close the modal
-        span.onclick = function () {
-            modal.style.display = "none";
-            if(Snackbar.callback) {
-                Snackbar.callback();
-            }
-        }
+        span.onclick = Snackbar.hide; 
 
         GameManager.get().addLocaleCallback(function () {
             $('#snackbar-body').text(Locale.get('game', Snackbar.message));
         });
     }
     
-    static setCallback(callback){
-        Snackbar.callback = callback; 
+    static addCallback(callback = function() {}){
+        if(!Snackbar.callbacks) {
+            Snackbar.callbacks = [];
+        }
+        Snackbar.callbacks.push(callback); 
     }
 
     static show(type, message) {
+        var modal = GameManager.get().getGameArea().find('#modal')[0];
         modal.style.display = 'block';
         Snackbar.showMessage(type, message);
+    }
+
+    static hide() {
+        var modal = GameManager.get().getGameArea().find('#modal')[0];
+        modal.style.display = "none";
+        if(Snackbar.callbacks) {
+            Snackbar.callbacks.forEach(function (callback) {
+                callback();
+            });
+        }
+    }
+
+    static isVisible(){
+        return GameManager.get().getGameArea().find('#modal').css('display') === 'block';
     }
 
     static prepareButton() {
