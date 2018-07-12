@@ -31,7 +31,7 @@ class PairGameObject extends GameObject {
         if(++this.getGame().matched == this.getGame().gameObjects.length){
             clearInterval(this.getGame().timeInterval);
             modal.style.display = "block";
-            Snackbar.showMessage("success", Locale.get('game', '_success'));
+            Snackbar.showMessage("success", '_success');
         }
         this.getGame().addScore();
         this.title.remove();
@@ -42,7 +42,9 @@ class PairGameObject extends GameObject {
     }
 
     loadLocale(){
+        super.loadLocale();
         this.title.children('div').text(Locale.get('title', this.name));
+        this.image.children('div').text(Locale.get('title', this.name));
     }
 }
 

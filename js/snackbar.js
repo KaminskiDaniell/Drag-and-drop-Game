@@ -14,18 +14,19 @@ class Snackbar {
             snackbar.style.background = "#ffff00";
         }
         var snackbar_body = document.getElementById("snackbar-body");
-        snackbar_body.innerHTML = message;
+        snackbar_body.innerHTML = Locale.get('game', message);
         snackbar_body.style.color = "#FFFFFF"
+
+        Snackbar.message = message;
     }
 
     static setSnackbar() {
-        var modal = $('<div>', {id: 'modal', class: "modal"})
-            .append($('<div>', {id: "snackbar"})
-                .append($('<span>', {class: 'close'})
-                    .append('&times;'))
-                .append($('<span>', {id: 'snackbar-body'})));
+        var modal = GameManager.get().getGameArea().find('#modal');
 
-        GameManager.get().getGameArea().append(modal);
+        modal.append($('<div>', {id: "snackbar"})
+            .append($('<span>', {class: 'close'})
+                .append('&times;'))
+            .append($('<span>', {id: 'snackbar-body'})));
 
         modal = modal[0];
 
@@ -39,6 +40,10 @@ class Snackbar {
                 Snackbar.callback();
             }
         }
+
+        GameManager.get().addLocaleCallback(function () {
+            $('#snackbar-body').text(Locale.get('game', Snackbar.message));
+        });
     }
     
     static setCallback(callback){

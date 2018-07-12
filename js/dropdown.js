@@ -17,19 +17,16 @@ class Dropdown {
             dropdown.append(input);
         });
 
-        var modal = $('<div>', {class: "dropdown"}).append($("<input>", {
+        GameManager.get().getGameArea().append($('<div>', {class: "dropdown"}).append($("<input>", {
             id: 'buttonMenu',
             type: 'image',
             src: GameManager.get().getFolder() + "cog.svg"
-        })).append(dropdown);
-
-        GameManager.get().getGameArea().append(modal);
+        })).append(dropdown));
 
         var button = $('#buttonMenu');
         button.on('click', function () {
             $('#dropdown').toggleClass('showDropdown');
         });
-
 
         window.onclick = function (event) {
             if (!event.target.matches('#buttonMenu')) {
