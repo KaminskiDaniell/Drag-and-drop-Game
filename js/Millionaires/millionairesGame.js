@@ -1,10 +1,15 @@
 class MillionairesGame extends Game {
     constructor(gameAreaId) {
         super(gameAreaId);
-        this.addClickListener();
-        this.createGameFields();
+        Snackbar.removeCallbacks();
+        MillionairesGame.gameBegun = false;
         MillionairesGame.currentLevel = 0;
         MillionairesGame.canClick = true;
+        MillionairesGame.hintsUsed = 0;
+        MillionairesGame.fiftyUsed = false;
+        this.lastQuestions = [];
+        this.createGameFields();
+        this.addClickListeners();
         this.getInitQuestion();
     }
 
@@ -14,9 +19,34 @@ class MillionairesGame extends Game {
         })
     }
 
+    highlightTwoBadAnswers() {
+        var highlighted = 0;
+        var correct = GameManager.get().gameObjects.questionObject.correctAnswer;
+        while (highlighted < 2) {
+            var random = Math.floor(Math.random() * 4).toString();
+            if (random !== correct) {
+                var selector = $("#" + random);
+                if (selector[0].style.backgroundColor !== 'firebrick') {
+                    selector[0].style.backgroundColor = 'firebrick';
+                    highlighted++;
+                }
+            }
+        }
+        MillionairesGame.hintsUsed++;
+    }
+
+    createGameObject() {
+        do {
+            var gameObject = new MillionairesGameObject(MillionairesGame.currentLevel, this);
+            var id = gameObject.difficulty + gameObject.category + gameObject.question;
+        } while (this.lastQuestions.indexOf(id) >= 0);
+        this.lastQuestions.push(id);
+        return gameObject
+    }
+
     getInitQuestion() {
         MillionairesGame.currentLevel += 1;
-        this.gameObjects = new MillionairesGameObject(MillionairesGame.currentLevel, this);
+        this.gameObjects = this.createGameObject();
         this.putQuestionIntoDiv();
     }
 
@@ -24,9 +54,11 @@ class MillionairesGame extends Game {
         if (interval)
             clearInterval(interval);
         MillionairesGame.currentLevel += 1;
-        GameManager.get().gameObjects = new MillionairesGameObject(MillionairesGame.currentLevel, this);
+        MillionairesGame.fiftyUsed = false;
+        GameManager.get().gameObjects = GameManager.get().createGameObject();
         GameManager.get().resetColors();
         GameManager.get().putQuestionIntoDiv();
+        console.log(GameManager.get().lastQuestions)
     }
 
     createGameFields() {
@@ -41,7 +73,9 @@ class MillionairesGame extends Game {
             ));
 
         gameArea.append($('<div>', {id: 'prizesDiv'})
-            .append($('<div>', {id: 'hintsDiv'}))
+            .append($('<div>', {id: 'hintsDiv'})
+                .append($('<div>', {id: 'fiftyFifty', class: 'hint'}))
+                .append($('<div>', {id: 'skip', class: 'hint'})))
             .append($('<div>', {id: 'prizes'})
             ));
 
@@ -62,7 +96,7 @@ class MillionairesGame extends Game {
         var old = div.style.background;
         var green = function (div) {
             if (div.style.background === old)
-                div.style.background = '#00ff00';
+                div.style.background = '#00ff00'
             else
                 div.style.background = old
         };
@@ -70,7 +104,6 @@ class MillionairesGame extends Game {
     }
 
     calculatePercents() {
-        console.log(MillionairesGame.currentLevel);
         return Math.round(((MillionairesGame.currentLevel - 1) / MillionairesGame.maxLevel) * 100)
     }
 
@@ -78,7 +111,7 @@ class MillionairesGame extends Game {
         MillionairesGame.canClick = true;
     }
 
-    addClickListener() {
+    addClickListeners() {
         $(document).ready(function () {
             $('.answer').click(function (event) {
                 if (MillionairesGame.canClick) {
@@ -91,12 +124,33 @@ class MillionairesGame extends Game {
                         setTimeout(GameManager.get().setCanClick, 3000)
                     }
                     else {
-                        setTimeout(Snackbar.show, 1000, 'error', Locale.get('game', "_failure") + Locale.get('game', '_score') + GameManager.get().calculatePercents() + "%", true);
+                        setTimeout(Snackbar.show, 1000, 'error', Locale.get('game', "_failure") + Locale.get('game', '_score') + GameManager.get().calculatePercents() + "% Hints used:" + MillionairesGame.hintsUsed, true);
                         setTimeout(clearInterval, 3000, interval);
-                        setTimeout(GameManager.set, 3000, MillionairesGame, 'game-area');
                     }
                 }
             });
+            $('#fiftyFifty').click(function () {
+                if (MillionairesGame.canClick && !MillionairesGame.fiftyUsed) {
+                    GameManager.get().highlightTwoBadAnswers();
+                    MillionairesGame.fiftyUsed = true;
+                }
+            });
+            $('#fiftyFifty').click(function () {
+                if (MillionairesGame.canClick && !MillionairesGame.fiftyUsed) {
+                    GameManager.get().highlightTwoBadAnswers();
+                    MillionairesGame.fiftyUsed = true;
+                }
+            });
+            var reset = function () {
+                if (!MillionairesGame.gameBegun) {
+                    MillionairesGame.gameBegun = true
+                }
+                else {
+                    MillionairesGame.gameBegun = false;
+                    GameManager.set(MillionairesGame, 'game-area');
+                }
+            };
+            Snackbar.addCallback(reset)
         });
     }
 }
