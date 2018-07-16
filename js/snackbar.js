@@ -1,18 +1,5 @@
 class Snackbar {
     static showMessage(type, message, localized = false) {
-        var snackbar = document.getElementById("snackbar");
-        if (type === 'success') {
-            snackbar.style.color = "#55ff66";
-        }
-        else if (type === 'error') {
-            snackbar.style.color = "#ff0000";
-        }
-        else if (type === 'info') {
-            snackbar.style.color = "#00CED1";
-        }
-        else {
-            snackbar.style.color = "#ffff00";
-        }
         var snackbar_body = document.getElementById("snackbar-body");
         if (!localized)
             snackbar_body.innerHTML = Locale.get('game', message);
@@ -30,7 +17,7 @@ class Snackbar {
                 .append('&times;'))
             .append($('<span>', {id: 'snackbar-body'})))
             .append($('<img>', {id: "johnny", src: Game.folder + '/johnny-welcome.png'}))
-            .append($('<img>', {id: "comment", src: Game.folder + '/message2.svg'}));
+            .append($('<img>', {id: "comment", src: Game.folder + '/message.svg'}));
 
         modal = modal[0];
 
