@@ -1,4 +1,4 @@
-class MillionairesGameObject extends GameObject {
+class QuizGameObject extends GameObject {
     constructor(level, game) {
         super(game);
         this.questionObject = this.draw(level);
@@ -28,7 +28,7 @@ class MillionairesGameObject extends GameObject {
 
     getCategoriesByDifficulty(difficulty) {
         this.difficulty = difficulty;
-        return MillionairesGame.sources[difficulty]
+        return QuizGame.sources[difficulty]
     }
 
     drawCategory(categories) {

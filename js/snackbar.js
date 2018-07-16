@@ -43,9 +43,10 @@ class Snackbar {
             $('#snackbar-body').text(Locale.get('game', Snackbar.message));
         });
     }
-    
-    static addCallback(callback = function() {}){
-        if(!Snackbar.callbacks) {
+
+    static addCallback(callback = function () {
+    }) {
+        if (!Snackbar.callbacks) {
             Snackbar.callbacks = [];
         }
         Snackbar.callbacks.push(callback);
@@ -60,26 +61,18 @@ class Snackbar {
     static hide() {
         var modal = GameManager.get().getGameArea().find('#modal')[0];
         modal.style.display = "none";
-        if(Snackbar.callbacks) {
+        if (Snackbar.callbacks) {
             Snackbar.callbacks.forEach(function (callback) {
                 callback();
             });
         }
     }
 
-    static isVisible(){
+    static isVisible() {
         return GameManager.get().getGameArea().find('#modal').css('display') === 'block';
     }
 
-    static prepareButton() {
-        // Get the button that opens the modal
-        var btn = document.getElementById("button");
-        btn.onclick = function () {
-            modal.style.display = "block";
-            if (BasketGameObject.checkWin())
-                showMessage("success", BasketGameObject.successMessage);
-            else
-                showMessage("error", BasketGameObject.failureMessage);
-        }
+    static removeCallbacks() {
+        Snackbar.callbacks = [];
     }
 }
