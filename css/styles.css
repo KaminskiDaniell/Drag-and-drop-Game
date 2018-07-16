@@ -308,7 +308,6 @@ html, body {
 
 #prizesDiv {
     position: absolute;
-    border: black 2px dotted;
     width: 20%; /*check with #questionDiv */
     left: 80%;
     top: 50%;
@@ -317,7 +316,6 @@ html, body {
 
 #hintsDiv {
     width: 100%;
-    border: blue 2px dotted;
 }
 
 #gameDiv {

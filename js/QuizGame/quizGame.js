@@ -84,8 +84,8 @@ class QuizGame extends Game {
 
         gameArea.append($('<div>', {id: 'prizesDiv'})
             .append($('<div>', {id: 'hintsDiv'})
-                .append($('<div>', {id: 'fiftyFifty', class: 'hint'}))
-                .append($('<div>', {id: 'skip', class: 'hint'})))
+                .append($('<img>', {id: 'fiftyFifty', class: 'hint', src: Game.folder + '/5050.png'}))
+                .append($('<img>', {id: 'skip', class: 'hint', src: Game.folder + '/skip.svg'})))
         );
 
         gameArea.append($('<div>', {id: 'gameDiv'}));
