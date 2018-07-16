@@ -1,12 +1,16 @@
-class MillionairesGame extends Game {
+class QuizGame extends Game {
     constructor(gameAreaId) {
         super(gameAreaId);
         Snackbar.removeCallbacks();
-        MillionairesGame.gameBegun = false;
-        MillionairesGame.currentLevel = 0;
-        MillionairesGame.canClick = true;
-        MillionairesGame.hintsUsed = 0;
-        MillionairesGame.fiftyUsed = false;
+
+        // static vars to control game
+        QuizGame.hintsUsed = 0;
+        QuizGame.gameBegun = false;
+        QuizGame.currentLevel = 0;
+        QuizGame.canClick = true;
+        QuizGame.fiftyUsed = false; //can use only once per question
+        QuizGame.skipsLeft = 2; //can use x times
+
         this.lastQuestions = [];
         this.createGameFields();
         this.addClickListeners();
@@ -14,8 +18,8 @@ class MillionairesGame extends Game {
     }
 
     resetColors() {
-        $('.answer').each(function (i, obj) {
-            obj.style.background = 'YellowGreen'
+        $('.answerBlock').each(function (i, obj) {
+            obj.style.background = 'chocolate'
         })
     }
 
@@ -32,12 +36,12 @@ class MillionairesGame extends Game {
                 }
             }
         }
-        MillionairesGame.hintsUsed++;
+        QuizGame.hintsUsed++;
     }
 
     createGameObject() {
         do {
-            var gameObject = new MillionairesGameObject(MillionairesGame.currentLevel, this);
+            var gameObject = new QuizGameObject(QuizGame.currentLevel, this);
             var id = gameObject.difficulty + gameObject.category + gameObject.question;
         } while (this.lastQuestions.indexOf(id) >= 0);
         this.lastQuestions.push(id);
@@ -45,46 +49,51 @@ class MillionairesGame extends Game {
     }
 
     getInitQuestion() {
-        MillionairesGame.currentLevel += 1;
+        QuizGame.currentLevel += 1;
         this.gameObjects = this.createGameObject();
+        this.putQuestionIntoDiv();
+    }
+
+    skipQuestion() {
+        this.gameObjects = this.createGameObject();
+        QuizGame.fiftyUsed = false;
+        this.resetColors();
         this.putQuestionIntoDiv();
     }
 
     getNewQuestion(interval = null) {
         if (interval)
             clearInterval(interval);
-        MillionairesGame.currentLevel += 1;
-        MillionairesGame.fiftyUsed = false;
+        QuizGame.currentLevel += 1;
+        QuizGame.fiftyUsed = false;
         GameManager.get().gameObjects = GameManager.get().createGameObject();
         GameManager.get().resetColors();
         GameManager.get().putQuestionIntoDiv();
-        console.log(GameManager.get().lastQuestions)
     }
 
     createGameFields() {
         var gameArea = this.getGameArea();
         gameArea.append($('<div>', {id: 'questionDiv'})
-            .append($('<div>', {id: 'question'}))
+            .append($('<div>', {id: 'question'}).append($('<div>', {id: 'questionBlock'})))
             .append($('<div>', {id: 'answersDiv'})
-                .append($('<div>', {id: '0', class: 'answer'}))
-                .append($('<div>', {id: '1', class: 'answer'}))
-                .append($('<div>', {id: '2', class: 'answer'}))
-                .append($('<div>', {id: '3', class: 'answer'}))
+                .append($('<div>', {class: 'answer'}).append($('<div>', {id: '0', class: 'answerBlock'})))
+                .append($('<div>', {class: 'answer'}).append($('<div>', {id: '1', class: 'answerBlock'})))
+                .append($('<div>', {class: 'answer'}).append($('<div>', {id: '2', class: 'answerBlock'})))
+                .append($('<div>', {class: 'answer'}).append($('<div>', {id: '3', class: 'answerBlock'})))
             ));
 
         gameArea.append($('<div>', {id: 'prizesDiv'})
             .append($('<div>', {id: 'hintsDiv'})
                 .append($('<div>', {id: 'fiftyFifty', class: 'hint'}))
                 .append($('<div>', {id: 'skip', class: 'hint'})))
-            .append($('<div>', {id: 'prizes'})
-            ));
+        );
 
         gameArea.append($('<div>', {id: 'gameDiv'}));
     }
 
     putQuestionIntoDiv() {
         var question = this.gameObjects.questionObject;
-        $('#question').text(question.question);
+        $('#questionBlock').text(question.question);
         $('#0').text(question.answers[0]);
         $('#1').text(question.answers[1]);
         $('#2').text(question.answers[2]);
@@ -104,18 +113,18 @@ class MillionairesGame extends Game {
     }
 
     calculatePercents() {
-        return Math.round(((MillionairesGame.currentLevel - 1) / MillionairesGame.maxLevel) * 100)
+        return Math.round(((QuizGame.currentLevel - 1) / QuizGame.maxLevel) * 100)
     }
 
     setCanClick() {
-        MillionairesGame.canClick = true;
+        QuizGame.canClick = true;
     }
 
     addClickListeners() {
         $(document).ready(function () {
-            $('.answer').click(function (event) {
-                if (MillionairesGame.canClick) {
-                    MillionairesGame.canClick = false;
+            $('.answerBlock').click(function (event) {
+                if (QuizGame.canClick) {
+                    QuizGame.canClick = false;
                     event.target.style.background = "#FFA500";
                     var correct = GameManager.get().gameObjects.questionObject.correctAnswer;
                     var interval = GameManager.get().highlightCorrect(correct);
@@ -124,30 +133,32 @@ class MillionairesGame extends Game {
                         setTimeout(GameManager.get().setCanClick, 3000)
                     }
                     else {
-                        setTimeout(Snackbar.show, 1000, 'error', Locale.get('game', "_failure") + Locale.get('game', '_score') + GameManager.get().calculatePercents() + "% Hints used:" + MillionairesGame.hintsUsed, true);
+                        setTimeout(Snackbar.show, 1000, 'error', Locale.get('game', "_failure") + Locale.get('game', '_score') + GameManager.get().calculatePercents() + "% Hints used:" + QuizGame.hintsUsed, true);
                         setTimeout(clearInterval, 3000, interval);
                     }
                 }
             });
             $('#fiftyFifty').click(function () {
-                if (MillionairesGame.canClick && !MillionairesGame.fiftyUsed) {
+                if (QuizGame.canClick && !QuizGame.fiftyUsed) {
                     GameManager.get().highlightTwoBadAnswers();
-                    MillionairesGame.fiftyUsed = true;
+                    QuizGame.fiftyUsed = true;
                 }
             });
-            $('#fiftyFifty').click(function () {
-                if (MillionairesGame.canClick && !MillionairesGame.fiftyUsed) {
-                    GameManager.get().highlightTwoBadAnswers();
-                    MillionairesGame.fiftyUsed = true;
+            $('#skip').click(function () {
+                if (QuizGame.canClick && QuizGame.skipsLeft > 0) {
+                    QuizGame.skipsLeft--;
+                    GameManager.get().skipQuestion();
                 }
             });
+
+
             var reset = function () {
-                if (!MillionairesGame.gameBegun) {
-                    MillionairesGame.gameBegun = true
+                if (!QuizGame.gameBegun) {
+                    QuizGame.gameBegun = true
                 }
                 else {
-                    MillionairesGame.gameBegun = false;
-                    GameManager.set(MillionairesGame, 'game-area');
+                    QuizGame.gameBegun = false;
+                    GameManager.set(QuizGame, 'game-area', true);
                 }
             };
             Snackbar.addCallback(reset)
@@ -155,69 +166,79 @@ class MillionairesGame extends Game {
     }
 }
 
-MillionairesGame.maxLevel = 20;
-MillionairesGame.sources = {
+QuizGame.maxLevel = 20;
+QuizGame.sources = {
     'easy': {
-        'category1': [
+        'wszystko': [
             {
-                question: "easy Question 1 category 1",
+                question: "Jak 16 lipca Wojtek był w pracy?",
                 answers: [
-                    "BAD",
-                    "BAD",
-                    "GOOD",
-                    "BAD"
+                    "Przed 9",
+                    "Pomiędzy 9 a 10",
+                    "Po 11",
+                    "Pomiędzy 10 a 11"
                 ],
                 correctAnswer: '2'
             },
             {
-                question: "easy Question 2 category 1",
+                question: "Kto był Mistrzem Świata w piłce nożnej w 2018r",
                 answers: [
-                    "GOOD",
-                    "BAD",
-                    "BAD",
-                    "BAD"
+                    "Francja",
+                    "Chorwacja",
+                    "Brazylia",
+                    "Niemcy"
                 ],
                 correctAnswer: '0'
             },
             {
-                question: "easy Question 3 category 1",
+                question: "Czy warto było szaleć",
                 answers: [
-                    "BAD",
-                    "BAD",
-                    "BAD",
-                    "GOOD"
+                    "w świat?",
+                    "znów?",
+                    "w domu?",
+                    "tak?"
                 ],
                 correctAnswer: '3'
             },
             {
-                question: "easy Question 4 category 1",
+                question: "Ile razy Brazylia wygrała tytuł mistrza świata w piłce nożnej?",
                 answers: [
-                    "BAD",
-                    "GOOD",
-                    "BAD",
-                    "BAD"
+                    "3",
+                    "5",
+                    "ani razu",
+                    "7"
                 ],
                 correctAnswer: '1'
             },
         ],
         'category2': [
             {
-                question: "easy Question 1 category 2",
+                question: "Dokończ słowa piosenki: \"Do domu wrócimy.. \"",
                 answers: [
-                    "BAD",
-                    "BAD",
-                    "GOOD",
-                    "BAD"
+                    "Nakarmimy psa",
+                    "Połozymy się spać",
+                    "W piecu napalimy",
+                    "Szybko tak"
                 ],
                 correctAnswer: '2'
             },
             {
-                question: "easy Question 2 category 2",
+                question: "Jaką komendą wyłączyć process w systemie operacyjnym linux",
                 answers: [
-                    "GOOD",
-                    "BAD",
-                    "BAD",
-                    "BAD"
+                    "kill",
+                    "detach",
+                    "remove",
+                    "shutdown"
+                ],
+                correctAnswer: '0'
+            },
+            {
+                question: "Ile lat ma wiek",
+                answers: [
+                    "100",
+                    "Zależy kogo",
+                    "Za mało danych by stwierdzić",
+                    "1000"
                 ],
                 correctAnswer: '0'
             },

@@ -1,10 +1,13 @@
 class GameManager {
-    static set(className, gameAreaId) {
+    static set(className, gameAreaId, withoutDropdown = false, withoutSnackbar = false) {
         $("#" + gameAreaId).empty();
         GameManager.game = new className(gameAreaId);
-        Dropdown.setDropdown();
-        Snackbar.setSnackbar();
-        Snackbar.show("info", '_start');
+        if (!withoutDropdown)
+            Dropdown.setDropdown();
+        if (!withoutSnackbar) {
+            Snackbar.setSnackbar();
+            Snackbar.show("info", '_start');
+        }
     }
 
     static get() {

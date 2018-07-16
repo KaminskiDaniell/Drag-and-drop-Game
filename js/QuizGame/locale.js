@@ -1,7 +1,7 @@
 Locale.locales = {
     'pl': {
         'game': {
-            '_start': 'Powrzucaj odpowiednio elementy do koszyków',
+            '_start': 'Odpowiadaj na pytania klikając na odpowiedzi, masz do wykorzystania 2 pominięcia. "Pół-na-pół" jest nieskończone, jednak im więcej razy z niego skorzystasz, tym mniej punktów bedziesz mieć na koniec gry',
             '_button': "Przycisk",
             '_success': "Brawo, udało się! ",
             '_score': "Twój wynik to: ",
@@ -26,7 +26,7 @@ Locale.locales = {
     },
     'en': {
         'game': {
-            '_start': "Put things into baskets!",
+            '_start': "Do you want some tee?",
             '_button': "Button",
             '_success': "Nice! You got it! ",
             '_score': "Final score: ",
