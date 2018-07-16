@@ -1,15 +1,21 @@
 class LetterGameObject extends GameObject {
-    constructor(letter, i, game) {
+    constructor(letter, i, word, game) {
         super(game);
         this.letter = letter;
         this.shown = false;
         this.index = i;
-        this.object = $('<div>', {id: i, class: "letter" + (this.normalize(this.letter) === ' ' ? ' space' : '')});
-        if(!this.normalize(this.letter).match(/[a-zł]/i)){
-            this.showLetter();
-        }
+        if(!(this.normalize(this.letter) === ' ')) {
+            this.object = $('<div>', {id: i, class: "letter"});
+            if(!this.normalize(this.letter).match(/[a-zł]/i)){
+                this.showLetter();
+            }
 
-        this.getGame().getGameArea().find('#letters-area').append(this.object);
+            word.append(this.object);
+        }
+        else {
+            this.shown = true;
+            this.getGame().addChecked();
+        }
     }
 
     checkLetter(letter){
@@ -20,7 +26,7 @@ class LetterGameObject extends GameObject {
             this.showLetter();      
             return true;
         }
-        if(!this.normalize(letter).match(/[a-z]/i)) {
+        if(!(this.normalize(letter).match(/[a-z]/i))) {
             return true;
         }
         return false;

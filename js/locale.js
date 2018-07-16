@@ -17,4 +17,4 @@ class Locale {
     }
 }
 
-Locale.current = 'pl'
+Locale.current = window.top.$('html').attr('lang') || 'en';
