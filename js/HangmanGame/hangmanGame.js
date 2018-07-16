@@ -18,6 +18,7 @@ class HangmanGame extends Game {
         this.text = this.randomPhrase();
         this.mistakesAllowed = HangmanGame.numberOfAcceptableMistakes;
         this.setScores();
+        this.stage = 0;
         this.checked = 0;
         this.ended = false;
         this.usedLetters = {};
@@ -127,15 +128,29 @@ class HangmanGame extends Game {
                 Snackbar.show("error", '_fail');
                 this.ended = true;
             }
+            this.scores.text(this.mistakesAllowed);
+            this.replaceHangman(true);
             if(this.mistakesAllowed < 0 ) {
                 return;
             }
-            this.scores.text(this.mistakesAllowed);
         }
+    }
+
+    replaceHangman(increment = false) {
+        if(increment) {
+            this.stage++;
+        }
+
+        $('#hangman-image').attr('src', this.getHangmanStagePath());
+    }
+
+    getHangmanStagePath(){
+        return this.getFolder() + HangmanGame.hangmanStagePath.replace('%d', this.stage); 
     }
 }
 
-HangmanGame.numberOfAcceptableMistakes = 3;
+HangmanGame.hangmanStagePath = 'logo-negative/hangman-stage-%d.png';
+HangmanGame.numberOfAcceptableMistakes = 9;
 HangmanGame.sources = [
     '_citizen_kane',
     '_vertigo',
