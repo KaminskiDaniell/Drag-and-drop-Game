@@ -223,7 +223,13 @@ html, body {
 #letters-area, #hangman {
     text-align: center;
     width: 100%;
-    font: bold 30px Helvetica, Arial, Sans-Serif;
+    font: bold 25px Helvetica, Arial, Sans-Serif;
+}
+
+#letters-area .word{
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
 }
 
 #letters-area .letter {
@@ -231,9 +237,9 @@ html, body {
     align-items: center;
     vertical-align: top;
     border: 3px solid white;
-    width: 50px;
-    height: 50px;
-    margin: 10px;
+    width: 40px;
+    height: 40px;
+    margin: 7px;
     display: inline-block;
     position: relative;
 }

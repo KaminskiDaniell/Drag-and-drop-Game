@@ -2,11 +2,6 @@ class HangmanGame extends Game {
     constructor(gameAreaId) {
         super(gameAreaId);
 
-        Snackbar.addCallback(function () {
-            GameManager.get().setTimer();
-            GameManager.get().setScores();
-        });
-
         this.sources = HangmanGame.sources;
         this.reloadGame();
     }
@@ -48,10 +43,22 @@ class HangmanGame extends Game {
 
         this.getGameArea().append($('<div>', {id: 'letters-area'}));
 
+        var word = $('<div>', {class: 'word'});
+        $('#letters-area').append(word);
+
         for(var i in letterObjects) {
             var letter = letterObjects[i];
+
+            if(letter === ' '){
+                var word = $('#letters-area');
+            }
             
-            this.letterObjects.push(new LetterGameObject(letter, i, this));
+            this.letterObjects.push(new LetterGameObject(letter, i, word, this));
+
+            if(letter === ' '){
+                var word = $('<div>', {class: 'word'});
+                $('#letters-area').append(word);
+            }   
         };
     }
 
@@ -103,10 +110,10 @@ class HangmanGame extends Game {
 
     setScores() {
         if(!this.scores) {
-            this.scores = $('<div>', {class : 'scores right'}).append(this.mistakesAllowed);
+            this.scores = $('<div>', {class : 'scores right'}).append(0);
         }
         else{
-            this.scores.text(this.mistakesAllowed);
+            this.scores.text(parseInt(this.scores.text()) + 1);
         }
         this.getGameArea().prepend(this.scores);
     }
@@ -128,7 +135,6 @@ class HangmanGame extends Game {
                 Snackbar.show("error", '_fail');
                 this.ended = true;
             }
-            this.scores.text(this.mistakesAllowed);
             this.replaceHangman(true);
             if(this.mistakesAllowed < 0 ) {
                 return;
@@ -151,15 +157,3 @@ class HangmanGame extends Game {
 
 HangmanGame.hangmanStagePath = 'logo-negative/hangman-stage-%d.png';
 HangmanGame.numberOfAcceptableMistakes = 9;
-HangmanGame.sources = [
-    '_citizen_kane',
-    '_vertigo',
-    '_la_regle_du_jeu',
-    '_2001_a_space_odyssey',
-    '_tokyo_monogatari',
-    '_otto_e_mezzo',
-    '_the_godfather',
-    '_sunrise_a_song_of_two_humans',
-    '_the_searchers',
-    '_shichinin_no_samurai'
-]
