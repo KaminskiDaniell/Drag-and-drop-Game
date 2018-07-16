@@ -20,7 +20,7 @@ class LetterGameObject extends GameObject {
             this.showLetter();      
             return true;
         }
-        if(!this.normalize(letter).match(/[a-zł]/i)) {
+        if(!this.normalize(letter).match(/[a-z]/i)) {
             return true;
         }
         return false;
@@ -35,6 +35,9 @@ class LetterGameObject extends GameObject {
     }
 
     normalize(letter){
+        if(letter.toLowerCase() === 'ł'){
+            letter = 'l';
+        }
         return letter.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
     }
 }
