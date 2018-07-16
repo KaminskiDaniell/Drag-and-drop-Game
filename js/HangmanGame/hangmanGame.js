@@ -13,6 +13,7 @@ class HangmanGame extends Game {
 
     reloadGame() {
         $('#letters-area').remove();
+        $('#hangman').remove();
         this.createHangman();
         this.text = this.randomPhrase();
         this.mistakesAllowed = HangmanGame.numberOfAcceptableMistakes;
