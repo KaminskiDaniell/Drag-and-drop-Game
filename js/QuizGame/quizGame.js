@@ -19,7 +19,8 @@ class QuizGame extends Game {
 
     resetColors() {
         $('.answerBlock').each(function (i, obj) {
-            obj.style.background = 'chocolate'
+            obj.style.background = '#e5e5e5';
+            obj.style.color = "#484848"
         })
     }
 
@@ -32,6 +33,7 @@ class QuizGame extends Game {
                 var selector = $("#" + random);
                 if (selector[0].style.backgroundColor !== 'firebrick') {
                     selector[0].style.backgroundColor = 'firebrick';
+                    selector[0].style.color = 'white';
                     highlighted++;
                 }
             }
@@ -64,6 +66,7 @@ class QuizGame extends Game {
     getNewQuestion(interval = null) {
         if (interval)
             clearInterval(interval);
+        GameManager.get().changePictureOdGameDiv(QuizGame.currentLevel);
         QuizGame.currentLevel += 1;
         QuizGame.fiftyUsed = false;
         GameManager.get().gameObjects = GameManager.get().createGameObject();
@@ -84,8 +87,11 @@ class QuizGame extends Game {
 
         gameArea.append($('<div>', {id: 'prizesDiv'})
             .append($('<div>', {id: 'hintsDiv'})
-                .append($('<img>', {id: 'fiftyFifty', class: 'hint', src: Game.folder + '/5050.png'}))
-                .append($('<img>', {id: 'skip', class: 'hint', src: Game.folder + '/skip.svg'})))
+                .append($('<div>', {class: 'hint'}).append($('<img>', {
+                    id: 'fiftyFifty',
+                    src: Game.folder + '/5050.png'
+                })))
+                .append($('<div>', {class: 'hint'}).append($('<img>', {id: 'skip', src: Game.folder + '/skip.svg'}))))
         );
 
         gameArea.append($('<div>', {id: 'gameDiv'}));
@@ -110,6 +116,14 @@ class QuizGame extends Game {
                 div.style.background = old
         };
         return setInterval(green, 500, div);
+    }
+
+    changePictureOdGameDiv(id) {
+        var selector = $("#gameDiv");
+        selector.append($('<img>', {
+            class: "gameImage",
+            src: Game.folder + QuizGame.gameImagePath.replace("%d", id)
+        }));
     }
 
     calculatePercents() {
@@ -166,6 +180,7 @@ class QuizGame extends Game {
     }
 }
 
+QuizGame.gameImagePath = "logo-negative/hangman-stage-%d.png";
 QuizGame.maxLevel = 20;
 QuizGame.sources = {
     'easy': {

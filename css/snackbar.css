@@ -1,7 +1,6 @@
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
     color: #000; /* White text color */
-    text-align: center; /* Centered text */
     font-size: 16px;
     border-radius: 55px; /* Rounded borders */
     /* Padding */
@@ -12,17 +11,16 @@
     max-width: 48%;
     left: 31%;
     top: 6%;
+    width: 100%;
 }
 
 #snackbar-body {
     color: #484848;
-    padding: 24px 15px 15px;
+    padding: 30px 15px 15px;
     display: -webkit-flex; /* Safari */
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
     display: flex;
     flex-wrap: wrap;
-    text-align: center;
-    vertical-align: middle;
     font: 16px 'Lato', Helvetica, Arial, Sans-Serif;
 }
 
@@ -43,8 +41,8 @@
 
 .close {
     z-index: 9999999999999999999; /* Sit on top */
-    padding-right: 10px;
-    padding-top: 10px;
+    padding-right: 15px;
+    padding-top: 15px;
     color: #333333;
     float: right;
     font-size: 20px;

@@ -6,7 +6,7 @@ class GameManager {
             Dropdown.setDropdown();
         if (!withoutSnackbar) {
             Snackbar.setSnackbar();
-            Snackbar.show("info", '_start');
+            Snackbar.show("info", 'Brawo', '_start', false);
         }
     }
 

@@ -1,12 +1,17 @@
 class Snackbar {
-    static showMessage(type, message, localized = false) {
+    static showMessage(type, header, message, localized = false) {
         var snackbar_body = document.getElementById("snackbar-body");
-        if (!localized)
-            snackbar_body.innerHTML = Locale.get('game', message);
-        else
-            snackbar_body.innerHTML = message;
-
         Snackbar.message = message;
+        if (!localized)
+            message = Locale.get('game', message);
+
+        if (type === 'success' || type === 'info') {
+            $("#johnny").attr('src', Game.folder + '/johnny-welcome.png');
+        }
+        else {
+            $("#johnny").attr('src', Game.folder + '/johnny-welcome-sad.png');
+        }
+        snackbar_body.innerHTML = "<h3 style='color: #FF9C04; width: 100%'>" + header + "</h3><p>" + (message === undefined ? '' : message) + "</p>";
     }
 
     static setSnackbar() {
@@ -28,7 +33,7 @@ class Snackbar {
         span.onclick = Snackbar.hide;
 
         GameManager.get().addLocaleCallback(function () {
-            $('#snackbar-body').text(Locale.get('game', Snackbar.message));
+            $('#snackbar-body p').text(Locale.get('game', Snackbar.message));
         });
     }
 
@@ -40,10 +45,10 @@ class Snackbar {
         Snackbar.callbacks.push(callback);
     }
 
-    static show(type, message, localized) {
+    static show(type, header, message, localized) {
         var modal = GameManager.get().getGameArea().find('#modal')[0];
         modal.style.display = 'block';
-        Snackbar.showMessage(type, message, localized);
+        Snackbar.showMessage(type, header, message, localized);
     }
 
     static hide() {
