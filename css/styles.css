@@ -214,6 +214,10 @@ html, body {
     font: bold 30px Helvetica, Arial, Sans-Serif;
 }
 
+#hangman {
+    height: 50%;
+}
+
 #letters-area {
     text-align: center;
     font-size: 20px;
