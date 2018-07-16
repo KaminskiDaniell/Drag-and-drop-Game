@@ -2,23 +2,22 @@ class Snackbar {
     static showMessage(type, message, localized = false) {
         var snackbar = document.getElementById("snackbar");
         if (type === 'success') {
-            snackbar.style.background = "#55ff66";
+            snackbar.style.color = "#55ff66";
         }
         else if (type === 'error') {
-            snackbar.style.background = "#ff0000";
+            snackbar.style.color = "#ff0000";
         }
         else if (type === 'info') {
-            snackbar.style.background = "#00CED1";
+            snackbar.style.color = "#00CED1";
         }
         else {
-            snackbar.style.background = "#ffff00";
+            snackbar.style.color = "#ffff00";
         }
         var snackbar_body = document.getElementById("snackbar-body");
         if (!localized)
             snackbar_body.innerHTML = Locale.get('game', message);
         else
             snackbar_body.innerHTML = message;
-        snackbar_body.style.color = "#FFFFFF";
 
         Snackbar.message = message;
     }
@@ -29,7 +28,9 @@ class Snackbar {
         modal.append($('<div>', {id: "snackbar"})
             .append($('<span>', {class: 'close'})
                 .append('&times;'))
-            .append($('<span>', {id: 'snackbar-body'})));
+            .append($('<span>', {id: 'snackbar-body'})))
+            .append($('<img>', {id: "johnny", src: Game.folder + '/johnny-welcome.png'}))
+            .append($('<img>', {id: "comment", src: Game.folder + '/message2.svg'}));
 
         modal = modal[0];
 

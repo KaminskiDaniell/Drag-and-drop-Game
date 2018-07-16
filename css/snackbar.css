@@ -1,8 +1,5 @@
 /* The snackbar - position it at the bottom and in the middle of the screen */
 #snackbar {
-    margin: 0 auto;
-    min-width: 300px; /* Set a default minimum width */
-    margin-left: -150px; /* Divide value of min-width by 2 */
     color: #000; /* White text color */
     text-align: center; /* Centered text */
     font-size: 16px;
@@ -10,9 +7,11 @@
     /* Padding */
     position: absolute; /* Sit on top of the screen */
     z-index: 9999999999999999999; /* Sit on top */
-    left: 50%;
+    height: 50%;
     bottom: 70%;
-    width: 1%;
+    max-width: 49%;
+    left: 30%;
+    top: 6%;
 }
 
 #snackbar-body {
@@ -23,7 +22,7 @@
     flex-wrap: wrap;
     text-align: center;
     vertical-align: middle;
-    font: bold 14px Helvetica, Arial, Sans-Serif;
+    font: bold 20px Helvetica, Arial, Sans-Serif;
 }
 
 .modal {
@@ -36,14 +35,15 @@
     height: 100%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     background-color: rgb(0, 0, 0); /* Fallback color */
-    background-color: rgba(0, 0, 0, 0.4); /* Black w/ opacity */
+    background-color: rgba(0, 0, 0, 0.5); /* Black w/ opacity */
 }
 
 /* Show the snackbar when clicking on a button (class added with JavaScript) */
 
 .close {
     z-index: 9999999999999999999; /* Sit on top */
-    padding: 5px;
+    padding-right: 10px;
+    padding-top: 10px;
     color: #333333;
     float: right;
     font-size: 20px;
