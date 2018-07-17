@@ -2,7 +2,6 @@ class HangmanGame extends Game {
     constructor(gameAreaId) {
         super(gameAreaId);
 
-        this.sources = HangmanGame.sources;
         this.reloadGame();
     }
 
@@ -26,8 +25,8 @@ class HangmanGame extends Game {
     }
 
     randomPhrase(){
-        if(this.sources.length === 0){
-            this.sources = HangmanGame.sources;
+        if(!this.sources || this.sources.length == 0){
+            this.sources = HangmanGame.sources.slice();
         }
         var index = Math.floor(Math.random() * this.sources.length);
         var result = this.sources[index];
@@ -154,6 +153,3 @@ class HangmanGame extends Game {
         return this.getFolder() + HangmanGame.hangmanStagePath.replace('%d', this.stage); 
     }
 }
-
-HangmanGame.hangmanStagePath = 'HangmanGame/stage-%d.png';
-HangmanGame.numberOfAcceptableMistakes = 9;
