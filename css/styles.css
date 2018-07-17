@@ -51,6 +51,7 @@ html, body {
 
 .image {
     border-radius: 15px;
+    z-index: 10;
 }
 
 .draggable img {
@@ -69,6 +70,9 @@ html, body {
 
 .title {
     padding: 10px;
+    z-index: 10;
+    color: #484848 !important;
+    background-color: #e5e5e5 !important;
 }
 
 #game-area > .dropzone {
@@ -152,6 +156,8 @@ html, body {
     top: 50%;
     margin: 10px -50% 30px auto;
     transform: translate(-50%, -50%);
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7))
 }
 
 .basket-text {
@@ -180,6 +186,8 @@ html, body {
     height: 60px;
     left: 50%;
     margin: 0 0 0 -100px;
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7))
 }
 
 #button:hover {

@@ -10,6 +10,7 @@ class QuizGame extends Game {
         QuizGame.canClick = true;
         QuizGame.fiftyUsed = false; //can use only once per question
         QuizGame.skipsLeft = 2; //can use x times
+        QuizGame.maxNoOfSkips = 2; //same as skipsLeft (for score);
 
         this.lastQuestions = [];
         this.createGameFields();
@@ -68,10 +69,17 @@ class QuizGame extends Game {
             clearInterval(interval);
         GameManager.get().changePictureOdGameDiv(QuizGame.currentLevel);
         QuizGame.currentLevel += 1;
-        QuizGame.fiftyUsed = false;
-        GameManager.get().gameObjects = GameManager.get().createGameObject();
-        GameManager.get().resetColors();
-        GameManager.get().putQuestionIntoDiv();
+        if (QuizGame.currentLevel <= QuizGame.maxLevel) {
+            QuizGame.fiftyUsed = false;
+            GameManager.get().gameObjects = GameManager.get().createGameObject();
+            GameManager.get().resetColors();
+            GameManager.get().putQuestionIntoDiv();
+        }
+        else {
+            var score = GameManager.get().getFinalStatistics();
+            setTimeout(Snackbar.show, 1000, 'success', Locale.get('game', '_success'), Locale.get('game', '_done') + '<br>' + Locale.get('game', '_good_answers') + score['good_answers'] + '<br>' + Locale.get('game', '_fifty') + score['fifty'] + '<br>' + Locale.get('game', '_skip') + score['skip'] + '<br>' + Locale.get('game', '_score') + score['score'], true);
+            setTimeout(clearInterval, 3000, interval);
+        }
     }
 
     createGameFields() {
@@ -119,15 +127,23 @@ class QuizGame extends Game {
     }
 
     changePictureOdGameDiv(id) {
-        var selector = $("#gameDiv");
-        selector.append($('<img>', {
-            class: "gameImage",
-            src: Game.folder + QuizGame.gameImagePath.replace("%d", id)
-        }));
+        var selector = $("#gameDiv img");
+        if (!selector[0])
+            $('#gameDiv').append($('<img>', {
+                class: "gameImage",
+                src: Game.folder + QuizGame.gameImagePath.replace("%d", id)
+            }));
+        else (selector.attr("src", Game.folder + QuizGame.gameImagePath.replace("%d", id)))
     }
 
-    calculatePercents() {
-        return Math.round(((QuizGame.currentLevel - 1) / QuizGame.maxLevel) * 100)
+    getFinalStatistics() {
+        var final = [];
+        final['good_answers'] = (QuizGame.currentLevel - 1);
+        final['fifty'] = (QuizGame.hintsUsed);
+        final['skip'] = (QuizGame.maxNoOfSkips - QuizGame.skipsLeft);
+        final['score'] = (final['good_answers'] - 0.5 * final['fifty'] - 1 * final['skip']);
+        final['score'] = final['score'] >= 0 ? final['score'] : 0;
+        return final
     }
 
     setCanClick() {
@@ -147,7 +163,8 @@ class QuizGame extends Game {
                         setTimeout(GameManager.get().setCanClick, 3000)
                     }
                     else {
-                        setTimeout(Snackbar.show, 1000, 'error', Locale.get('game', "_failure") + Locale.get('game', '_score') + GameManager.get().calculatePercents() + "% Hints used:" + QuizGame.hintsUsed, true);
+                        var score = GameManager.get().getFinalStatistics();
+                        setTimeout(Snackbar.show, 1000, 'error', Locale.get('game', '_failure'), Locale.get('game', '_good_answers') + score['good_answers'] + '<br>' + Locale.get('game', '_fifty') + score['fifty'] + '<br>' + Locale.get('game', '_skip') + score['skip'] + '<br>' + Locale.get('game', '_score') + score['score'], true);
                         setTimeout(clearInterval, 3000, interval);
                     }
                 }
@@ -180,8 +197,8 @@ class QuizGame extends Game {
     }
 }
 
-QuizGame.gameImagePath = "logo-negative/hangman-stage-%d.png";
-QuizGame.maxLevel = 20;
+QuizGame.gameImagePath = "QuizGame/stage-%d.png";
+QuizGame.maxLevel = 15;
 QuizGame.sources = {
     'easy': {
         'wszystko': [
@@ -260,9 +277,85 @@ QuizGame.sources = {
         ]
     },
     'medium': {
+        'piosenki': [
+            {
+                question: "... miś dla dziewczyny, która kocham ... Jakiego koloru jest ten miś",
+                answers: [
+                    "Brązowego",
+                    "Czarnego",
+                    "Białego",
+                    "Złotego"
+                ],
+                correctAnswer: '2'
+            },
+            {
+                question: "Ile jest 2 + 2",
+                answers: [
+                    "4",
+                    "5",
+                    "3",
+                    "4.5"
+                ],
+                correctAnswer: '0'
+            },
+            {
+                question: "Ile jest 2 - 2",
+                answers: [
+                    "0",
+                    "2",
+                    "-1",
+                    "3"
+                ],
+                correctAnswer: '0'
+            },
+            {
+                question: "Ile jest 2 + 3 * 2",
+                answers: [
+                    "8",
+                    "10",
+                    "6",
+                    "nie można jednocześnie mnożyć i dodawać"
+                ],
+                correctAnswer: '0'
+            },
+        ],
+        'fizyka': [
+            {
+                question: "Do czego odnosi się rok świetlny",
+                answers: [
+                    "Czasu",
+                    "Szybkości",
+                    "Długości",
+                    "Przyśpieszenia"
+                ],
+                correctAnswer: '2'
+            },
+            {
+                question: "Czego stolicą jest Londyn",
+                answers: [
+                    "Irlandii",
+                    "Wielkiej Brytani",
+                    "Stanów zjednoczonych",
+                    "Polonii"
+                ],
+                correctAnswer: '1'
+            },
+            {
+                question: "Co jest stolicą województwa wielkopolskiego?",
+                answers: [
+                    "Warszawa",
+                    "Gniezno",
+                    "Manhatan",
+                    "Poznań"
+                ],
+                correctAnswer: '3'
+            }
+        ]
+    },
+    'hard': {
         'category1': [
             {
-                question: "medium Question 1 category 1",
+                question: "hard Question 1 category 1",
                 answers: [
                     "BAD",
                     "BAD",
@@ -271,12 +364,58 @@ QuizGame.sources = {
                 ],
                 correctAnswer: '2'
             },
-        ]
-    },
-    'hard': {
-        'category1': [
             {
-                question: "hard Question 1 category 1",
+                question: "hard Question 2 category 1",
+                answers: [
+                    "BAD",
+                    "BAD",
+                    "GOOD",
+                    "BAD"
+                ],
+                correctAnswer: '2'
+            },
+            {
+                question: "hard Question 3 category 1",
+                answers: [
+                    "BAD",
+                    "BAD",
+                    "GOOD",
+                    "BAD"
+                ],
+                correctAnswer: '2'
+            },
+            {
+                question: "hard Question 4 category 1",
+                answers: [
+                    "BAD",
+                    "BAD",
+                    "GOOD",
+                    "BAD"
+                ],
+                correctAnswer: '2'
+            },
+            {
+                question: "hard Question 5 category 1",
+                answers: [
+                    "BAD",
+                    "BAD",
+                    "GOOD",
+                    "BAD"
+                ],
+                correctAnswer: '2'
+            },
+            {
+                question: "hard Question 6 category 1",
+                answers: [
+                    "BAD",
+                    "BAD",
+                    "GOOD",
+                    "BAD"
+                ],
+                correctAnswer: '2'
+            },
+            {
+                question: "hard Question 7 category 1",
                 answers: [
                     "BAD",
                     "BAD",
