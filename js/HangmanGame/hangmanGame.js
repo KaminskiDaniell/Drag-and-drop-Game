@@ -83,7 +83,7 @@ class HangmanGame extends Game {
                         });
                         this.callbackAdded = true;
                     }
-                    Snackbar.show("success", '_success');
+                    Snackbar.show("success", '_success_header', '_success');
                     this.ended = true;
                 }
             }
@@ -132,7 +132,7 @@ class HangmanGame extends Game {
                     });
                     this.callbackAdded = true;
                 }
-                Snackbar.show("error", '_fail');
+                Snackbar.show("error", '_fail_header', '_fail', false, this.textLocalized);
                 this.ended = true;
             }
             this.replaceHangman(true);
@@ -155,5 +155,5 @@ class HangmanGame extends Game {
     }
 }
 
-HangmanGame.hangmanStagePath = 'logo-negative/hangman-stage-%d.png';
+HangmanGame.hangmanStagePath = 'logo-negative/HangmanGame/stage-%d.png';
 HangmanGame.numberOfAcceptableMistakes = 9;

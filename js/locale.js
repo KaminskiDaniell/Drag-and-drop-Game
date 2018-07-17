@@ -1,7 +1,12 @@
 class Locale {
     
-    static get(domain, locale) {
-        return Locale.locales[Locale.current][domain][locale];
+    static get(domain, locale, ...words) {
+        locale = Locale.locales[Locale.current][domain][locale];
+        for(var i in words) {
+            var word = words[i];
+            locale = locale.replace(/%s/, word);
+        }
+        return locale;
     }
 
     static getLanguage() {
@@ -17,4 +22,5 @@ class Locale {
     }
 }
 
+Locale.locales = {};
 Locale.current = window.top.$('html').attr('lang') || 'en';

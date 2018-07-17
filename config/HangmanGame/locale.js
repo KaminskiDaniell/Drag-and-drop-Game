@@ -2,7 +2,11 @@ Locale.locales = {
     'pl' : {
         'game' : {
             '_start': 'Zgadnij hasło!',
-            '_success': 'Brawo!'
+            '_start_header': 'Start',
+            '_success': 'Brawo, odgadłeś poprawne hasło!',
+            '_success_header': 'Sukces!',
+            '_fail': 'Poprawne hasło to: %s',
+            '_fail_header': 'Porażka'
         },
         'phrase' : {
             '_citizen_kane' : 'Obywatel Kane',
@@ -20,7 +24,11 @@ Locale.locales = {
     'en' : {
         'game' : {
             '_start': 'Guess the phrase!',
-            '_success': 'Congratulations!'
+            '_start_header': 'Start',
+            '_success': 'Congratulations, you guessed the phrase!',
+            '_success_header': 'Success!',
+            '_fail': 'The correct phrase is: %s',
+            '_fail_header': 'Fail'
         },
         'phrase' : {
             '_citizen_kane' : 'Citizen Kane',
