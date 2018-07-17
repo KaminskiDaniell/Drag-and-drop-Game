@@ -2,6 +2,7 @@ Locale.locales = {
     'pl' : {
         'game' : {
             '_start': 'Dopasuj filmy do tytułów',
+            '_start_header': 'Start',
             '_success': 'Brawo!'
         },
         'title' : {
@@ -20,6 +21,7 @@ Locale.locales = {
     'en' : {
         'game' : {
             '_start': 'Match films to titles',
+            '_start_header': 'Start',
             '_success': 'Congratulations!'
         },
         'title' : {

@@ -8,11 +8,11 @@ class HangmanGame extends Game {
     reloadGame() {
         $('#letters-area').remove();
         $('#hangman').remove();
+        this.stage = 0;
         this.createHangman();
         this.text = this.randomPhrase();
         this.mistakesAllowed = HangmanGame.numberOfAcceptableMistakes;
-        this.setScores();
-        this.stage = 0;
+        this.setScores(this.correct);
         this.checked = 0;
         this.ended = false;
         this.usedLetters = {};
@@ -20,7 +20,7 @@ class HangmanGame extends Game {
     }
 
     createHangman() {
-        this.hangman = $('<div>', {id: 'hangman'}).append($('<img>', {id: 'hangman-image'}));
+        this.hangman = $('<div>', {id: 'hangman'}).append($('<img>', {id: 'hangman-image', src: this.getHangmanStagePath()}));
         this.getGameArea().append(this.hangman);
     }
 
@@ -84,6 +84,7 @@ class HangmanGame extends Game {
                     }
                     Snackbar.show("success", '_success_header', '_success');
                     this.ended = true;
+                    this.correct = true;
                 }
             }
             this.usedLetters[letter] = true;
@@ -107,12 +108,16 @@ class HangmanGame extends Game {
         }, 1000);
     }
 
-    setScores() {
+    setScores(correct) {
         if(!this.scores) {
             this.scores = $('<div>', {class : 'scores right'}).append(0);
         }
         else{
-            this.scores.text(parseInt(this.scores.text()) + 1);
+            var score = parseInt(this.scores.text());
+            if(correct) {
+                score++;
+            }
+            this.scores.text(score);
         }
         this.getGameArea().prepend(this.scores);
     }
@@ -132,7 +137,9 @@ class HangmanGame extends Game {
                     this.callbackAdded = true;
                 }
                 Snackbar.show("error", '_fail_header', '_fail', false, this.textLocalized);
+                this.scores.text(0);
                 this.ended = true;
+                this.correct = false;
             }
             this.replaceHangman(true);
             if(this.mistakesAllowed < 0 ) {
@@ -146,7 +153,12 @@ class HangmanGame extends Game {
             this.stage++;
         }
 
-        $('#hangman-image').attr('src', this.getHangmanStagePath());
+        if(this.stage != HangmanGame.numberOfAcceptableMistakes) {
+            $('#hangman-image').attr('src', this.getHangmanStagePath());
+        }
+        else {
+            $('#hangman-image').removeAttr('src');
+        }
     }
 
     getHangmanStagePath(){
