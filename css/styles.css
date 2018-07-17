@@ -143,6 +143,7 @@ html, body {
 #game-area > .in_basket.title {
     transition: background-color 0.0s;
     background-color: forestgreen;
+    color: white;
 }
 
 .basket {
