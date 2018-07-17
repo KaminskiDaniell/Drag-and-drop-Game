@@ -1,3 +1,5 @@
+HangmanGame.hangmanStagePath = 'HangmanGame/stage-%d.png';
+HangmanGame.numberOfAcceptableMistakes = 9;
 HangmanGame.sources = [
     '_citizen_kane',
     '_vertigo',
