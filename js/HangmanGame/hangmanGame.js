@@ -155,5 +155,5 @@ class HangmanGame extends Game {
     }
 }
 
-HangmanGame.hangmanStagePath = 'logo-negative/HangmanGame/stage-%d.png';
+HangmanGame.hangmanStagePath = 'HangmanGame/stage-%d.png';
 HangmanGame.numberOfAcceptableMistakes = 9;
