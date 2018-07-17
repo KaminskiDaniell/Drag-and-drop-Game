@@ -68,11 +68,11 @@ html, body {
     border-radius: 15px;
 }
 
-.title {
+#game-area > .title {
     padding: 10px;
     z-index: 10;
-    color: #484848 !important;
-    background-color: #e5e5e5 !important;
+    color: #484848;
+    background-color: #e5e5e5;
 }
 
 #game-area > .dropzone {
@@ -123,6 +123,7 @@ html, body {
 }
 
 #game-area > .dropped-into {
+    color: white;
     background-color: firebrick;
 }
 
