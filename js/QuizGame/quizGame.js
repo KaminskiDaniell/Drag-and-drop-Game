@@ -10,6 +10,7 @@ class QuizGame extends Game {
         QuizGame.canClick = true;
         QuizGame.fiftyUsed = false; //can use only once per question
         QuizGame.skipsLeft = 2; //can use x times
+        QuizGame.maxNoOfSkips = 2; //same as skipsLeft (for score);
 
         this.lastQuestions = [];
         this.createGameFields();
@@ -119,15 +120,23 @@ class QuizGame extends Game {
     }
 
     changePictureOdGameDiv(id) {
-        var selector = $("#gameDiv");
-        selector.append($('<img>', {
-            class: "gameImage",
-            src: Game.folder + QuizGame.gameImagePath.replace("%d", id)
-        }));
+        var selector = $("#gameDiv img");
+        if (!selector[0])
+            $('#gameDiv').append($('<img>', {
+                class: "gameImage",
+                src: Game.folder + QuizGame.gameImagePath.replace("%d", id)
+            }));
+        else (selector.attr("src", Game.folder + QuizGame.gameImagePath.replace("%d", id)))
     }
 
-    calculatePercents() {
-        return Math.round(((QuizGame.currentLevel - 1) / QuizGame.maxLevel) * 100)
+    getFinalStatistics() {
+        var final = [];
+        final['good_answers'] = (QuizGame.currentLevel - 1);
+        final['fifty'] = (QuizGame.hintsUsed);
+        final['skip'] = (QuizGame.maxNoOfSkips - QuizGame.skipsLeft);
+        final['score'] = (final['good_answers'] - 0.5 * final['fifty'] - 1 * final['skip']);
+        final['score'] = final['score'] >= 0 ? final['score'] : 0;
+        return final
     }
 
     setCanClick() {
@@ -147,7 +156,8 @@ class QuizGame extends Game {
                         setTimeout(GameManager.get().setCanClick, 3000)
                     }
                     else {
-                        setTimeout(Snackbar.show, 1000, 'error', Locale.get('game', "_failure") + Locale.get('game', '_score') + GameManager.get().calculatePercents() + "% Hints used:" + QuizGame.hintsUsed, true);
+                        var score = GameManager.get().getFinalStatistics();
+                        setTimeout(Snackbar.show, 1000, 'error', Locale.get('game', '_failure'), Locale.get('game', '_good_answers') + score['good_answers'] + '<br>' + Locale.get('game', '_fifty') + score['fifty'] + '<br>' + Locale.get('game', '_skip') + score['skip'] + '<br>' + Locale.get('game', '_score') + score['score'], true);
                         setTimeout(clearInterval, 3000, interval);
                     }
                 }
