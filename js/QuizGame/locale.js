@@ -9,7 +9,8 @@ Locale.locales = {
             '_oops': "Upps ",
             '_fifty': "Użyte pół-na-pół: ",
             '_skip': "Użyte pominięcia: ",
-            '_score': "Ostateczny wynik: "
+            '_score': "Ostateczny wynik: ",
+            '_done': "Ciężarówka znów jest cała!"
         },
     },
     'en': {
@@ -22,7 +23,8 @@ Locale.locales = {
             '_oops': "Ooops ",
             '_fifty': "Fifty-fifty used: ",
             '_skip': "Skips used: ",
-            "_score": "Final score: "
+            "_score": "Final score: ",
+            '_done': "The truck is repaired!"
         },
     }
 };
