@@ -51,7 +51,6 @@ html, body {
 
 .image {
     border-radius: 15px;
-    z-index: 10;
 }
 
 .draggable img {
@@ -70,7 +69,6 @@ html, body {
 
 #game-area > .title {
     padding: 10px;
-    z-index: 10;
     color: #484848;
     background-color: #e5e5e5;
 }
@@ -205,6 +203,7 @@ html, body {
 .text {
     color: white;
     text-align: center;
+    z-index: 10;
     font-size: 16px;
     border-radius: 15px;
     display: inline-block;
