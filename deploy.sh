@@ -17,6 +17,7 @@ case "$1" in
 esac
 
 rm -r release-$name 2>/dev/null
+rm release-$name.zip 2>/dev/null
 
 mkdir -p "release-$name"
 cp "game_$name.html" "release-$name/game_$name.html"
@@ -47,3 +48,5 @@ done
 rmdir -p release-$name/js/$folder 2>/dev/null
 
 sed -i "s/<\/head>/<script src=\"js\/release.js\"><\/script>\n<\/head>/" ./release-$name/game_$name.html
+
+zip -r release-$name.zip release-$name
