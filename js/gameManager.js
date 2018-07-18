@@ -47,13 +47,16 @@ class GameManager {
 
     static loadImages(className) {
         GameManager.images.forEach(function(entry){
-            var img = $('<img />').attr('src',Game.folder + entry);
-            $('body').append(img);      
-            img.hide();
+            var img = new Image;
+            img.addEventListener('load', function () {
+                Load.imageLoaded();
+            });
+            img.src = Game.folder + entry;
+            $('body').append(img).hide();
         });
 
         var numberOfImagesToLoad = className.loadImages();
-        Load.ImagesToLoad(GameManager.images.length + numberOfImagesToLoad);
+        Load.imagesToLoad(parseInt(GameManager.images.length) + parseInt(numberOfImagesToLoad));
     }
 }
 
