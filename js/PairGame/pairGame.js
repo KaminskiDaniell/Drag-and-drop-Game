@@ -108,10 +108,16 @@ class PairGame extends Game {
         for(var i in PairGame.sources) {
             var entry = PairGame.sources[i];
             if(entry.fileName.match(/\.(jpe?g|png|gif)$/) ) { 
-                var img = $('<img />').attr('src', Game.folder + entry.fileName);
-                $('body').append(img);      
-                img.hide();
+                var img = new Image;
+                img.addEventListener('load', function () {
+                    Load.imageLoaded();
+                });
+                img.src = entry;
+                img.style.display = "none";
+                $('body').append(img);
             }
         }
+
+        return PairGame.sources.length;
     }
 }
