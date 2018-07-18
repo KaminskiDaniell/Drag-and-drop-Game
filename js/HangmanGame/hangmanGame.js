@@ -2,8 +2,6 @@ class HangmanGame extends Game {
     constructor(gameAreaId) {
         super(gameAreaId);
 
-        this.loadImages();
-
         this.reloadGame();
     }
 
@@ -163,20 +161,21 @@ class HangmanGame extends Game {
         }
     }
 
-    getHangmanStagePath(stage){
-        if(!stage){
-            stage = this.stage;
-        }
-        return this.getFolder() + HangmanGame.hangmanStagePath.replace('%d', stage); 
+    getHangmanStagePath(){
+        return this.getFolder() + HangmanGame.hangmanStagePath.replace('%d', this.stage); 
     }
 
-    loadImages() {
-        this.images = [];
+
+    static loadImages() {
+        var getPath = function(i) {
+            return Game.folder + HangmanGame.hangmanStagePath.replace('%d', i); 
+        }
+        var images = [];
         for(var i = 0; i < HangmanGame.numberOfAcceptableMistakes; i++) {
-            this.images.push(this.getHangmanStagePath(i));
+            images.push(getPath(i));
         }
 
-        this.images.forEach(function(entry){
+        images.forEach(function(entry){
             var img = $('<img />').attr('src',entry);
             $('body').append(img);      
             img.hide();

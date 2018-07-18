@@ -12,6 +12,7 @@ class GameManager {
             }
         }
 
+        GameManager.loadImages(className);
         var resourceObject = window.top.document.getElementById('resourceobject');
         if(resourceObject) {
             if(!resourceObject.style.height){
@@ -43,4 +44,15 @@ class GameManager {
     static get() {
         return GameManager.game;
     }
+
+    static loadImages(className) {
+        GameManager.images.forEach(function(entry){
+            var img = $('<img />').attr('src',entry);
+            $('body').append(img);      
+            img.hide();
+        });
+
+        className.loadImages();
+    }
 }
+

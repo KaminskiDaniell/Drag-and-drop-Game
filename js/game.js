@@ -29,7 +29,10 @@ class Game {
             gameObject.loadLocale();
         });
     }
+    
+    static loadImages() {
 
+    }
 }
 
 Game.folder = 'img/';
