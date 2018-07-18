@@ -5,18 +5,17 @@ class Load {
         }
         Load.numberOfImages += number;
         if(Load.isLoaded()){
-            Load.hide();
+            //Load.hide();
         }
     }
         
     static imageLoaded() {
-        console.log(Load.numberOfImages);
         if(!Load.numberOfImages) {
             Load.numberOfImages = 0;
         }
         Load.numberOfImages--;
         if(Load.isLoaded()){
-            Load.hide();
+            //Load.hide();
         }
     }
 

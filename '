@@ -52,7 +52,6 @@ class GameManager {
                 Load.imageLoaded();
             });
             img.src = Game.folder + entry;
-            img.style.display = "none";
             $('body').append(img);
         });
 
