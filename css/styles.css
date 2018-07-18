@@ -348,12 +348,14 @@ html, body {
 .gameImage {
     -webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7));
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7));
-    left: 10%;
+    left: 20%;
+    position: absolute;
 }
 
 #gameDiv {
     height: 50%;
     width: 70%; /*same as answersDiv */
+    position: relative;
 }
 
 .hint {
@@ -369,7 +371,6 @@ html, body {
     position: absolute;
     top: 10%;
     max-height: 60%;
-    left: 20%;
 }
 
 #fiftyFifty {

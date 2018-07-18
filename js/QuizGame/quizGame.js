@@ -195,4 +195,20 @@ class QuizGame extends Game {
             Snackbar.addCallback(reset)
         });
     }
+
+    static loadImages() {
+        var getPath = function (i) {
+            return Game.folder + QuizGame.gameImagePath.replace('%d', i);
+        };
+        var images = [Game.folder + "5050.png", Game.folder + "skip.svg"];
+        for (var i = 0; i < QuizGame.maxLevel; i++) {
+            images.push(getPath(i));
+        }
+
+        images.forEach(function (entry) {
+            var img = $('<img />').attr('src', entry);
+            $('body').append(img);
+            img.hide();
+        });
+    }
 }

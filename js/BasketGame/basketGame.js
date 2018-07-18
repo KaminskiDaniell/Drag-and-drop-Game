@@ -161,4 +161,21 @@ class BasketGame extends Game {
         return coords;
     }
 
+
+    static loadImages() {
+        var images = [];
+        for (var source_index in BasketGame.sources) {
+            for (var entry_index in BasketGame.sources[source_index]) {
+                var entry = BasketGame.sources[source_index][entry_index];
+                if (entry.fileName) {
+                    images.push(entry.fileName);
+                }
+            }
+        }
+        images.forEach(function (entry) {
+            var img = $('<img />').attr('src', Game.folder + entry);
+            $('body').append(img);
+            img.hide();
+        });
+    }
 }
