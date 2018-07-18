@@ -13,17 +13,7 @@ interact('.draggable')
         autoScroll: true,
 
         // call this function on every dragmove event
-        onmove: dragMoveListener,
-        // call this function on every dragend event
-        onend: function (event) {
-            var textEl = event.target.querySelector('p');
-
-            textEl && (textEl.textContent =
-                'moved a distance of '
-                + (Math.sqrt(Math.pow(event.pageX - event.x0, 2) +
-                Math.pow(event.pageY - event.y0, 2) | 0))
-                    .toFixed(2) + 'px');
-        }
+        onmove: dragMoveListener
     });
 
 function dragMoveListener(event) {
@@ -53,7 +43,7 @@ interact('.dropzone').dropzone({
     // only accept elements matching this CSS selector
     accept: '.yes-drop',
     // Require a 75% element overlap for a drop to be possible
-    overlap: 0.90,
+    overlap: 0.80,
 
     // listen for drop related events:
 
