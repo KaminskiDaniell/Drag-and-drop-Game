@@ -52,7 +52,8 @@ class GameManager {
             img.hide();
         });
 
-        className.loadImages();
+        var numberOfImagesToLoad = className.loadImages();
+        Load.ImagesToLoad(GameManager.images.length + numberOfImagesToLoad);
     }
 }
 
