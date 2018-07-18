@@ -25,7 +25,7 @@ Locale.locales = {
         'game' : {
             '_start': 'Guess the phrase!',
             '_start_header': 'Start',
-            '_success': 'Congratulations, you guessed the phrase!',
+            '_success': 'Congratulations, you correctly guessed the phrase!',
             '_success_header': 'Success!',
             '_fail': 'The correct phrase is: %s',
             '_fail_header': 'Fail'
