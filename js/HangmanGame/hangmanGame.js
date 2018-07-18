@@ -176,9 +176,13 @@ class HangmanGame extends Game {
         }
 
         images.forEach(function(entry){
-            var img = $('<img />').attr('src',entry);
-            $('body').append(img);      
-            img.hide();
+            var img = new Image;
+            img.addEventListener('load', function () {
+                Load.imageLoaded();
+            });
+            img.src = entry;
+            $('body').append(img).hide();
         });
+        return images.length;
     }
 }
