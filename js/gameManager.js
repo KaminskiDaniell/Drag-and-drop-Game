@@ -12,7 +12,7 @@ class GameManager {
         // For moodle
         var resourceObject = window.top.document.getElementById('resourceobject');
         if(resourceObject) {
-            resourceObject[0].style.border = '0px';
+            resourceObject.style.border = '0px';
         }
         
     }
