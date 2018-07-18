@@ -15,7 +15,7 @@ class Locale {
 
     static setLanguage(lang) {
         if(!lang){
-             lang = window.top.$('html').attr('lang') || 'en';
+             lang = window.top.document.getElementsByTagName('html')[0].getAttribute('lang') || 'en';
         }
         Locale.current = lang;
     }
