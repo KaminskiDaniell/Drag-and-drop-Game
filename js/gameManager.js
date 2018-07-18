@@ -1,6 +1,7 @@
 class GameManager {
     static set(className, gameAreaId, withoutDropdown = false, withoutSnackbar = false) {
         $("#" + gameAreaId).empty();
+        Locale.setLanguage();
         GameManager.game = new className(gameAreaId);
         if (!withoutDropdown)
             Dropdown.setDropdown();
