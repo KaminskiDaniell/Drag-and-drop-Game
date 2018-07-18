@@ -112,7 +112,7 @@ class PairGame extends Game {
                 img.addEventListener('load', function () {
                     Load.imageLoaded();
                 });
-                img.src = entry;
+                img.src = Game.folder + entry.fileName;
                 img.style.display = "none";
                 $('body').append(img);
             }
