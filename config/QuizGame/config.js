@@ -25,56 +25,56 @@ QuizGame.sources = {
                 correctAnswer: '1'
             },
             {
-                question: "Czy warto było szaleć",
+                question: "#question_football1",
                 answers: [
-                    "w świat?",
-                    "znów?",
-                    "w domu?",
-                    "tak?"
-                ],
-                correctAnswer: '3'
-            },
-            {
-                question: "Ile razy Brazylia wygrała tytuł mistrza świata w piłce nożnej?",
-                answers: [
-                    "3",
-                    "5",
-                    "ani razu",
-                    "7"
+                    "#answer_football1_0",
+                    "#answer_football1_1",
+                    "#answer_football1_2",
+                    "#answer_football1_3"
                 ],
                 correctAnswer: '1'
+            },
+            {
+                question: "#question_football2",
+                answers: [
+                    "#answer_football2_0",
+                    "#answer_football2_1",
+                    "#answer_football2_2",
+                    "#answer_football2_3",
+                ],
+                correctAnswer: '3'
             },
         ],
         'category2': [
             {
-                question: "Dokończ słowa piosenki: \"Do domu wrócimy.. \"",
+                question: "#question1",
                 answers: [
-                    "Nakarmimy psa",
-                    "Połozymy się spać",
-                    "W piecu napalimy",
-                    "Szybko tak"
+                    "#answer_1_0",
+                    "#answer_1_1",
+                    "#answer_1_2",
+                    "#answer_1_3",
+                ],
+                correctAnswer: '0'
+            },
+            {
+                question: "#question2",
+                answers: [
+                    "#answer_2_0",
+                    "#answer_2_1",
+                    "#answer_2_2",
+                    "#answer_2_3",
                 ],
                 correctAnswer: '2'
             },
             {
-                question: "Jaką komendą wyłączyć process w systemie operacyjnym linux",
+                question: "#question3",
                 answers: [
-                    "kill",
-                    "detach",
-                    "remove",
-                    "shutdown"
+                    "#answer_3_0",
+                    "#answer_3_1",
+                    "#answer_3_2",
+                    "#answer_3_3",
                 ],
-                correctAnswer: '0'
-            },
-            {
-                question: "Ile lat ma wiek",
-                answers: [
-                    "100",
-                    "Zależy kogo",
-                    "Za mało danych by stwierdzić",
-                    "1000"
-                ],
-                correctAnswer: '0'
+                correctAnswer: '1'
             },
         ]
     },

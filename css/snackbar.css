@@ -4,14 +4,13 @@
     font-size: 16px;
     border-radius: 55px; /* Rounded borders */
     /* Padding */
-    position: absolute; /* Sit on top of the screen */
+    position: relative; /* Sit on top of the screen */
     z-index: 9999999999999999999; /* Sit on top */
     height: 50%;
     bottom: 70%;
     max-width: 48%;
     left: 31%;
     top: 6%;
-    width: 100%;
 }
 
 #snackbar-body {
@@ -46,6 +45,8 @@
     color: #333333;
     float: right;
     font-size: 40px;
+    left: 90%;
+    position: absolute;
     font-weight: bold;
 }
 
