@@ -10,7 +10,10 @@ class GameManager {
             Snackbar.show("info", '_start_header', '_start');
         }
         // For moodle
-        window.top.$('#resourceobject').css('border','0px');
+        var resourceObject = window.top.document.getElementById('resourceobject');
+        if(resourceObject) {
+            resourceObject[0].style.border = '0px';
+        }
         
     }
 
