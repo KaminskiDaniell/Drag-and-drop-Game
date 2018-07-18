@@ -47,7 +47,7 @@ class GameManager {
 
     static loadImages(className) {
         GameManager.images.forEach(function(entry){
-            var img = $('<img />').attr('src',entry);
+            var img = $('<img />').attr('src',Game.folder + entry);
             $('body').append(img);      
             img.hide();
         });

@@ -1,6 +1,7 @@
 PairGame.horizontalOffset = 140;
 PairGame.verticalOffset = 80;
 
+//Image fileNames should not correspond with titles, because it is very easy to look up image name and cheat
 PairGame.sources = [
     {
         'fileName': '1.jpg',
