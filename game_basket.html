@@ -31,7 +31,9 @@
 </div>
 <script>
     $(function () {
-        GameManager.set(BasketGame, 'game-area');
+        $(window.top).on('load', function() {
+            GameManager.set(BasketGame, 'game-area');
+        });
     });
 </script>
 </body>
