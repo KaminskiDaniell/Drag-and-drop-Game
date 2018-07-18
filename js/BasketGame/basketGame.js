@@ -173,9 +173,14 @@ class BasketGame extends Game {
             }
         }
         images.forEach(function (entry) {
-            var img = $('<img />').attr('src', Game.folder + entry);
+            var img = new Image;
+            img.addEventListener('load', function () {
+                Load.imageLoaded();
+            });
+            img.src = entry;
+            img.style.display = "none";
             $('body').append(img);
-            img.hide();
         });
+        return images.length;
     }
 }

@@ -1,14 +1,15 @@
 class Game {
-    constructor(gameAreaId){
+    constructor(gameAreaId) {
         this.gameObjects = [];
         this.callbacks = [];
         this.gameArea = $('#' + gameAreaId);
 
         var modal = $('<div>', {id: 'modal', class: "modal"});
-
-        this.gameArea.append(modal)
+        var load = $('<div>', {id: 'load'});
+        this.gameArea.append(modal);
+        this.gameArea.append(load);
     }
-    
+
     getFolder() {
         return Game.folder;
     }
@@ -21,15 +22,15 @@ class Game {
         this.callbacks.push(callback);
     }
 
-    loadLocale(){
+    loadLocale() {
         this.callbacks.forEach(function (callback) {
             callback();
         });
-        this.gameObjects.forEach(function(gameObject) {
+        this.gameObjects.forEach(function (gameObject) {
             gameObject.loadLocale();
         });
     }
-    
+
     static loadImages() {
 
     }

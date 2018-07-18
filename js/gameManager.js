@@ -10,6 +10,7 @@ class GameManager {
                 Snackbar.setSnackbar();
                 Snackbar.show("info", '_start_header', '_start');
             }
+            Load.addLoad();
         }
 
         GameManager.loadImages(className);
