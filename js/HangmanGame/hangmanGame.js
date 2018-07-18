@@ -172,14 +172,14 @@ class HangmanGame extends Game {
 
     loadImages() {
         this.images = [];
-        for(var i in HangmanGame.numberOfAcceptableMistakes) {
-            image = new Image();
-            image.src = this.getHangmanStagePath();
-            this.images.push(image);
+        for(var i = 0; i < HangmanGame.numberOfAcceptableMistakes; i++) {
+            this.images.push(this.getHangmanStagePath(i));
         }
 
         this.images.forEach(function(entry){
-            $('<img />').attr('src',entry).appendTo('body').hide();      
+            var img = $('<img />').attr('src',entry);
+            $('body').append(img);      
+            img.hide();
         });
     }
 }
