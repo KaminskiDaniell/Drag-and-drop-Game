@@ -3,7 +3,8 @@ Locale.locales = {
         'game' : {
             '_start': 'Dopasuj filmy do tytułów',
             '_start_header': 'Start',
-            '_success': 'Brawo!'
+            '_success': 'Brawo!',
+            '_loading_game': 'Ładowanie gry...'
         },
         'title' : {
             '_citizen_kane' : 'Obywatel Kane (1941)',
@@ -22,7 +23,8 @@ Locale.locales = {
         'game' : {
             '_start': 'Match films to titles',
             '_start_header': 'Start',
-            '_success': 'Congratulations!'
+            '_success': 'Congratulations!',
+            '_loading_game': 'Loading game...'
         },
         'title' : {
             '_citizen_kane' : 'Citizen Kane (1941)',

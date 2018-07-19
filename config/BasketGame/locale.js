@@ -6,7 +6,8 @@ Locale.locales = {
             '_success': "Brawo, udało się! ",
             '_score': "Twój wynik to: ",
             '_failure': "Coś poszło nie tak, próbuj dalej! ",
-            '_start_header': "Witaj!"
+            '_start_header': "Witaj!",
+            '_loading_game': 'Ładowanie gry...'
         },
         'title': {
             '_citizen_kane': 'Obywatel Kane (1941)',
@@ -32,7 +33,8 @@ Locale.locales = {
             '_success': "Nice! You got it! ",
             '_score': "Final score: ",
             '_failure': "Ooops, something went wrong, try again! ",
-            '_start_header': "Hi!"
+            '_start_header': "Hi!",
+            '_loading_game': 'Loading game...'
         },
         'title': {
             '_citizen_kane': 'Citizen Kane (1941)',

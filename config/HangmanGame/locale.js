@@ -6,7 +6,8 @@ Locale.locales = {
             '_success': 'Brawo, odgadłeś poprawne hasło!',
             '_success_header': 'Sukces!',
             '_fail': 'Poprawne hasło to: %s',
-            '_fail_header': 'Porażka'
+            '_fail_header': 'Porażka',
+            '_loading_game': 'Ładowanie gry...'
         },
         'phrase' : {
             '_citizen_kane' : 'Obywatel Kane',
@@ -28,7 +29,8 @@ Locale.locales = {
             '_success': 'Congratulations, you correctly guessed the phrase!',
             '_success_header': 'Success!',
             '_fail': 'The correct phrase is: %s',
-            '_fail_header': 'Fail'
+            '_fail_header': 'Fail',
+            '_loading_game': 'Loading game...'
         },
         'phrase' : {
             '_citizen_kane' : 'Citizen Kane',

@@ -4,16 +4,19 @@ class GameManager {
             $("#" + gameAreaId).empty();
             Locale.setLanguage();
             GameManager.game = new className(gameAreaId);
+            Load.addLoad();
             if (!withoutDropdown)
                 Dropdown.setDropdown();
             if (!withoutSnackbar) {
                 Snackbar.setSnackbar();
                 Snackbar.show("info", '_start_header', '_start');
             }
-            Load.addLoad();
         }
 
+        //Preload
         GameManager.loadImages(className);
+
+        //Load only when height of object where game is embedded is set - moodle specific
         var resourceObject = window.top.document.getElementById('resourceobject');
         if(resourceObject) {
             if(!resourceObject.style.height){

@@ -4,31 +4,43 @@ class Load {
             Load.numberOfImages = 0;
         }
         Load.numberOfImages += number;
+
+        var percentageToShow = parseInt((Load.numberOfImagesLoaded / Load.numberOfImages) * 100) + '%';
+        if(Load.progressBar) {
+            Load.progressBar.children().css('width', percentageToShow);
+        }
+        else {
+            this.percentageToShow = percentageToShow;
+        }
+
         if (Load.isLoaded()) {
-            console.log("HIDE");
             Load.hide();
         }
     }
 
     static imageLoaded() {
-        if (!Load.numberOfImages) {
-            Load.numberOfImages = 0;
+        if (!Load.numberOfImagesLoaded) {
+            Load.numberOfImagesLoaded = 0;
         }
-        Load.numberOfImages--;
+        Load.numberOfImagesLoaded++;
         if (Load.isLoaded()) {
-            console.log("HIDE");
             Load.hide();
         }
     }
 
     static isLoaded() {
-        return Load.numberOfImages === 0;
+        return Load.numberOfImages === Load.numberOfImagesLoaded;
     }
 
     static addLoad() {
         Load.load = GameManager.get().getGameArea().find('#load');
 
-        Load.load.append($('<div>', {class: "loading"}).append("LOADING"));
+        Load.progressBar = $('<div>', {id: 'load-progress'}).append($('<div>', {id: 'load-progress-bar'}));
+        if(this.percentageToShow) {
+            Load.progressBar.children().css('width', this.percentageToShow);
+
+        }
+        Load.load.append($('<div>', {class: "loading"}).append($('<p>', {text: Locale.get('game', '_loading')})).append(Load.progressBar));
         Load.show();
     }
 

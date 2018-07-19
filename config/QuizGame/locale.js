@@ -11,7 +11,8 @@ Locale.locales = {
             '_skip': "Użyte pominięcia: ",
             '_score': "Ostateczny wynik: ",
             '_done': "Ciężarówka znów jest cała!",
-            '_start_header': "Witaj!"
+            '_start_header': "Witaj!",
+            '_loading_game': 'Ładowanie gry...'
         },
         'questions': {
             "#question_wojtek": "Ile wojtek miał lat gdy sie urodził?",
@@ -68,7 +69,8 @@ Locale.locales = {
             '_skip': "Skips used: ",
             "_score": "Final score: ",
             '_done': "The truck is repaired!",
-            '_start_header': "Hi!"
+            '_start_header': "Hi!",
+            '_loading_game': 'Loading game...'
         },
         'questions': {
             "#question_wojtek": "Ile wojtek miał lat gdy sie urodził?",
