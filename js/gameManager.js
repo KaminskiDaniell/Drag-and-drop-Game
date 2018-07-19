@@ -1,5 +1,5 @@
 class GameManager {
-    static set(className, gameAreaId, withoutDropdown = false, withoutSnackbar = false) {
+    static set(className, gameAreaId, withoutDropdown = false, withoutSnackbar = false, preload = true) {
         var setUp = function () {
             $("#" + gameAreaId).empty();
             GameManager.game = new className(gameAreaId);
@@ -12,16 +12,18 @@ class GameManager {
         }
 
         //Preload
-        Locale.setLanguage();
-        Load.preloadLoad();
-        GameManager.loadImages(className);
+        if (preload) {
+            Locale.setLanguage();
+            Load.preloadLoad();
+            GameManager.loadImages(className);
+        }
 
         //Load only when height of object where game is embedded is set - moodle specific
         var resourceObject = window.top.document.getElementById('resourceobject');
-        if(resourceObject) {
-            if(!resourceObject.style.height){
-                var observer = new MutationObserver(function(e) {
-                    if(e[0].target.style.height){
+        if (resourceObject) {
+            if (!resourceObject.style.height) {
+                var observer = new MutationObserver(function (e) {
+                    if (e[0].target.style.height) {
                         setUp();
                         this.disconnect();
                     }
@@ -50,7 +52,7 @@ class GameManager {
     }
 
     static loadImages(className) {
-        GameManager.images.forEach(function(entry){
+        GameManager.images.forEach(function (entry) {
             var img = new Image;
             img.addEventListener('load', function () {
                 Load.imageLoaded();

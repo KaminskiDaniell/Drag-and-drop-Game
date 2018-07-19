@@ -114,16 +114,25 @@ class QuizGame extends Game {
         $('#3').text(Locale.get("questions", question.answers[3]));
     }
 
-    highlightCorrect(correct) {
-        var div = $("#" + correct)[0];
-        var old = div.style.background;
-        var green = function (div) {
-            if (div.style.background === old)
-                div.style.background = '#00ff00'
-            else
-                div.style.background = old
+    static loadImages() {
+        var getPath = function (i) {
+            return Game.folder + QuizGame.gameImagePath.replace('%d', i);
         };
-        return setInterval(green, 500, div);
+        var images = [Game.folder + "5050.png", Game.folder + "skip.svg"];
+        for (var i = 1; i <= QuizGame.maxLevel; i++) {
+            images.push(getPath(i));
+        }
+
+        images.forEach(function (entry) {
+            var img = new Image;
+            img.addEventListener('load', function () {
+                Load.imageLoaded();
+            });
+            img.src = entry;
+            img.style.display = "none";
+            $('body').append(img);
+        });
+        return images.length;
     }
 
     changePictureOdGameDiv(id) {
@@ -148,6 +157,18 @@ class QuizGame extends Game {
 
     setCanClick() {
         QuizGame.canClick = true;
+    }
+
+    highlightCorrect(correct) {
+        var div = $("#" + correct)[0];
+        var old = div.style.background;
+        var green = function (div) {
+            if (div.style.background === old)
+                div.style.background = '#00ff00';
+            else
+                div.style.background = old
+        };
+        return setInterval(green, 500, div);
     }
 
     addClickListeners() {
@@ -189,31 +210,10 @@ class QuizGame extends Game {
                 }
                 else {
                     QuizGame.gameBegun = false;
-                    GameManager.set(QuizGame, 'game-area', true);
+                    GameManager.set(QuizGame, 'game-area', true, false, false);
                 }
             };
             Snackbar.addCallback(reset)
         });
-    }
-
-    static loadImages() {
-        var getPath = function (i) {
-            return Game.folder + QuizGame.gameImagePath.replace('%d', i);
-        };
-        var images = [Game.folder + "5050.png", Game.folder + "skip.svg"];
-        for (var i = 0; i < QuizGame.maxLevel; i++) {
-            images.push(getPath(i));
-        }
-
-        images.forEach(function (entry) {
-            var img = new Image;
-            img.addEventListener('load', function () {
-                Load.imageLoaded();
-            });
-            img.src = entry;
-            img.style.display = "none";
-            $('body').append(img);
-        });
-        return images.length;
     }
 }

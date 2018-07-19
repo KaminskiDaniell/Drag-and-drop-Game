@@ -168,7 +168,7 @@ class BasketGame extends Game {
             for (var entry_index in BasketGame.sources[source_index]) {
                 var entry = BasketGame.sources[source_index][entry_index];
                 if (entry.fileName) {
-                    images.push(entry.fileName);
+                    images.push(Game.folder + entry.fileName);
                 }
             }
         }

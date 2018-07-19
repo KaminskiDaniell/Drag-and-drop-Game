@@ -7,8 +7,11 @@ class Snackbar {
             header = Locale.get('game', header);
         }
 
-        if (type === 'success' || type === 'info') {
+        if (type === 'success') {
             $("#johnny").attr('src', Game.folder + '/johnny-welcome.png');
+        }
+        else if (type === 'info') {
+            $("#johnny").attr('src', Game.folder + '/johnny-welcome-info.png');
         }
         else {
             $("#johnny").attr('src', Game.folder + '/johnny-welcome-sad.png');
@@ -39,8 +42,8 @@ class Snackbar {
         });
     }
 
-    static addCallback(callback = function () {})
-    {
+    static addCallback(callback = function () {
+    }) {
         if (!Snackbar.callbacks) {
             Snackbar.callbacks = [];
         }
