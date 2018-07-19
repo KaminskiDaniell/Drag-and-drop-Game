@@ -10,25 +10,28 @@ class PairGameObject extends GameObject {
         this.matched = false;
     }
 
-    createImage(id, src){
-        return $("<div>", {id: src, class: "image draggable left yes-drop dropzone"}).append($("<img>", {src: src, alt: src}));
+    createImage(id, src) {
+        return $("<div>", {id: src, class: "image draggable left yes-drop dropzone"}).append($("<img>", {
+            src: src,
+            alt: src
+        }));
     }
 
-    createTitle(id, text){
+    createTitle(id, text) {
         return $("<div>", {id: text, class: "title draggable right yes-drop dropzone"}).append($("<div>"));
     }
 
-    attach(item){
-        if(item === 'image') {
+    attach(item) {
+        if (item === 'image') {
             this.getGame().getGameArea().append(this.image);
         }
-        if(item === 'title') {
+        if (item === 'title') {
             this.getGame().getGameArea().append(this.title);
         }
     }
 
     markAsMatched() {
-        if(++this.getGame().matched == this.getGame().gameObjects.length){
+        if (++this.getGame().matched == this.getGame().gameObjects.length) {
             clearInterval(this.getGame().timeInterval);
             Snackbar.show("success", '_success');
         }
@@ -40,7 +43,7 @@ class PairGameObject extends GameObject {
         this.image.removeClass('yes-drop');
     }
 
-    loadLocale(){
+    loadLocale() {
         super.loadLocale();
         this.title.children('div').text(Locale.get('title', this.name));
         this.image.children('div').text(Locale.get('title', this.name));

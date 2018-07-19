@@ -9,7 +9,7 @@ PairGame.sources = [
     },
     {
         'fileName': '2.jpg',
-        'title' : '_vertigo',
+        'title': '_vertigo',
     },
     {
         'fileName': '3.jpg',

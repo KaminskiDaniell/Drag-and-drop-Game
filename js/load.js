@@ -31,9 +31,9 @@ class Load {
 
     static addPercentage() {
         var percentageToShow = parseInt((Load.numberOfImagesLoaded / Load.numberOfImages) * 100);
-        if(percentageToShow > 0) {
+        if (percentageToShow > 0) {
             percentageToShow += '%';
-            if(Load.progressBar) {
+            if (Load.progressBar) {
                 Load.progressBar.children().css('width', percentageToShow);
             }
             else {

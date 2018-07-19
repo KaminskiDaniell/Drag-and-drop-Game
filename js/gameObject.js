@@ -1,13 +1,13 @@
 class GameObject {
-    constructor(game){
+    constructor(game) {
         this.game = game;
     }
 
-    getGame(){
+    getGame() {
         return this.game;
     }
 
-    loadLocale(){
+    loadLocale() {
 
     }
 }
