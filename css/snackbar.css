@@ -20,7 +20,7 @@
     -webkit-flex-wrap: wrap; /* Safari 6.1+ */
     display: flex;
     flex-wrap: wrap;
-    font: 16px 'Lato', Helvetica, Arial, Sans-Serif;
+    font: 16px 'Lato', Sans-Serif;
 }
 
 .modal {

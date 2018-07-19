@@ -31,7 +31,7 @@ html, body {
     margin: 10px 20px;
     text-align: center;
     color: white;
-    font: bold 13px 'Work Sans', Arial, Sans-Serif;
+    font: 13px 'Lato', Sans-Serif;
     max-width: 100px;
     position: absolute;
 }
@@ -214,14 +214,14 @@ html, body {
     z-index: 9999999999999999998; /* Sit on top */
     color: white;
     padding: 17px;
-    font: bold 30px Helvetica, Arial, Sans-Serif;
+    font: bold 30px 'Lato', Sans-Serif;
 }
 
 .scores {
     z-index: 9999999999999999998; /* Sit on top */
     color: white;
     padding: 17px;
-    font: bold 30px Helvetica, Arial, Sans-Serif;
+    font: bold 30px 'Lato', Sans-Serif;
 }
 
 #hangman {
@@ -232,7 +232,7 @@ html, body {
 #letters-area, #hangman {
     text-align: center;
     width: 100%;
-    font: bold 25px Helvetica, Arial, Sans-Serif;
+    font: bold 25px 'Lato', Sans-Serif;
 }
 
 #letters-area .word {
