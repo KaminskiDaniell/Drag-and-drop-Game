@@ -5,13 +5,7 @@ class Load {
         }
         Load.numberOfImages += number;
 
-        var percentageToShow = parseInt((Load.numberOfImagesLoaded / Load.numberOfImages) * 100) + '%';
-        if(Load.progressBar) {
-            Load.progressBar.children().css('width', percentageToShow);
-        }
-        else {
-            this.percentageToShow = percentageToShow;
-        }
+        Load.addPercentage();
 
         if (Load.isLoaded()) {
             Load.hide();
@@ -23,6 +17,9 @@ class Load {
             Load.numberOfImagesLoaded = 0;
         }
         Load.numberOfImagesLoaded++;
+
+        Load.addPercentage();
+
         if (Load.isLoaded()) {
             Load.hide();
         }
@@ -32,16 +29,32 @@ class Load {
         return Load.numberOfImages === Load.numberOfImagesLoaded;
     }
 
-    static addLoad() {
-        Load.load = GameManager.get().getGameArea().find('#load');
+    static addPercentage() {
+        var percentageToShow = parseInt((Load.numberOfImagesLoaded / Load.numberOfImages) * 100);
+        if(percentageToShow > 0) {
+            percentageToShow += '%';
+            if(Load.progressBar) {
+                Load.progressBar.children().css('width', percentageToShow);
+            }
+            else {
+                this.percentageToShow = percentageToShow;
+            }
+        }
+    }
+
+    static preloadLoad() {
+        Load.load = $('<div>', {id: 'load'});
 
         Load.progressBar = $('<div>', {id: 'load-progress'}).append($('<div>', {id: 'load-progress-bar'}));
-        if(this.percentageToShow) {
-            Load.progressBar.children().css('width', this.percentageToShow);
 
-        }
-        Load.load.append($('<div>', {class: "loading"}).append($('<p>', {text: Locale.get('game', '_loading')})).append(Load.progressBar));
+        Load.addPercentage();
+
+        Load.load.append($('<div>', {class: "loading"}).append($('<p>', {text: Locale.get('game', '_loading_game')})).append(Load.progressBar));
         Load.show();
+    }
+
+    static getLoad() {
+        return Load.load;
     }
 
     static hide() {

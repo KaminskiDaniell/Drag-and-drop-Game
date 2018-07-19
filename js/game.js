@@ -5,9 +5,8 @@ class Game {
         this.gameArea = $('#' + gameAreaId);
 
         var modal = $('<div>', {id: 'modal', class: "modal"});
-        var load = $('<div>', {id: 'load'});
         this.gameArea.append(modal);
-        this.gameArea.append(load);
+        this.gameArea.append(Load.getLoad());
     }
 
     getFolder() {

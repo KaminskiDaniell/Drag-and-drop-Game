@@ -12,7 +12,7 @@ class GameManager {
         }
 
         //Preload
-        Locale.setLanguage();
+            Locale.setLanguage();
         Load.preloadLoad();
         GameManager.loadImages(className);
 
