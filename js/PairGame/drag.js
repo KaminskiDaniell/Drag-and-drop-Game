@@ -6,7 +6,7 @@ interact('.draggable')
         // keep the element within the area of it's parent
         restrict: {
             restriction: "parent",
-            endOnly: true,
+            endOnly: false,
             elementRect: {top: 0, left: 0, bottom: 1, right: 1}
         },
         // enable autoScroll

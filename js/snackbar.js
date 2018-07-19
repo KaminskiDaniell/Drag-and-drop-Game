@@ -51,9 +51,9 @@ class Snackbar {
     }
 
     static show(type, header, message, localized, ...words) {
+        Snackbar.showMessage(type, header, message, localized, ...words);
         var modal = GameManager.get().getGameArea().find('#modal')[0];
         modal.style.display = 'block';
-        Snackbar.showMessage(type, header, message, localized, ...words);
     }
 
     static hide() {
