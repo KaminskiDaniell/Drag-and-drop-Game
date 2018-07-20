@@ -42,14 +42,12 @@ class PairGame extends Game {
             entry.attach('image');
             this.move(entry.image, i);
         }
-        ;
         shuffle(this.gameObjects);
         for (var i in this.gameObjects) {
             entry = this.gameObjects[i];
             entry.attach('title');
             this.move(entry.title, i);
         }
-        ;
     }
 
     move(item, i) {

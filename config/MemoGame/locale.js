@@ -1,0 +1,42 @@
+Locale.locales = {
+    'pl': {
+        'game': {
+            '_start': 'Połącz obrazki z definicjami!',
+            '_start_header': 'Start',
+            '_success' : 'Połączyłeś wszystkie obrazki do definicji!',
+            '_success_header' : 'Brawo!'
+        },
+        'title': {
+            '_citizen_kane': 'Obywatel Kane (1941)',
+            '_vertigo': 'Zawrót głowy (1958)',
+            '_la_regle_du_jeu': 'Reguły gry (1939)',
+            '_2001_a_space_odyssey': '2001: Odyseja kosmiczna (1968)',
+            '_tokyo_monogatari': 'Tokijska opowieść (1953)',
+            '_otto_e_mezzo': '8½ (1963)',
+            '_the_godfather': 'Ojciec Chrzestny (1972)',
+            '_sunrise_a_song_of_two_humans': 'Wschód słońca (1927)',
+            '_the_searchers': 'Poszukiwacze (1956)',
+            '_shichinin_no_samurai': 'Siedmiu samurajów (1954)'
+        }
+    },
+    'en' : {
+        'game': {
+            '_start': 'Match the pictures with definitions!',
+            '_start_header': 'Start',
+            '_success' : 'You matched all pictures to definitions!',
+            '_success_header' : 'Congratulations!'
+        },
+        'title': {
+            '_citizen_kane': 'Citizen Kane (1941)',
+            '_vertigo': 'Vertigo (1958)',
+            '_la_regle_du_jeu': 'The Rules of the Game (1939)',
+            '_2001_a_space_odyssey': '2001: A Space Odyssey (1968)',
+            '_tokyo_monogatari': 'Tokyo story (1953)',
+            '_otto_e_mezzo': '8½ (1963)',
+            '_the_godfather': 'The Godfather (1972)',
+            '_sunrise_a_song_of_two_humans': 'Sunrise: A Song of two Humans (1927)',
+            '_the_searchers': 'The Searchers (1956)',
+            '_shichinin_no_samurai': 'Seven samurai (1954)'
+        }
+    }
+}
