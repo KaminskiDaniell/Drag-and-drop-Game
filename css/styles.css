@@ -426,6 +426,7 @@ html, body {
 }
 
 #game-area .memo-object .memo-object-back {
+    background-color: #FF9C04;
     height: 100%;
     width: 100%;
     backface-visibility: hidden;
@@ -462,4 +463,6 @@ html, body {
 }
 
 #game-area .memo-object p {
+    padding: 3px;
+    background-color: #fff;
 }

@@ -11,6 +11,12 @@ case "$1" in
     "quiz") 
         name="quiz"
         folder="QuizGame" ;;
+    "sort") 
+        name="sort"
+        folder="SortGame" ;;
+    "memo") 
+        name="memo"
+        folder="MemoGame" ;;
     *) 
         echo "Specify type of a game"
         exit ;;
