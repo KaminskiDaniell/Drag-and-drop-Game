@@ -399,6 +399,74 @@ html, body {
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7))
 }
 
+#game-area #memo {
+    margin: 0px auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+}
+
+#game-area .memo-object {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    border-radius: 10px;
+    background-color: #fff;
+    display: inline-block;
+    vertical-align: top;
+    transition: 0.6s;
+    transform-style: preserve-3d;
+}
+
+#game-area .memo-object  .memo-object-front {
+    top: 50%;
+    position: relative;
+    backface-visibility: hidden;
+    transform: rotateY(0deg);
+}
+
+#game-area .memo-object .memo-object-back {
+    background-color: #FF9C04;
+    height: 100%;
+    width: 100%;
+    backface-visibility: hidden;
+    position: relative;
+    transform: rotateY(180deg);
+}
+
+#game-area .memo-object .memo-object-page {
+    width: 100%;
+    position: absolute;
+    top: 50%;
+    margin-top: -25%;
+}
+
+#game-area .memo-object .memo-object-front img {
+    max-height: 70px;
+    max-width: 70px;
+    -webkit-filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7))
+}
+
+#game-area .memo-object img, #game-area .memo-object p {
+    max-height: 100px;
+    max-width: 100px;
+    border-radius: 10px;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    font: 13px 'Lato', Sans-serif;
+    color: #484848;
+    text-align: center;
+}
+
+#game-area .memo-object p {
+    padding: 3px;
+    background-color: #fff;
+}
+
 #sort-area .letter {
     width: 150px;
     height: 40px;

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"/>
+    <title>Test html game</title>
+
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/snackbar.css">
+    <link rel="stylesheet" href="css/dropdown.css">
+    <link rel="stylesheet" href="css/loading.css">
+
+    <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/locale.js"></script>
+    <script src="js/load.js"></script>
+    <script src="js/gameManager.js"></script>
+    <script src="js/gameObject.js"></script>
+    <script src="js/game.js"></script>
+    <script src="js/snackbar.js"></script>
+    <script src="js/dropdown.js"></script>
+    <script src="js/MemoGame/memoGame.js"></script>
+    <script src="js/MemoGame/memoGameObject.js"></script>
+    <script src="config/config.js"></script>
+    <script src="config/MemoGame/config.js"></script>
+    <script src="config/MemoGame/locale.js"></script>
+</head>
+<body>
+<div id="game-container">
+    <div id="game-area">
+    </div>
+</div>
+<script>
+    $(function () {
+        GameManager.set(MemoGame, 'game-area');
+    });
+</script>
+</body>
+</html>
