@@ -398,3 +398,57 @@ html, body {
     -webkit-filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7));
     filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.7))
 }
+
+#sort-area .letter {
+    width: 150px;
+    height: 40px;
+    display: inline-block;
+}
+
+#sort-area {
+    position: absolute;
+    top: 50%;
+    height: 50%;
+    text-align: center;
+    width: 100%;
+    font: bold 25px 'Lato', Sans-Serif;
+}
+
+#definition-area {
+    position: absolute;
+    height: 40%;
+    top: 10%;
+    text-align: center;
+    width: 100%;
+    font: bold 25px 'Lato', Sans-Serif;
+}
+
+#sort-area .word {
+    display: inline-block;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+#sort-area .letter {
+    justify-content: center;
+    align-items: center;
+    vertical-align: top;
+    border: 3px solid white;
+    width: 40px;
+    height: 40px;
+    margin: 7px;
+    display: inline-block;
+    position: relative;
+}
+
+#sort-area .letter div {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    margin-top: -11px;
+}
+
+#sort-area .space {
+    border: 3px solid transparent;
+}
