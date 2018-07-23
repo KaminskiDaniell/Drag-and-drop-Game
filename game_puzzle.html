@@ -12,18 +12,19 @@
     <link rel="icon" type="image/png" href="img/favicon.png">
     <script src="js/load.js"></script>
     <script src="js/jquery-3.3.1.min.js"></script>
+    <script src="js/interact.min.js"></script>
     <script src="js/snackbar.js"></script>
     <script src="js/locale.js"></script>
     <script src="js/gameManager.js"></script>
     <script src="js/gameObject.js"></script>
     <script src="js/game.js"></script>
     <script src="js/dropdown.js"></script>
-    <script src="js/sortable.min.js"></script>
-    <script src="js/SortGame/letterGameObject.js"></script>
-    <script src="js/SortGame/sortGame.js"></script>
+    <script src="js/PuzzleGame/puzzleGameObject.js"></script>
+    <script src="js/PuzzleGame/puzzleGame.js"></script>
+    <script src="js/PuzzleGame/drag.js"></script>
     <script src="config/config.js"></script>
-    <script src="config/SortGame/locale.js"></script>
-    <script src="config/SortGame/config.js"></script>
+    <script src="config/PuzzleGame/locale.js"></script>
+    <script src="config/PuzzleGame/config.js"></script>
 </head>
 <body>
 <div id="game-container">
@@ -33,7 +34,7 @@
 </div>
 <script>
     $(function () {
-        GameManager.set(SortGame, 'game-area', true);
+        GameManager.set(PuzzleGame, 'game-area', true);
     });
 </script>
 </body>

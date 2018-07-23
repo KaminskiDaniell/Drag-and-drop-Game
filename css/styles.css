@@ -10,6 +10,12 @@ html, body {
     height: 100%;
     padding: 0;
     margin: 0;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
 }
 
 .header {
@@ -270,11 +276,11 @@ html, body {
     filter: drop-shadow(5px 5px 10px rgba(0, 0, 0, 0.7))
 }
 
-::selection {
+*::selection {
     background: transparent;
 }
 
-::-moz-selection {
+*::-moz-selection {
     background: transparent;
 }
 
@@ -418,7 +424,7 @@ html, body {
     transform-style: preserve-3d;
 }
 
-#game-area .memo-object  .memo-object-front {
+#game-area .memo-object .memo-object-front {
     top: 50%;
     position: relative;
     backface-visibility: hidden;
@@ -519,4 +525,65 @@ html, body {
 
 #sort-area .space {
     border: 3px solid transparent;
+}
+
+#puzzle {
+    position: relative;
+    top: 10%;
+    left: 10%;
+    max-width: 50%;
+    display: inline-block;
+}
+
+#puzzle table {
+    border-collapse: collapse;
+}
+
+#puzzle table, th, td {
+    font: bold 25px 'Lato', Sans-Serif;
+    text-transform: uppercase;
+    text-align: center;
+    padding: 3px;
+    height: 50px;
+    min-width: 50px;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    border: 3px solid white;
+}
+
+#puzzle .dragged {
+    background: #e5e5e5;
+}
+
+#puzzle .correct {
+    background: forestgreen;
+}
+
+#hints {
+    position: relative;
+    display: inline-block;
+    float: left;
+    top: 10%;
+    left: 10%;
+    width: 30%;
+    height: 50%;
+}
+
+#hints table {
+    border-collapse: collapse;
+    color: firebrick;
+}
+
+#hints table tr td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#hints .hintsTable {
+    float: right;
+}
+
+.found {
+    color: forestgreen;
 }

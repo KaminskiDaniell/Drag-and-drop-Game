@@ -10,6 +10,7 @@ class SortGame extends Game {
         this.setSortable();
     }
 
+
     static loadImages() {
         return 0;
     }
@@ -133,8 +134,9 @@ class SortGame extends Game {
             Sortable.create(obj, {
                 animation: 100,
                 draggable: ".letter",
-                onUpdate: function () {
+                onUpdate: function (evt) {
                     GameManager.get().checkWin();
+                    evt.preventDefault();
                 }
             });
         });
