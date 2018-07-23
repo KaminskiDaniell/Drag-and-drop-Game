@@ -4,7 +4,8 @@ Locale.locales = {
             '_start': 'Połącz obrazki z definicjami!',
             '_start_header': 'Start',
             '_success' : 'Połączyłeś wszystkie obrazki do definicji!',
-            '_success_header' : 'Brawo!'
+            '_success_header' : 'Brawo!',
+            '_loading_game': 'Ładowanie gry...'
         },
         'title': {
             '_citizen_kane': 'Obywatel Kane (1941)',
@@ -24,7 +25,8 @@ Locale.locales = {
             '_start': 'Match the pictures with definitions!',
             '_start_header': 'Start',
             '_success' : 'You matched all pictures to definitions!',
-            '_success_header' : 'Congratulations!'
+            '_success_header' : 'Congratulations!',
+            '_loading_game': 'Loading game...'
         },
         'title': {
             '_citizen_kane': 'Citizen Kane (1941)',
