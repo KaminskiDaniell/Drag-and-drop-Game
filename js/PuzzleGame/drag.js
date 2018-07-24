@@ -24,7 +24,7 @@ interact('.tile')
             let x = e.clientX;
             let y = e.clientY;
             let element = document.elementFromPoint(x, y);
-            if (PuzzleGame.singleDrag.indexOf(element) < 0)
+            if (element && PuzzleGame.singleDrag.indexOf(element) < 0)
                 if (element.classList.contains("tile")) {
                     element.classList.add('dragged');
                     PuzzleGame.singleDrag.push(element);
@@ -36,12 +36,13 @@ interact('.tile')
             let x = e.clientX;
             let y = e.clientY;
             let element = document.elementFromPoint(x, y);
-            if (PuzzleGame.singleDrag.indexOf(element) < 0)
+            if (element && PuzzleGame.singleDrag.indexOf(element) < 0)
                 if (element.classList.contains("tile")) {
                     element.classList.add('dragged');
                     PuzzleGame.singleDrag.push(element);
                 }
-            GameManager.get().checkSelectedWord();
+            if (GameManager.get().checkSelectedWord())
+                resetColors()
         }
     });
 

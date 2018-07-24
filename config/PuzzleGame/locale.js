@@ -14,6 +14,24 @@ Locale.locales = {
             '_start_header': "Witaj!",
             '_loading_game': 'Ładowanie gry...'
         },
+        'words': {
+            '_animal1': 'pies',
+            '_animal2': 'kot',
+            '_animal3': 'świnia',
+            '_animal4': 'osioł',
+            '_animal5': 'słoń',
+            '_animal6': 'pszczoła',
+            '_animal7': 'niedzwiedź',
+            '_animal8': 'ryba',
+            '_animal9': 'mysz',
+            '_animal10': 'szczur',
+            '_animal11': 'małpa',
+            '_food1': 'banan',
+            '_food2': 'jabłko',
+            '_food3': 'kebab',
+            '_food4': 'pizza',
+            '_food5': 'pierogi',
+        }
     },
     'en': {
         'game': {
@@ -30,5 +48,23 @@ Locale.locales = {
             '_start_header': "Hi!",
             '_loading_game': 'Loading game...'
         },
+        "words": {
+            '_animal1': 'dog',
+            '_animal2': 'cat',
+            '_animal3': 'pig',
+            '_animal4': 'donkey',
+            '_animal5': 'elephant',
+            '_animal6': 'bee',
+            '_animal7': 'bear',
+            '_animal8': 'fish',
+            '_animal9': 'mice',
+            '_animal10': 'rat',
+            '_animal11': 'monkey',
+            '_food1': 'banana',
+            '_food2': 'apple',
+            '_food3': 'kebab',
+            '_food4': 'pizza',
+            '_food5': 'pierogies',
+        }
     }
 };

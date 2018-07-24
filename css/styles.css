@@ -544,7 +544,7 @@ html, body {
     border-collapse: collapse;
 }
 
-#puzzle table, th, td {
+#puzzle table, #puzzle th, #puzzle td, #hints th, #hints td {
     font: bold 25px 'Lato', Sans-Serif;
     text-transform: uppercase;
     text-align: center;
@@ -557,12 +557,12 @@ html, body {
     border: 3px solid white;
 }
 
-#puzzle .dragged {
-    background: #e5e5e5;
-}
-
 #puzzle .correct {
     background: forestgreen;
+}
+
+#puzzle .dragged {
+    background: #e5e5e5;
 }
 
 #hints {
