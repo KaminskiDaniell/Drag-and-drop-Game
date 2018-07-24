@@ -13,6 +13,10 @@ class LetterGameObject extends GameObject {
         word.object.append(this.object);
     }
 
+    check() {
+        return this.normalize(this.object.text()) === this.normalize(this.letter);
+    }
+
     click() {
         this.word.setFocus(this.letterNumber);
     }

@@ -96,7 +96,7 @@ class WordGameObject extends GameObject {
 
     insertLetter(letter) {
         if(this.gameObjects[this.focus].insertLetter(letter)) {
-            checkIfCorrect();
+            this.check();
             if(this.focus === this.gameObjects.length - 1) {
                 this.setFocus(0);
                 return 'next';

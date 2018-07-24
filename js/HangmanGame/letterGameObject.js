@@ -18,10 +18,6 @@ class LetterGameObject extends GameObject {
         }
     }
 
-    check() {
-        retutn checkLetter(this.object.text());
-    }
-
     checkLetter(letter) {
         if (letter.length > 1) {
             return true;
