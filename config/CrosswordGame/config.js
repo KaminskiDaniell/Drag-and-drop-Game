@@ -7,7 +7,7 @@ CrosswordGame.crosswords = {
             },
             {
                 'word': 'Zawrót głowy',
-                'solutionLetter': 2
+                'solutionLetter': 5
             },
         ]
     },
@@ -19,7 +19,7 @@ CrosswordGame.crosswords = {
             },
             {
                 'word': 'Vertigo',
-                'solutionLetter': 2
+                'solutionLetter': 5
             },
         ]
         

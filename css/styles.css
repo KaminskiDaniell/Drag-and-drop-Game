@@ -233,6 +233,11 @@ html, body {
     text-align: center;
     width: 100%;
     font: bold 25px 'Lato', Sans-Serif;
+} 
+
+#crossword {
+    margin: 0 auto;
+    font: bold 25px 'Lato', Sans-Serif;
 }
 
 #letters-area .word {
@@ -242,12 +247,40 @@ html, body {
 }
 
 #crossword .word {
+    color: #fff;
     display: block;
     margin-left: 20px;
     margin-right: 20px;
 }
 
-.word .letter, .word .empty-letter-space {
+#crossword .word.active {
+    border-color: #e5e5e5;
+}
+
+#crossword .letter.active {
+    border-color: #e5e5e5;
+    color: #e5e5e5;
+}
+
+#crossword .letter, #crossword .empty-letter-space {
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    vertical-align: top;
+    border: 3px solid white;
+    margin: 2px;
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    position: relative;
+} 
+
+#crossword .empty-letter-space {
+    border: 3px solid transparent;
+
+}
+
+#letters-area .letter, #letters-area .empty-letter-space {
     justify-content: center;
     align-items: center;
     vertical-align: top;
@@ -259,7 +292,7 @@ html, body {
     position: relative;
 }
 
-.word .empty-letter-space {
+#letters-area .empty-letter-space {
     margin: 0px;
     border: 0px solid transparent;
 }
