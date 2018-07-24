@@ -277,7 +277,10 @@ html, body {
 
 #crossword .empty-letter-space {
     border: 3px solid transparent;
+}
 
+#crossword .solution-letter {
+    border-color: #858585;
 }
 
 #letters-area .letter, #letters-area .empty-letter-space {

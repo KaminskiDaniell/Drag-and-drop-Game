@@ -13,6 +13,7 @@ class HangmanGame extends Game {
         this.text = this.randomPhrase();
         this.mistakesAllowed = HangmanGame.numberOfAcceptableMistakes;
         this.setScores(this.correct);
+        this.setTimer();
         this.checked = 0;
         this.ended = false;
         this.usedLetters = {};

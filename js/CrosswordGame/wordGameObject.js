@@ -1,10 +1,10 @@
 class WordGameObject extends GameObject {
-    constructor(word, i, lowestSolutionLetter, game) {
+    constructor(word, i, highestSolutionLetter, game) {
         super(game);
         this.wordNumber = i;
         this.word = word.word;
         this.solutionLetter = word.solutionLetter;
-        this.lowestSolutionLetter = lowestSolutionLetter;
+        this.highestSolutionLetter = highestSolutionLetter;
 
         this.createWord(this.word, this.wordNumber);
     }
@@ -17,7 +17,7 @@ class WordGameObject extends GameObject {
         });
         this.gameObjects = [];
 
-        for(let i = 0; i < this.solutionLetter - this.lowestSolutionLetter; i++) {
+        for(let i = 0; i < this.highestSolutionLetter - this.solutionLetter; i++) {
             let emptyHeader = $('<div>', {class: 'empty-letter-space'});
             this.object.append(emptyHeader);
         }
@@ -25,11 +25,12 @@ class WordGameObject extends GameObject {
         var letterCount = 0;
         for(let i in letters) {
             let letter = letters[i];
-            if(letter == ' ') {
-                        
-            }
-            else {
-                this.gameObjects.push(new LetterGameObject(letter, letterCount, this, this.getGame()));
+            if(letter != ' ') {
+                let solutionLetter = false;
+                if(this.solutionLetter == i) {
+                    solutionLetter = true;
+                }
+                this.gameObjects.push(new LetterGameObject(letter, letterCount, solutionLetter, this, this.getGame()));
                 letterCount++;
             }
         }
@@ -46,14 +47,30 @@ class WordGameObject extends GameObject {
         }
         else {
             this.gameObjects[this.focus].unsetActive();
-            if(letterNumber > this.gameObjects.length - 1) {
-                this.focus = 0;
-            }
-            else {
-                this.focus = letterNumber;
-            }
+        }
+
+        if(letterNumber > this.gameObjects.length - 1) {
+            this.focus = this.gameObjects.length - 1;
+        }
+        else if (letterNumber < 0) {
+            this.focus = 0;
+        }
+        else {
+            this.focus = letterNumber;
         }
         this.gameObjects[this.focus].setActive();
+    }
+
+    removeLetter() {
+        this.gameObjects[this.focus].removeLetter();
+    }
+
+    beginLetter() {
+        this.setFocus(0);
+    }
+
+    endLetter() {
+        this.setFocus(this.gameObjects.length - 1);
     }
 
     nextLetter() {
@@ -74,16 +91,26 @@ class WordGameObject extends GameObject {
     }
 
     click() {
-        this.getGame().setFocus(this.wordNumber);
+        this.getGame().setFocus(this.wordNumber, false);
     }
 
     insertLetter(letter) {
         if(this.gameObjects[this.focus].insertLetter(letter)) {
+            checkIfCorrect();
             if(this.focus === this.gameObjects.length - 1) {
                 this.setFocus(0);
                 return 'next';
             }
             this.setFocus(this.focus + 1);
         }
+    }
+
+    check() {
+        for(var i in this.gameObjects) {
+            if(!this.gameObjects[i].check()) {
+                return false;
+            }
+        }
+        return true;
     }
 }

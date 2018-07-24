@@ -1,11 +1,12 @@
 class LetterGameObject extends GameObject {
-    constructor(letter, i, word, game) {
+    constructor(letter, i, solutionLetter, word, game) {
         super(game);
         this.letter = letter;
         this.filled = false;
         this.letterNumber = i;
+        this.solutionLetter = solutionLetter;
         this.word = word;
-        this.object = $('<div>', {class: 'letter'});
+        this.object = $('<div>', {class: 'letter' + (solutionLetter ? ' solution-letter' : '')});
         this.object.on('click', () => {
             this.click();
         });
@@ -31,6 +32,10 @@ class LetterGameObject extends GameObject {
             letter = 'l';
         }
         return letter.toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, "");
+    }
+
+    removeLetter() {
+        this.object.text('');
     }
 
     setActive() {
