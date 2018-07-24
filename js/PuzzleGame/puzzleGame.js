@@ -1,6 +1,6 @@
 class PuzzleGame extends Game {
-    constructor(gameAreaId) {
-        super(gameAreaId);
+    constructor(gameAreaId, version, className) {
+        super(gameAreaId, version, className);
         this.toGuess = [];
         this.matrix = [];
         PuzzleGame.singleDrag = [];
@@ -37,7 +37,7 @@ class PuzzleGame extends Game {
         this.sources = PuzzleGame.sources.slice();
         while (this.sources.length > 0) {
             let index = Math.floor(Math.random() * (this.sources.length));
-            let word = this.sources[index];
+            let word = Locale.get('words', this.sources[index]);
             let reversed = Math.random() < 0.6;
             if (reversed)
                 word = word.split("").reverse().join("");
@@ -52,18 +52,20 @@ class PuzzleGame extends Game {
                 let vertical = Math.random() < 0.5;
                 let iterator = 0;
                 let canPut = true;
-                if (vertical) {
-                    randx = Math.floor(Math.random() * (PuzzleGame.width - word.length));
-                    randy = Math.floor(Math.random() * PuzzleGame.height);
-                    for (let x = randx; x < randx + word.length; ++x) {
-                        if (this.matrix[x][randy] && this.matrix[x][randy].letter !== word[iterator]) {
-                            canPut = false;
-                        } else {
-                            if (this.matrix[x][randy] && this.matrix[x][randy].vertical === vertical)
+                if (!vertical) {
+                    randx = Math.floor(Math.random() * (PuzzleGame.height - word.length > 0 ? PuzzleGame.height - word.length : 1));
+                    randy = Math.floor(Math.random() * PuzzleGame.width);
+                    if (randx + word.length < PuzzleGame.height)
+                        for (let x = randx; x < randx + word.length; ++x) {
+                            if (this.matrix[x][randy] && this.matrix[x][randy].letter !== word[iterator]) {
                                 canPut = false;
+                            } else {
+                                if (this.matrix[x][randy] && this.matrix[x][randy].vertical === vertical)
+                                    canPut = false;
+                            }
+                            iterator++;
                         }
-                        iterator++;
-                    }
+                    else canPut = false;
                     if (canPut) {
                         wordPut = true;
                         iterator = 0;
@@ -72,24 +74,29 @@ class PuzzleGame extends Game {
                             this.matrix[x][randy] = new PuzzleGameObject(this, word[iterator], vertical);
                             iterator++;
                         }
-                        this.toGuess.push(idString)
+                        this.toGuess.push(idString);
+                        console.log("vertical", idString);
+                        console.log("randx", randx);
+                        console.log("randy", randy);
                     }
                 } else {
-                    randx = Math.floor(Math.random() * PuzzleGame.width);
-                    randy = Math.floor(Math.random() * (PuzzleGame.height - word.length));
-                    for (let y = randy; y < randy + word.length; ++y) {
-                        if (this.matrix[randx][y] && this.matrix[randx][y].letter !== word[iterator]) {
-                            canPut = false;
-                        } else {
-                            if (this.matrix[randx][y] && this.matrix[randx][y].vertical === vertical)
+                    randy = Math.floor(Math.random() * (PuzzleGame.width - word.length > 0 ? PuzzleGame.width - word.length : 1));
+                    randx = Math.floor(Math.random() * PuzzleGame.height);
+                    if (randy + word.length < PuzzleGame.height)
+                        for (let y = randy; y < randy + word.length && y < PuzzleGame.height; ++y) {
+                            if (this.matrix[randx][y] && this.matrix[randx][y].letter !== word[iterator]) {
                                 canPut = false;
+                            } else {
+                                if (this.matrix[randx][y] && this.matrix[randx][y].vertical === vertical)
+                                    canPut = false;
+                            }
+                            iterator++;
                         }
-                        iterator++;
-                    }
+                    else canPut = false;
                     if (canPut) {
                         wordPut = true;
                         iterator = 0;
-                        for (let y = randy; y < randy + word.length; ++y) {
+                        for (let y = randy; y < randy + word.length && y < PuzzleGame.height; ++y) {
                             idString += randx.toString() + y;
                             this.matrix[randx][y] = new PuzzleGameObject(this, word[iterator], vertical);
                             iterator++;
@@ -97,10 +104,12 @@ class PuzzleGame extends Game {
                         this.toGuess.push(idString)
                     }
                 }
-                console.log(missesAllowed);
                 missesAllowed--;
-                if (missesAllowed < 0)
+                if (missesAllowed < 0) {
+                    PuzzleGame.width++;
+                    PuzzleGame.height++;
                     return false;
+                }
             }
         }
         return true;
@@ -130,10 +139,13 @@ class PuzzleGame extends Game {
                 this.toGuess.splice(indexReversed, 1);
             }
             document.getElementById(PuzzleGame.sources.indexOf(word) >= 0 ? word : reversedWord).classList.add('found');
+            if (this.toGuess.length === 0) {
+                Snackbar.show("success", '_success');
+            }
+            console.log(string);
+            return true;
         }
-        if (this.toGuess.length === 0) {
-            Snackbar.show("success", '_success');
-        }
+        return false;
     }
 
     createGameFields() {
@@ -150,7 +162,7 @@ class PuzzleGame extends Game {
             var row = document.createElement('tr');
             var cell = document.createElement('td');
             cell.id = PuzzleGame.sources[i];
-            cell.textContent = PuzzleGame.sources[i];
+            cell.textContent = Locale.get('words', PuzzleGame.sources[i]);
             row.appendChild(cell);
             table.appendChild(row);
         }

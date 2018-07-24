@@ -1,8 +1,8 @@
 class GameManager {
-    static set(className, gameAreaId, withoutDropdown = false, withoutSnackbar = false, preload = true) {
+    static set(className, gameAreaId, version, withoutDropdown = false, withoutSnackbar = false, preload = true) {
         var setUp = function () {
             $("#" + gameAreaId).empty();
-            GameManager.game = new className(gameAreaId);
+            GameManager.game = new className(gameAreaId, version, className);
             if (!withoutDropdown)
                 Dropdown.setDropdown();
             if (!withoutSnackbar) {

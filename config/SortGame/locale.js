@@ -17,7 +17,9 @@ Locale.locales = {
             '_the_godfather': 'Ojciec Chrzestny',
             '_sunrise_a_song_of_two_humans': 'Wschód słońca',
             '_the_searchers': 'Poszukiwacze',
-            '_shichinin_no_samurai': 'Siedmiu samurajów'
+            '_shichinin_no_samurai': 'Siedmiu samurajów',
+            '_animal1': 'Pies',
+            '_animal2': 'Kot',
         },
         'definition': {
             '_citizen_kane': 'Film Obywatel Kane',
@@ -29,7 +31,9 @@ Locale.locales = {
             '_the_godfather': 'Film Ojciec Chrzestny',
             '_sunrise_a_song_of_two_humans': 'Film Wschód słońca',
             '_the_searchers': 'Film Poszukiwacze',
-            '_shichinin_no_samurai': 'Film Siedmiu samurajów'
+            '_shichinin_no_samurai': 'Film Siedmiu samurajów',
+            '_animal1': 'Ma 4 łapy, szczeka',
+            '_animal2': 'Ma 4 łapy, miałczy',
         }
     },
     'en': {
@@ -50,7 +54,9 @@ Locale.locales = {
             '_the_godfather': 'The Godfather',
             '_sunrise_a_song_of_two_humans': 'Sunrise: A Song of two Humans',
             '_the_searchers': 'The Searchers',
-            '_shichinin_no_samurai': 'Seven samurai'
+            '_shichinin_no_samurai': 'Seven samurai',
+            '_animal1': 'Dog',
+            '_animal2': 'Cat'
         },
         'definition': {
             '_citizen_kane': 'Bla bla Citizen Kane',
@@ -62,7 +68,9 @@ Locale.locales = {
             '_the_godfather': 'Bla bla The Godfather',
             '_sunrise_a_song_of_two_humans': 'Bla bla Sunrise: A Song of two Humans',
             '_the_searchers': 'Bla bla The Searchers',
-            '_shichinin_no_samurai': 'Bla bla Seven samurai'
+            '_shichinin_no_samurai': 'Bla bla Seven samurai',
+            '_animal1': 'Has 4 paws, wof wof bark bark',
+            '_animal2': 'Has 4 paws, purrrr',
         }
     }
 };

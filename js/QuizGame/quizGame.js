@@ -1,6 +1,6 @@
 class QuizGame extends Game {
-    constructor(gameAreaId) {
-        super(gameAreaId);
+    constructor(gameAreaId, version, className) {
+        super(gameAreaId, version, className);
         Snackbar.removeCallbacks();
 
         // static vars to control game

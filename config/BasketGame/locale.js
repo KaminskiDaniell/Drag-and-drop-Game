@@ -19,11 +19,18 @@ Locale.locales = {
             '_the_godfather': 'Ojciec Chrzestny (1972)',
             '_sunrise_a_song_of_two_humans': 'Wschód słońca (1927)',
             '_the_searchers': 'Poszukiwacze (1956)',
-            '_shichinin_no_samurai': 'Siedmiu samurajów (1954)'
+            '_shichinin_no_samurai': 'Siedmiu samurajów (1954)',
+            '_put': 'Wrzuc',
+            '_put1': 'Wrzuc tez',
+            '_dont': "Nie",
+            '_dont1': "Tez nie",
+            '_dont2': "NIE!"
         },
         'id': {
             '_worth': "Warto obejrzeć",
-            '_not_worth': "Słabe filmy"
+            '_not_worth': "Słabe filmy",
+            '_yes': "Wrzuc co trzeba",
+            '_no': 'Wrzuc co nie trzeba'
         }
     },
     'en': {
@@ -46,11 +53,18 @@ Locale.locales = {
             '_the_godfather': 'The Godfather (1972)',
             '_sunrise_a_song_of_two_humans': 'Sunrise: A Song of two Humans (1927)',
             '_the_searchers': 'The Searchers (1956)',
-            '_shichinin_no_samurai': 'Seven samurai (1954)'
+            '_shichinin_no_samurai': 'Seven samurai (1954)',
+            '_put': 'Put',
+            '_put1': 'Put too',
+            '_dont': "Dont",
+            '_dont1': "Dont too",
+            '_dont2': "DONT!"
         },
         'id': {
             '_worth': "Worth seeing",
-            '_not_worth': "Do not watch!"
+            '_not_worth': "Do not watch!",
+            '_yes': "Put",
+            '_no': 'Do not put'
         }
     }
 };
