@@ -1,4 +1,5 @@
-case "$1" in 
+#!/usr/bin/env bash
+case "$1" in
     "hangman") 
         name="hangman"
         folder="HangmanGame" ;;
@@ -17,7 +18,19 @@ case "$1" in
     "memo") 
         name="memo"
         folder="MemoGame" ;;
-    *) 
+    "puzzle")
+        name="puzzle"
+        folder="PuzzleGame" ;;
+    "crossword")
+        name="crossword"
+        folder="CrosswordGame" ;;
+    "all")
+        for i in hangman pair basket quiz sort memo puzzle crossword
+        do
+            bash ./deploy.sh $i;
+        done
+        exit ;;
+    *)
         echo "Specify type of a game"
         exit ;;
 esac

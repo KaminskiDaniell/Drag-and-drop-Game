@@ -1,6 +1,6 @@
 class BasketGame extends Game {
-    constructor(gameAreaId, version, className) {
-        super(gameAreaId, version, className);
+    constructor(gameAreaId, version) {
+        super(gameAreaId, version);
 
         this.basketHeight = BasketGame.basketHeight; //percentage
         this.buttonText = Locale.get('game', '_button'); //text displayed on button
