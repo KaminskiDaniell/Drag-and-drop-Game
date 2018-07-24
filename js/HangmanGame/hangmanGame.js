@@ -1,7 +1,11 @@
 class HangmanGame extends Game {
     constructor(gameAreaId) {
         super(gameAreaId);
-
+        this.timerSet = false;
+        Snackbar.addCallback(function () {
+            if (!GameManager.get().timerSet)
+                GameManager.get().setTimer();
+        });
         this.reloadGame();
     }
 
@@ -13,7 +17,6 @@ class HangmanGame extends Game {
         this.text = this.randomPhrase();
         this.mistakesAllowed = HangmanGame.numberOfAcceptableMistakes;
         this.setScores(this.correct);
-        this.setTimer();
         this.checked = 0;
         this.ended = false;
         this.usedLetters = {};
@@ -100,7 +103,6 @@ class HangmanGame extends Game {
                 GameManager.get().recordMistake();
             }
             if (this.checked === this.letterObjects.length) {
-                clearInterval(this.timeInterval);
                 if (!this.ended) {
                     if (!this.callbackAdded) {
                         Snackbar.addCallback(function () {
@@ -118,6 +120,7 @@ class HangmanGame extends Game {
     }
 
     setTimer() {
+        this.timerSet = true;
         if (!this.timeInterval) {
             var timer = $('<div>', {id: 'timer', class: 'timer left'}).append('0:00');
             this.getGameArea().prepend(timer);
@@ -164,6 +167,8 @@ class HangmanGame extends Game {
                 }
                 Snackbar.show("error", '_fail_header', '_fail', false, this.textLocalized);
                 this.scores.text(0);
+                clearInterval(this.timeInterval);
+                GameManager.get().timerSet = false;
                 this.ended = true;
                 this.correct = false;
             }
