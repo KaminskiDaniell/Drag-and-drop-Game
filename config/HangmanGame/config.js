@@ -11,4 +11,4 @@ HangmanGame.sources = [
     '_sunrise_a_song_of_two_humans',
     '_the_searchers',
     '_shichinin_no_samurai'
-]
+];

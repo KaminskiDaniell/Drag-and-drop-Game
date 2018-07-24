@@ -75,9 +75,6 @@ class PuzzleGame extends Game {
                             iterator++;
                         }
                         this.toGuess.push(idString);
-                        console.log("vertical", idString);
-                        console.log("randx", randx);
-                        console.log("randy", randy);
                     }
                 } else {
                     randy = Math.floor(Math.random() * (PuzzleGame.width - word.length > 0 ? PuzzleGame.width - word.length : 1));
@@ -132,17 +129,18 @@ class PuzzleGame extends Game {
             PuzzleGame.singleDrag.forEach(function (entry) {
                 entry.classList.add("correct");
             });
+            let div = document.getElementById(word);
+            if (div) div.classList.add('found');
+            else document.getElementById(reversedWord).classList.add('found');
             if (index >= 0) {
                 this.toGuess.splice(index, 1);
             }
             else if (indexReversed >= 0) {
                 this.toGuess.splice(indexReversed, 1);
             }
-            document.getElementById(PuzzleGame.sources.indexOf(word) >= 0 ? word : reversedWord).classList.add('found');
             if (this.toGuess.length === 0) {
                 Snackbar.show("success", '_success');
             }
-            console.log(string);
             return true;
         }
         return false;
@@ -161,7 +159,7 @@ class PuzzleGame extends Game {
         for (var i = 0; i < PuzzleGame.sources.length; i++) {
             var row = document.createElement('tr');
             var cell = document.createElement('td');
-            cell.id = PuzzleGame.sources[i];
+            cell.id = Locale.get('words', PuzzleGame.sources[i]);
             cell.textContent = Locale.get('words', PuzzleGame.sources[i]);
             row.appendChild(cell);
             table.appendChild(row);
