@@ -24,6 +24,12 @@ case "$1" in
     "crossword")
         name="crossword"
         folder="CrosswordGame" ;;
+    "all")
+        for i in hangman pair basket quiz sort memo puzzle crossword
+        do
+            bash ./deploy.sh $i;
+        done
+        exit ;;
     *)
         echo "Specify type of a game"
         exit ;;
