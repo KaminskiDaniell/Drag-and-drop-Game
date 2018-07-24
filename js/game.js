@@ -1,12 +1,9 @@
 class Game {
-    constructor(gameAreaId, version, className) {
+    constructor(gameAreaId, version) {
         this.gameObjects = [];
         this.callbacks = [];
         this.gameArea = $('#' + gameAreaId);
         Game.version = version;
-        $.each(className.versions[version], function (i, obj) {
-            className[i] = obj;
-        });
         var modal = $('<div>', {id: 'modal', class: "modal"});
         this.gameArea.append(modal);
         this.gameArea.append(Load.getLoad());

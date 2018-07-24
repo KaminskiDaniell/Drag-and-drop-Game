@@ -1,6 +1,6 @@
 class PairGame extends Game {
-    constructor(gameAreaId) {
-        super(gameAreaId);
+    constructor(gameAreaId, version, className) {
+        super(gameAreaId, version, className);
 
         this.zIndex = 0;
         this.matched = 0;
@@ -77,7 +77,6 @@ class PairGame extends Game {
                 $('body').append(img);
             }
         }
-
         return PairGame.sources.length;
     }
 

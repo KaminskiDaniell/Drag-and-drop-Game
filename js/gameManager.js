@@ -2,15 +2,16 @@ class GameManager {
     static set(className, gameAreaId, version, withoutDropdown = false, withoutSnackbar = false, preload = true) {
         var setUp = function () {
             $("#" + gameAreaId).empty();
-            GameManager.game = new className(gameAreaId, version, className);
+            GameManager.game = new className(gameAreaId, version);
             if (!withoutDropdown)
                 Dropdown.setDropdown();
             if (!withoutSnackbar) {
                 Snackbar.setSnackbar();
                 Snackbar.show("info", '_start_header', '_start');
             }
-        }
+        };
 
+        GameManager.loadVariables(className, version);
         //Preload
         if (preload) {
             Locale.setLanguage();
@@ -45,6 +46,12 @@ class GameManager {
         else {
             setUp();
         }
+    }
+
+    static loadVariables(className, version) {
+        $.each(className.versions[version], function (i, obj) {
+            className[i] = obj;
+        });
     }
 
     static get() {

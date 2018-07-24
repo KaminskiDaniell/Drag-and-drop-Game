@@ -1,4 +1,5 @@
-case "$1" in 
+#!/usr/bin/env bash
+case "$1" in
     "hangman") 
         name="hangman"
         folder="HangmanGame" ;;
@@ -17,7 +18,13 @@ case "$1" in
     "memo") 
         name="memo"
         folder="MemoGame" ;;
-    *) 
+    "puzzle")
+        name="puzzle"
+        folder="PuzzleGame" ;;
+    "crossword")
+        name="crossword"
+        folder="CrosswordGame" ;;
+    *)
         echo "Specify type of a game"
         exit ;;
 esac

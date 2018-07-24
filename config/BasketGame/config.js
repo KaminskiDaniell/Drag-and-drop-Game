@@ -75,6 +75,16 @@ BasketGame.versions = {
                         'name': 'GOOD'
                     },
                 ],
+            '_maybe': [
+                {
+                    'display': '_maybe',
+                    'name': 'GOOD',
+                },
+                {
+                    'display': '_alone',
+                    'name': 'BAD'
+                }
+            ]
         }
     }
 };

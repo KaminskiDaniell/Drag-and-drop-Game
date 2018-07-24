@@ -24,13 +24,16 @@ Locale.locales = {
             '_put1': 'Wrzuc tez',
             '_dont': "Nie",
             '_dont1': "Tez nie",
-            '_dont2': "NIE!"
+            '_dont2': "NIE!",
+            '_alone': ":(",
+            '_maybe': "Maybe"
         },
         'id': {
             '_worth': "Warto obejrzeć",
             '_not_worth': "Słabe filmy",
             '_yes': "Wrzuc co trzeba",
-            '_no': 'Wrzuc co nie trzeba'
+            '_no': 'Wrzuc co nie trzeba',
+            '_maybe': "Moze?"
         }
     },
     'en': {
@@ -58,13 +61,16 @@ Locale.locales = {
             '_put1': 'Put too',
             '_dont': "Dont",
             '_dont1': "Dont too",
-            '_dont2': "DONT!"
+            '_dont2': "DONT!",
+            '_alone': ":(",
+            '_maybe': "Maybe"
         },
         'id': {
             '_worth': "Worth seeing",
             '_not_worth': "Do not watch!",
             '_yes': "Put",
-            '_no': 'Do not put'
+            '_no': 'Do not put',
+            '_maybe': "Maybe?"
         }
     }
 };

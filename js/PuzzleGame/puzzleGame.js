@@ -1,6 +1,6 @@
 class PuzzleGame extends Game {
-    constructor(gameAreaId, version, className) {
-        super(gameAreaId, version, className);
+    constructor(gameAreaId, version) {
+        super(gameAreaId, version);
         this.toGuess = [];
         this.matrix = [];
         PuzzleGame.singleDrag = [];
