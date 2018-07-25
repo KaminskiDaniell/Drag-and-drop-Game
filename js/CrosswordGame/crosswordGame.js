@@ -6,6 +6,7 @@ class CrosswordGame extends Game {
     }
 
     loadGame() {
+        this.addHints();
         this.crossword= $('<table>', {id: 'crossword'});
         this.crosswordType = CrosswordGame.crosswordType;
         this.getGameArea().append(this.crossword);
@@ -25,6 +26,11 @@ class CrosswordGame extends Game {
         }
 
         this.setFocus(0);
+    }
+
+    addHints() {
+        this.hints = $('<div>', {id: 'hints'});
+        this.getGameArea().append(this.hints);
     }
 
     getCrosswordData() {

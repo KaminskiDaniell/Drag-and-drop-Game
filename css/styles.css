@@ -235,7 +235,14 @@ html, body {
     font: bold 25px 'Lato', Sans-Serif;
 } 
 
+#hints {
+    display: inline-block;
+    margin: 0 auto;
+    font: bold 25px 'Lato', Sans-Serif;
+}
+
 #crossword {
+    display: inline-block;
     margin: 0 auto;
     font: bold 25px 'Lato', Sans-Serif;
 }
