@@ -56,10 +56,10 @@ class CrosswordGame extends Game {
 
     insertLetter(letter) {
         if(letter === "Backspace" || letter === "ArrowLeft") {
-            this.gameObjects[this.focus].prevLetter();
             if(letter === "Backspace") {
                 this.gameObjects[this.focus].removeLetter();
             }
+            this.gameObjects[this.focus].prevLetter();
         }
         else if(letter === 'Tab' || letter === "ArrowRight" || letter === " ") {
             this.gameObjects[this.focus].nextLetter();
