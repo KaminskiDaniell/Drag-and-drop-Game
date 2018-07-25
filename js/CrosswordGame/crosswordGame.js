@@ -6,8 +6,7 @@ class CrosswordGame extends Game {
     }
 
     loadGame() {
-        this.addHints();
-        this.crossword= $('<table>', {id: 'crossword'});
+        this.crossword = $('<table>', {id: 'crossword'});
         this.crosswordType = CrosswordGame.crosswordType;
         this.addHints();
         this.getGameArea().append(this.crossword);
@@ -71,8 +70,8 @@ class CrosswordGame extends Game {
     }
 
     insertLetter(letter) {
-        if(letter === "Backspace" || letter === "ArrowLeft") {
-            if(letter === "Backspace") {
+        if (letter === "Backspace" || letter === "ArrowLeft") {
+            if (letter === "Backspace") {
                 this.gameObjects[this.focus].removeLetter();
             }
             this.gameObjects[this.focus].prevLetter();
