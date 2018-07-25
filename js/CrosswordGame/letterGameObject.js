@@ -39,7 +39,9 @@ class LetterGameObject extends GameObject {
     }
 
     removeLetter() {
-        this.object.text('');
+        if(!this.locked) {
+            this.object.text('');
+        }
     }
 
     setActive() {
