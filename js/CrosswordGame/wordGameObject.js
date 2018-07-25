@@ -17,17 +17,17 @@ class WordGameObject extends GameObject {
         });
         this.gameObjects = [];
 
-        for(let i = 0; i < this.highestSolutionLetter - this.solutionLetter; i++) {
+        for (let i = 0; i < this.highestSolutionLetter - this.solutionLetter; i++) {
             let emptyHeader = $('<div>', {class: 'empty-letter-space'});
             this.object.append(emptyHeader);
         }
 
         var letterCount = 0;
-        for(let i in letters) {
+        for (let i in letters) {
             let letter = letters[i];
-            if(letter != ' ') {
+            if (letter != ' ') {
                 let solutionLetter = false;
-                if(this.solutionLetter == i) {
+                if (this.solutionLetter == i) {
                     solutionLetter = true;
                 }
                 this.gameObjects.push(new LetterGameObject(letter, letterCount, solutionLetter, this, this.getGame()));
@@ -39,17 +39,17 @@ class WordGameObject extends GameObject {
     }
 
     setFocus(letterNumber) {
-        if(typeof letterNumber == 'undefined') {
+        if (typeof letterNumber == 'undefined') {
             letterNumber = this.focus ? this.focus : 0;
         }
-        if(typeof this.focus == 'undefined') {
+        if (typeof this.focus == 'undefined') {
             this.focus = letterNumber;
         }
         else {
             this.gameObjects[this.focus].unsetActive();
         }
 
-        if(letterNumber > this.gameObjects.length - 1) {
+        if (letterNumber > this.gameObjects.length - 1) {
             this.focus = this.gameObjects.length - 1;
         }
         else if (letterNumber < 0) {
@@ -95,11 +95,11 @@ class WordGameObject extends GameObject {
     }
 
     insertLetter(letter) {
-        if(this.gameObjects[this.focus].insertLetter(letter)) {
-            if(this.check()) {
+        if (this.gameObjects[this.focus].insertLetter(letter)) {
+            if (this.check()) {
                 this.getGame().check();
             }
-            if(this.focus === this.gameObjects.length - 1) {
+            if (this.focus === this.gameObjects.length - 1) {
                 this.setFocus(0);
                 return 'next';
             }
@@ -108,14 +108,15 @@ class WordGameObject extends GameObject {
     }
 
     check() {
-        for(var i in this.gameObjects) {
-            if(!this.gameObjects[i].check()) {
+        for (var i in this.gameObjects) {
+            if (!this.gameObjects[i].check()) {
                 return false;
             }
         }
-        for(var i in this.gameObjects) {
+        for (var i in this.gameObjects) {
             this.gameObjects[i].lock();
         }
+        $('#word' + $('.active')[0].id)[0].classList.add('found');
         return true;
     }
 }

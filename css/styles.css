@@ -233,7 +233,7 @@ html, body {
     text-align: center;
     width: 100%;
     font: bold 25px 'Lato', Sans-Serif;
-} 
+}
 
 #hints {
     display: inline-block;
@@ -242,6 +242,11 @@ html, body {
 }
 
 #crossword {
+    top: 5%;
+    position: absolute;
+    left: 40%;
+    width: 60%;
+    min-height: 60%;
     display: inline-block;
     margin: 0 auto;
     font: bold 25px 'Lato', Sans-Serif;
@@ -268,10 +273,11 @@ html, body {
     border: 3px solid white;
     margin: 2px;
     display: inline-block;
-    width: 45px;
-    height: 45px;
+    width: 35px;
+    height: 28px;
     position: relative;
-} 
+    padding-top: 5px;
+}
 
 #crossword .empty-letter-space {
     border: 3px solid transparent;
@@ -298,6 +304,29 @@ html, body {
 #crossword .letter.active {
     border-color: #e5e5e5;
     color: #e5e5e5;
+}
+
+#crosswordHints {
+    top: 5%;
+    font: 20px 'Lato', Sans-Serif;
+    position: absolute;
+    width: 40%;
+    float: left;
+    min-height: 50%;
+}
+
+#crosswordHints table {
+    border-collapse: collapse;
+    color: white;
+}
+
+#crosswordHints table tr td {
+    padding-left: 10px;
+    padding-right: 10px;
+}
+
+#crosswordHints .hintsTable {
+    float: right;
 }
 
 #letters-area .letter, #letters-area .empty-letter-space {

@@ -6,9 +6,9 @@ class CrosswordGame extends Game {
     }
 
     loadGame() {
-        this.addHints();
-        this.crossword= $('<table>', {id: 'crossword'});
+        this.crossword = $('<table>', {id: 'crossword'});
         this.crosswordType = CrosswordGame.crosswordType;
+        this.addHints();
         this.getGameArea().append(this.crossword);
 
         Snackbar.addCallback(function () {
@@ -28,9 +28,24 @@ class CrosswordGame extends Game {
         this.setFocus(0);
     }
 
+    makeHintsTable() {
+        var table = document.createElement('table');
+        table.classList.add('hintsTable');
+        let crossword = this.getCrosswordData();
+        for (var i = 0; i < crossword.length; i++) {
+            var row = document.createElement('tr');
+            var cell = document.createElement('td');
+            cell.id = "word" + (i);
+            cell.textContent = i + 1 + '. ' + crossword[i]['definition'];
+            row.appendChild(cell);
+            table.appendChild(row);
+        }
+        return table;
+    }
+
     addHints() {
-        this.hints = $('<div>', {id: 'hints'});
-        this.getGameArea().append(this.hints);
+        this.hints = $('<div>', {id: 'crosswordHints'});
+        this.getGameArea().append(this.hints.append(this.makeHintsTable()));
     }
 
     getCrosswordData() {
@@ -38,14 +53,14 @@ class CrosswordGame extends Game {
     }
 
     getHighestSolutionLetter(reload = false) {
-        if(!reload && this.highestSolutionLetter) {
+        if (!reload && this.highestSolutionLetter) {
             return this.highestSolutionLetter;
         }
 
         for (var i in this.getCrosswordData()) {
             var word = this.getCrosswordData()[i];
             word.solutionLetter--; //Begin indexing from 1
-            if(!this.highestSolutionLetter) {
+            if (!this.highestSolutionLetter) {
                 this.highestSolutionLetter = word.solutionLetter;
             }
             this.highestSolutionLetter = this.highestSolutionLetter < word.solutionLetter ? word.solutionLetter : this.highestSolutionLetter;
@@ -55,52 +70,52 @@ class CrosswordGame extends Game {
     }
 
     insertLetter(letter) {
-        if(letter === "Backspace" || letter === "ArrowLeft") {
+        if (letter === "Backspace" || letter === "ArrowLeft") {
             this.gameObjects[this.focus].prevLetter();
-            if(letter === "Backspace") {
+            if (letter === "Backspace") {
                 this.gameObjects[this.focus].removeLetter();
             }
         }
-        else if(letter === 'Tab' || letter === "ArrowRight" || letter === " ") {
+        else if (letter === 'Tab' || letter === "ArrowRight" || letter === " ") {
             this.gameObjects[this.focus].nextLetter();
         }
-        else if(letter === 'ArrowUp') {
+        else if (letter === 'ArrowUp') {
             this.prevWord();
         }
-        else if(letter === 'ArrowDown' || letter === 'Enter') {
+        else if (letter === 'ArrowDown' || letter === 'Enter') {
             this.nextWord();
         }
-        else if(letter === 'Delete') {
+        else if (letter === 'Delete') {
             this.gameObjects[this.focus].removeLetter();
         }
-        else if(letter === '^' || letter === '0') {
+        else if (letter === '^' || letter === '0') {
             this.gameObjects[this.focus].beginLetter();
         }
-        else if(letter === '$') {
+        else if (letter === '$') {
             this.gameObjects[this.focus].endLetter();
         }
-        else if(letter > 0 || letter < 10) {
+        else if (letter > 0 || letter < 10) {
             this.setFocus(parseInt(letter) - 1);
         }
         else {
-            if(this.gameObjects[this.focus].insertLetter(letter) === 'next') {
+            if (this.gameObjects[this.focus].insertLetter(letter) === 'next') {
                 this.setFocus(this.focus + 1, false);
             }
         }
     }
 
     setFocus(wordNumber, letterFocus = true) {
-        if(typeof wordNumber == 'undefined') {
+        if (typeof wordNumber == 'undefined') {
             wordNumber = this.focus ? this.focus : 0;
         }
         wordNumber = parseInt(wordNumber);
-        if(typeof this.focus == 'undefined') {
+        if (typeof this.focus == 'undefined') {
             this.focus = wordNumber;
         }
         else {
             this.gameObjects[this.focus].unsetActive();
-            if(!((wordNumber > this.gameObjects.length - 1) || (wordNumber < 0))) {
-                if(letterFocus) {
+            if (!((wordNumber > this.gameObjects.length - 1) || (wordNumber < 0))) {
+                if (letterFocus) {
                     this.setLetterFocusOffset(this.gameObjects[this.focus], this.gameObjects[wordNumber]);
                 }
                 this.focus = wordNumber;
@@ -155,7 +170,7 @@ class CrosswordGame extends Game {
 
     check() {
         this.setScores(true);
-        if(this.score === this.gameObjects.length) {
+        if (this.score === this.gameObjects.length) {
             clearInterval(this.timeInterval);
             Snackbar.removeCallbacks();
             Snackbar.show("success", '_success_header', '_success');

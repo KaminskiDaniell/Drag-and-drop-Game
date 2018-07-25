@@ -1,8 +1,8 @@
 CrosswordGame.versions = {
-    'crossword' : {
-        'crosswords' : {
+    'crossword': {
+        'crosswords': {
             'pl': {
-                'Film crossword' : [
+                'Film crossword': [
                     {
                         'word': 'Obywatel Kane',
                         'solutionLetter': 3
@@ -14,17 +14,39 @@ CrosswordGame.versions = {
                 ]
             },
             'en': {
-                'Film crossword' : [
+                'Film crossword': [
                     {
-                        'word': 'Citizen Kane',
-                        'solutionLetter': 3
+                        'definition': "Robi szczek szczek bark bark wof wof, i jest fajny",
+                        'word': 'Pies',
+                        'solutionLetter': 1
                     },
                     {
-                        'word': 'Vertigo',
-                        'solutionLetter': 5
+                        'definition': 'Robi miał miał purr purr, podobno reaguje na kici kici',
+                        'word': 'Kot',
+                        'solutionLetter': 2
                     },
+                    {
+                        'definition': 'Gatunek którego przedstawicielem jest Król Julian',
+                        'word': 'Lemur',
+                        'solutionLetter': 1
+                    },
+                    {
+                        'definition': 'W bajce ma klapnięte uszko, lubi miód',
+                        'word': 'Niedźwiedź',
+                        'solutionLetter': 8,
+                    },
+                    {
+                        'definition': 'Hasło tej krzyżowki',
+                        'word': 'Poleng',
+                        'solutionLetter': 5,
+                    },
+                    {
+                        'definition': 'Ma go dama',
+                        'word': 'Gronostaj',
+                        'solutionLetter': 1
+                    }
                 ]
-                
+
             },
         }
     }
