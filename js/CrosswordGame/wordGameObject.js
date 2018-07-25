@@ -96,7 +96,9 @@ class WordGameObject extends GameObject {
 
     insertLetter(letter) {
         if(this.gameObjects[this.focus].insertLetter(letter)) {
-            this.check();
+            if(this.check()) {
+                this.getGame().check();
+            }
             if(this.focus === this.gameObjects.length - 1) {
                 this.setFocus(0);
                 return 'next';
@@ -110,6 +112,9 @@ class WordGameObject extends GameObject {
             if(!this.gameObjects[i].check()) {
                 return false;
             }
+        }
+        for(var i in this.gameObjects) {
+            this.gameObjects[i].lock();
         }
         return true;
     }

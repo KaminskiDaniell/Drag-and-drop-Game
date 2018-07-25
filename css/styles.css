@@ -253,15 +253,6 @@ html, body {
     margin-right: 20px;
 }
 
-#crossword .word.active {
-    border-color: #e5e5e5;
-}
-
-#crossword .letter.active {
-    border-color: #e5e5e5;
-    color: #e5e5e5;
-}
-
 #crossword .letter, #crossword .empty-letter-space {
     text-align: center;
     justify-content: center;
@@ -281,6 +272,25 @@ html, body {
 
 #crossword .solution-letter {
     border-color: #858585;
+}
+
+#crossword .locked {
+    border-color: forestgreen;
+    color: forestgreen;
+}
+
+#crossword .locked.solution-letter {
+    border-color: lightgreen;
+    color: lightgreen;
+}
+
+#crossword .word.active {
+    border-color: #e5e5e5;
+}
+
+#crossword .letter.active {
+    border-color: #e5e5e5;
+    color: #e5e5e5;
 }
 
 #letters-area .letter, #letters-area .empty-letter-space {

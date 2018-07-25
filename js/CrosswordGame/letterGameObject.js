@@ -23,7 +23,7 @@ class LetterGameObject extends GameObject {
 
     insertLetter(letter) {
         this.filled = true;
-        if (letter.length === 1 && this.normalize(letter).match(/[a-zł]/i)) {
+        if (!this.locked && letter.length === 1 && this.normalize(letter).match(/[a-zł]/i)) {
             this.object.text(letter.toUpperCase());
             this.unsetActive();
             return true;
@@ -48,5 +48,10 @@ class LetterGameObject extends GameObject {
 
     unsetActive() {
         this.object.removeClass('active');
+    }
+
+    lock() {
+        this.locked = true;
+        this.object.addClass('locked');
     }
 }

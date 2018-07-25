@@ -38,6 +38,7 @@ class CrosswordGame extends Game {
 
         for (var i in this.getCrosswordData()) {
             var word = this.getCrosswordData()[i];
+            word.solutionLetter--; //Begin indexing from 1
             if(!this.highestSolutionLetter) {
                 this.highestSolutionLetter = word.solutionLetter;
             }
@@ -54,7 +55,7 @@ class CrosswordGame extends Game {
                 this.gameObjects[this.focus].removeLetter();
             }
         }
-        else if(letter === 'Tab' || letter === "ArrowRight") {
+        else if(letter === 'Tab' || letter === "ArrowRight" || letter === " ") {
             this.gameObjects[this.focus].nextLetter();
         }
         else if(letter === 'ArrowUp') {
@@ -77,7 +78,7 @@ class CrosswordGame extends Game {
         }
         else {
             if(this.gameObjects[this.focus].insertLetter(letter) === 'next') {
-                this.setFocus(this.focus + 1);
+                this.setFocus(this.focus + 1, false);
             }
         }
     }
@@ -105,7 +106,6 @@ class CrosswordGame extends Game {
 
     setLetterFocusOffset(from, to) {
         to.setFocus(from.focus - from.solutionLetter + to.solutionLetter);
-
     }
 
     setTimer() {
@@ -128,13 +128,13 @@ class CrosswordGame extends Game {
     setScores(correct) {
         if (!this.scores) {
             this.scores = $('<div>', {class: 'scores right'}).append(0);
+            this.score = 0;
         }
         else {
-            var score = parseInt(this.scores.text());
             if (correct) {
-                score++;
+                this.score++;
             }
-            this.scores.text(score);
+            this.scores.text(this.score);
         }
         this.getGameArea().prepend(this.scores);
     }
@@ -145,6 +145,15 @@ class CrosswordGame extends Game {
 
     nextWord() {
         this.setFocus(this.focus + 1);
+    }
+
+    check() {
+        this.setScores(true);
+        if(this.score === this.gameObjects.length) {
+            clearInterval(this.timeInterval);
+            Snackbar.removeCallbacks();
+            Snackbar.show("success", '_success_header', '_success');
+        }
     }
 
     static loadImages() {
