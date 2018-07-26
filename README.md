@@ -11,80 +11,80 @@ $ ./deploy.sh [hangman|quiz|pair|basket|crossword|memo|puzzle|sort]
 ```
 
 ### Config
+Localize phrases in config/GameName/locale.js
 #### Basket:
-Put words/ images into correct baskets.
+Put objects into the correct baskets.
 Example config:
 ```js
 {
-    "alpha": {  //version of the game
+    "alpha": {  //Game version
         "basketHeight": 75, //percentage 
         "buttonHeight": 50, //percentage
 
-        "horizontalOffset": 150, //for shuffling on screen
-        "verticalOffset": 140, //for shuffling on screen
+        "horizontalOffset": 150, //Distance between shuffled objects
+        "verticalOffset": 140, //Distance between shuffled objects
         "sources": {  
-            "_yes":  //first basket name (to localize)
+            "_yes":  //first basket name (not localized)
                 [
                     {
-                        "display": "_put", //first element name (to localize)
-                        "name": "GOOD"  // GOOD = put in this basket, 
-                        //BAD is used only to add elements with no matching basket
+                        "display": "_put", //first element name (not localized)
+                        "name": "GOOD"  // GOOD element to be put in this basket, 
+                            //BAD is used to add elements with no matching basket
                     },
                     {
-                        "fileName" : "1.jpg", //if fileName given, element will be image with src 1.jpg (in /img/ folder)
+                        "fileName" : "1.jpg", //if fileName is set, element will be an image got from ./img/fileName
                         "display": "_put1",
-                        "name": "BAD" //dont put into basket
+                        "name": "BAD" // element with no matching basket
                     }
                 ],
-            "_no": //second basket name (to localize)
+            "_no": //second basket name (not localized)
                 [
                     {
                         "display": "_dont",
                         "name": "GOOD"
                     }
                 ],
-            "_maybe": //third basket name (to localize) can add more baskets 
-            [
-                {
-                    "display": "_maybe",
-                    "name": "GOOD"
-                }
-            ]
+            "_maybe": //third basket name (not localized)
+                [
+                    {
+                        "display": "_maybe",
+                        "name": "GOOD"
+                    }
+                ]
+            // Additional baskets can be added
         }
     }
 }
 ```
-Other things such as button text, after loading text etc can be changed in locale.js
-
 #### Quiz:
-Goal is to answer 15x correct, hints such as 50/50 and skip question (2x per game) give minus points
+The goal of the game is to answer correctly for 15 questions, usage of any hints such as "50/50" and "skip question" (availble 2 times per game) give negative points
 Example config: <br>
-Number of questions per difficulty must be at least 8! (5 + skips)
+It is necessary to provide at least 8 questions per difficulty level (5 + possible skipped questions)
 ```js
 {
-    "alpha": { //version of the game
+    "alpha": { //game version
         "sources": {
-            "easy": { //difficulty
+            "easy": { //difficulty level
                 "football": [  // category
                     {
-                        "question": "#question_football", //question (to localize)
-                        "answers": [  //answers (to localize)
+                        "question": "#question_football", //question (not localized)
+                        "answers": [  //4 answers (not localized)
                             "#answer_football_0",
                             "#answer_football_1", 
                             "#answer_football_2",
                             "#answer_football_3"
                         ],
-                        "correctAnswer": "1" //indexing from 0
+                        "correctAnswer": "1" //questions are numbered 0-3
                     },
                      {
-                        "question": "#question_football", //question (to localize)
-                        "answers": [  //answers (to localize)
+                        "question": "#question_football", //question (not localized)
+                        "answers": [  //answers (not localized)
                              "#answer_football_0",
                              "#answer_football_1", 
                              "#answer_football_2",
                              "#answer_football_3"
                         ],
-                        "correctAnswer": "1" //indexing from 0
+                        "correctAnswer": "1" //questions are numbered 0-3
                     }
                 ],
                 "maths": [
@@ -116,14 +116,13 @@ Number of questions per difficulty must be at least 8! (5 + skips)
     }
 }
 ```
-Other things such as after loading text, loading text etc can be changed in locale.js
 #### Sort:
 Swap letters to make correct words.
 Example config:
 ```js
 {
     "alpha": {
-        "sources": [    //phrases (to localize)
+        "sources": [    //phrases (not localized)
             "_citizen_kane",
             "_vertigo",
             "_la_regle_du_jeu",
@@ -138,15 +137,13 @@ Example config:
     }
 }
 ```
-Other things such as error/ success message can be changed in locale.js
-
 #### Puzzle
-Find words and highlight them by mouse drag (from begin of the word to end / reverse)
+Find words in a puzzle and highlight them by mouse drag (from beginning of the word to its end). Words can be reversed!
 Example config:
 ```js
 {
     "animals": {
-        "sources": [  /*words (to localize)*/
+        "sources": [  /*words (not localized)*/
             "_animal1",
             "_animal2",
             "_animal3",
@@ -159,25 +156,23 @@ Example config:
             "_animal10",
             "_animal11"
         ],
-        "width": 11,  //min width of area
-        "height": 8   //min height of area
+        "width": 11,  //min width 
+        "height": 8   //min height
     }
 }
 ```
-Other things such as error/ success message can be changed in locale.js
-
 #### Pair
 Match images to definitions
 Example config:
 ```js
 {
     "alpha": {
-        "horizontalOffset": 140,    //for shuffling
-        "verticalOffset": 80,   //for shuffling
+        "horizontalOffset": 140, //Distance between shuffled objects
+        "verticalOffset": 80,//Distance between shuffled objects
         "sources": [
             {
-                "fileName": "1.jpg",    //image name in /img/ folder
-                "title": "_citizen_kane"    //title to match with image (to localize)
+                "fileName": "1.jpg", //an image got from ./img/fileName
+                "title": "_citizen_kane" //title matching with an image (not localized)
             },
             {
                 "fileName": "2.jpg",
@@ -187,16 +182,14 @@ Example config:
     }
 }
 ```
-Other things such as error/ success message can be changed in locale.js
-
 #### Hangman
-Guess the phrase, you have x (config) misses allowed
+Guess the phrase with x mistakes allowed
 Example config:
 ```js
 {
  "beta": {
         "numberOfAcceptableMistakes": 2,
-        "sources": [  //phrases to localize
+        "sources": [  //phrases (not localized)
             "_citizen_kane",
             "_vertigo",
             "_la_regle_du_jeu",
@@ -207,18 +200,16 @@ Example config:
     }
 }
 ```
-Other things such as error/ success message can be changed in locale.js
-
 #### Memo
-Memo game, match images to definitions
+Memo game, match images to their definitions
 Example config:
 ```js
 {
     "alpha": {
         "sources": [
             {
-                "fileName": "1.jpg", //img name in /img/ folder
-                "title": "_citizen_kane" //title to match to image
+                "fileName": "1.jpg", //an image got from ./img/fileName
+                "title": "_citizen_kane" //title matching with an image (not localized)
             },
             {
                 "fileName": "2.jpg",
@@ -228,16 +219,15 @@ Example config:
     }
 }
 ```
-Other things such as error/ success message can be changed in locale.js
-
 #### Crossword
-Crossword game, guess the phrase and put it into the crossword
+Crossword game, guess the phrases to solve the crossword
+Due to the not translatable nature of the crosswords phrases are localized directly in config
 Example config:
 ```js
 {
     "crossword": {
         "crosswords": {
-            "pl": {
+            "pl": { //Locale version
                 "Film crossword": [
                     {
                         "definition" : "Film z 1941",
@@ -255,8 +245,8 @@ Example config:
                 "Film crossword": [
                     {
                         "definition" : "Movie from 1941", //definition
-                        "word": "Citizen Kane",  //word
-                        "solutionLetter": 3    //solution letter (indexing from 1!)
+                        "word": "Citizen Kane", //word
+                        "solutionLetter": 3 //solution letter (indexing from 1!)
                     },
                     {
                          "definition" : "Movie from 1958",
@@ -269,4 +259,3 @@ Example config:
     }
 }
 ```
-Other things such as error/ success message can be changed in locale.js
