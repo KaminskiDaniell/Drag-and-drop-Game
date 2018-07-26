@@ -1,19 +1,9 @@
-// NUMBER OF TOTAL QUESTION PER DIFFICULTY LEVEL MUST BE AT LEAST 8!
+// NUMBER OF TOTAL QUESTIONs PER DIFFICULTY LEVEL MUST BE AT LEAST 8!
 QuizGame.versions = {
     'alpha': {
         sources: {
             'easy': {
                 'bla': [
-                    {
-                        question: "#question_wojtek",
-                        answers: [
-                            "#answer_wojtek_0",
-                            "#answer_wojtek_1",
-                            "#answer_wojtek_2",
-                            "#answer_wojtek_3"
-                        ],
-                        correctAnswer: '0'
-                    },
                     {
                         question: "#question_football",
                         answers: [
@@ -23,6 +13,16 @@ QuizGame.versions = {
                             "#answer_football_3"
                         ],
                         correctAnswer: '1'
+                    },
+                    {
+                        question: "#question_wojtek",
+                        answers: [
+                            "#answer_wojtek_0",
+                            "#answer_wojtek_1",
+                            "#answer_wojtek_2",
+                            "#answer_wojtek_3"
+                        ],
+                        correctAnswer: '0'
                     },
                     {
                         question: "#question_football1",
@@ -462,4 +462,4 @@ QuizGame.versions = {
     }
 };
 QuizGame.gameImagePath = "QuizGame/stage-%d.png";
-QuizGame.maxLevel = 15;
+QuizGame.maxLevel = 15; //no of stages
