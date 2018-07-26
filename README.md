@@ -13,7 +13,7 @@ $ ./deploy.sh [hangman|quiz|pair|basket|crossword|memo|puzzle|sort]
 ### Config
 Localize phrases in config/GameName/locale.js
 #### Basket:
-Put objects into the correct baskets.
+Put objects into the correct baskets.  
 Example config:
 ```js
 {
@@ -57,9 +57,9 @@ Example config:
 }
 ```
 #### Quiz:
-The goal of the game is to answer correctly for 15 questions, usage of any hints such as "50/50" and "skip question" (availble 2 times per game) give negative points
-Example config: <br>
-It is necessary to provide at least 8 questions per difficulty level (5 + possible skipped questions)
+The goal of the game is to answer correctly for 15 questions, usage of any hints such as "50/50" and "skip question" (availble 2 times per game) give negative points  
+It is necessary to provide at least 8 questions per difficulty level (5 + possible skipped questions)  
+Example config:  
 ```js
 {
     "alpha": { //game version
@@ -117,7 +117,7 @@ It is necessary to provide at least 8 questions per difficulty level (5 + possib
 }
 ```
 #### Sort:
-Swap letters to make correct words.
+Swap letters to make correct words.  
 Example config:
 ```js
 {
@@ -138,7 +138,7 @@ Example config:
 }
 ```
 #### Puzzle
-Find words in a puzzle and highlight them by mouse drag (from beginning of the word to its end). Words can be reversed!
+Find words in a puzzle and highlight them by mouse drag (from beginning of the word to its end). Words can be reversed!  
 Example config:
 ```js
 {
@@ -162,7 +162,7 @@ Example config:
 }
 ```
 #### Pair
-Match images to definitions
+Match images to definitions  
 Example config:
 ```js
 {
@@ -183,7 +183,7 @@ Example config:
 }
 ```
 #### Hangman
-Guess the phrase with x mistakes allowed
+Guess the phrase with x mistakes allowed  
 Example config:
 ```js
 {
@@ -201,7 +201,7 @@ Example config:
 }
 ```
 #### Memo
-Memo game, match images to their definitions
+Memo game, match images to their definitions  
 Example config:
 ```js
 {
@@ -220,8 +220,8 @@ Example config:
 }
 ```
 #### Crossword
-Crossword game, guess the phrases to solve the crossword
-Due to the not translatable nature of the crosswords phrases are localized directly in config
+Crossword game, guess the phrases to solve the crossword  
+Due to the not translatable nature of the crosswords phrases are localized directly in config  
 Example config:
 ```js
 {
