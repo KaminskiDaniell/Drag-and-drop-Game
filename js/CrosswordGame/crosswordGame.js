@@ -6,9 +6,8 @@ class CrosswordGame extends Game {
     }
 
     loadGame() {
-        this.crossword = $('<table>', {id: 'crossword'});
+        this.crossword = $('<div>', {id: 'crossword'});
         this.crosswordType = CrosswordGame.crosswordType;
-        this.addHints();
         this.getGameArea().append(this.crossword);
 
         Snackbar.addCallback(function () {
@@ -24,6 +23,7 @@ class CrosswordGame extends Game {
             var word = this.getCrosswordData()[i];
             this.gameObjects.push(new WordGameObject(word, i, highestSolutionLetter, this))
         }
+        this.addHints();
 
         this.setFocus(0);
     }
@@ -95,7 +95,7 @@ class CrosswordGame extends Game {
             this.gameObjects[this.focus].endLetter();
         }
         else if (letter > 0 || letter < 10) {
-            this.setFocus(parseInt(letter) - 1);
+            this.setFocus(parseInt(letter) - 1, false);
         }
         else {
             if (this.gameObjects[this.focus].insertLetter(letter) === 'next') {
@@ -119,6 +119,9 @@ class CrosswordGame extends Game {
                     this.setLetterFocusOffset(this.gameObjects[this.focus], this.gameObjects[wordNumber]);
                 }
                 this.focus = wordNumber;
+                if(!letterFocus) {
+                    this.gameObjects[this.focus].setFocus(0);
+                }
             }
         }
         this.gameObjects[this.focus].setActive();

@@ -242,14 +242,13 @@ html, body {
 }
 
 #crossword {
-    top: 5%;
-    position: absolute;
+    clear: left;
+    top: 80px;
     left: 40%;
-    width: 60%;
     min-height: 60%;
-    display: inline-block;
+    display: table;
     margin: 0 auto;
-    font: bold 25px 'Lato', Sans-Serif;
+    font: bold 20px 'Lato', Sans-Serif;
 }
 
 #letters-area .word {
@@ -265,18 +264,21 @@ html, body {
     margin-right: 20px;
 }
 
-#crossword .letter, #crossword .empty-letter-space {
+#crossword .word-number, #crossword .letter, #crossword .empty-letter-space {
     text-align: center;
     justify-content: center;
     align-items: center;
     vertical-align: top;
-    border: 3px solid white;
     margin: 2px;
-    display: inline-block;
-    width: 35px;
-    height: 28px;
-    position: relative;
     padding-top: 5px;
+    width: 30px;
+    height: 25px;
+    display: inline-block;
+    position: relative;
+}
+
+#crossword .letter, #crossword .empty-letter-space {
+    border: 3px solid white;
 }
 
 #crossword .empty-letter-space {
@@ -285,6 +287,7 @@ html, body {
 
 #crossword .solution-letter {
     border-color: #858585;
+    color: #858585;
 }
 
 #crossword .locked {
@@ -293,8 +296,8 @@ html, body {
 }
 
 #crossword .locked.solution-letter {
-    border-color: lightgreen;
-    color: lightgreen;
+    border-color: darkolivegreen;
+    color: darkolivegreen;
 }
 
 #crossword .word.active {
@@ -307,15 +310,17 @@ html, body {
 }
 
 #crosswordHints {
-    top: 5%;
+    display: block;
+    top: 80px;
     font: 20px 'Lato', Sans-Serif;
-    position: absolute;
-    width: 40%;
-    float: left;
+    width: 100%;
+    clear: left;
     min-height: 50%;
 }
 
 #crosswordHints table {
+    margin: 0 auto;
+    margin-top: 35px;
     border-collapse: collapse;
     color: white;
 }
@@ -323,10 +328,6 @@ html, body {
 #crosswordHints table tr td {
     padding-left: 10px;
     padding-right: 10px;
-}
-
-#crosswordHints .hintsTable {
-    float: right;
 }
 
 #letters-area .letter, #letters-area .empty-letter-space {

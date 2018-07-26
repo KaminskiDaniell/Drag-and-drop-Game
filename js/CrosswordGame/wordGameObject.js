@@ -22,6 +22,9 @@ class WordGameObject extends GameObject {
             this.object.append(emptyHeader);
         }
 
+        let wordNumberObject = $('<div>', {class: 'word-number'}).text((parseInt(wordNumber) + 1) + '.');
+        this.object.append(wordNumberObject);
+
         var letterCount = 0;
         for (let i in letters) {
             let letter = letters[i];

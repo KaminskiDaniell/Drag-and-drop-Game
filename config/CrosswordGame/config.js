@@ -33,7 +33,7 @@ CrosswordGame.versions = {
                     {
                         'definition': 'W bajce ma klapnięte uszko, lubi miód',
                         'word': 'Niedźwiedź',
-                        'solutionLetter': 8,
+                        'solutionLetter': 10,
                     },
                     {
                         'definition': 'Hasło tej krzyżowki',
