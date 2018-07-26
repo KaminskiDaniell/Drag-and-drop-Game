@@ -1,5 +1,5 @@
 # Drag-and-drop-Game
-#####html5, js+jquery game
+##### html5, js+jquery game
 ### Deploy
 Install javascript-obfuscator
 ```sh
@@ -10,8 +10,8 @@ Run deploy script specifying type of the game
 $ ./deploy.sh [hangman|quiz|pair|basket|crossword|memo|puzzle|sort]
 ```
 
-###Config
-####Basket:
+### Config
+#### Basket:
 Put words/ images into correct baskets.
 Example config:
 ```json
@@ -56,7 +56,7 @@ Example config:
 ```
 Other things such as button text, after loading text etc can be changed in locale.js
 
-####Quiz:
+#### Quiz:
 Goal is to answer 15x correct, hints such as 50/50 and skip question (2x per game) give minus points
 Example config: <br>
 Number of questions per difficulty must be at least 8! (5 + skips)
@@ -117,7 +117,7 @@ Number of questions per difficulty must be at least 8! (5 + skips)
 }
 ```
 Other things such as after loading text, loading text etc can be changed in locale.js
-####Sort:
+#### Sort:
 Swap letters to make correct words.
 Example config:
 ```json
@@ -138,7 +138,7 @@ Example config:
     }
 }
 ```
-####Puzzle
+#### Puzzle
 Find words and highlight them by mouse drag (from begin of the word to end / reverse)
 Example config:
 ```json
