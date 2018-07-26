@@ -315,7 +315,6 @@ html, body {
     font: 20px 'Lato', Sans-Serif;
     width: 100%;
     clear: left;
-    min-height: 50%;
 }
 
 #crosswordHints table {
@@ -673,4 +672,20 @@ html, body {
 
 .found {
     color: forestgreen;
+}
+
+#picture-game {
+    
+}
+
+#picture-game .picture-question {
+    font: bold 25px 'Lato', Sans-Serif;
+    text-align: center;
+}
+
+#picture-game .picture-answer {
+    display: inline-block;
+    margin: 10px;
+    font: bold 20px 'Lato', Sans-Serif;
+    text-align: center;
 }
