@@ -14,7 +14,7 @@ $ ./deploy.sh [hangman|quiz|pair|basket|crossword|memo|puzzle|sort]
 #### Basket:
 Put words/ images into correct baskets.
 Example config:
-```json
+```js
 {
     "alpha": {  //version of the game
         "basketHeight": 75, //percentage 
@@ -60,7 +60,7 @@ Other things such as button text, after loading text etc can be changed in local
 Goal is to answer 15x correct, hints such as 50/50 and skip question (2x per game) give minus points
 Example config: <br>
 Number of questions per difficulty must be at least 8! (5 + skips)
-```json
+```js
 {
     "alpha": { //version of the game
         "sources": {
@@ -120,7 +120,7 @@ Other things such as after loading text, loading text etc can be changed in loca
 #### Sort:
 Swap letters to make correct words.
 Example config:
-```json
+```js
 {
     "alpha": {
         "sources": [    //phrases (to localize)
@@ -141,10 +141,10 @@ Example config:
 #### Puzzle
 Find words and highlight them by mouse drag (from begin of the word to end / reverse)
 Example config:
-```json
+```js
 {
     "animals": {
-        "sources": [  //words (to localize)
+        "sources": [  /*words (to localize)*/
             "_animal1",
             "_animal2",
             "_animal3",
