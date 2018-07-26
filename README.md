@@ -138,6 +138,8 @@ Example config:
     }
 }
 ```
+Other things such as error/ success message can be changed in locale.js
+
 #### Puzzle
 Find words and highlight them by mouse drag (from begin of the word to end / reverse)
 Example config:
@@ -162,3 +164,109 @@ Example config:
     }
 }
 ```
+Other things such as error/ success message can be changed in locale.js
+
+#### Pair
+Match images to definitions
+Example config:
+```js
+{
+    "alpha": {
+        "horizontalOffset": 140,    //for shuffling
+        "verticalOffset": 80,   //for shuffling
+        "sources": [
+            {
+                "fileName": "1.jpg",    //image name in /img/ folder
+                "title": "_citizen_kane"    //title to match with image (to localize)
+            },
+            {
+                "fileName": "2.jpg",
+                "title": "_vertigo",
+            }
+        ]
+    }
+}
+```
+Other things such as error/ success message can be changed in locale.js
+
+#### Hangman
+Guess the phrase, you have x (config) misses allowed
+Example config:
+```js
+{
+ "beta": {
+        "numberOfAcceptableMistakes": 2,
+        "sources": [  //phrases to localize
+            "_citizen_kane",
+            "_vertigo",
+            "_la_regle_du_jeu",
+            "_2001_a_space_odyssey",
+            "_tokyo_monogatari",
+            "_otto_e_mezzo",
+        ]
+    }
+}
+```
+Other things such as error/ success message can be changed in locale.js
+
+#### Memo
+Memo game, match images to definitions
+Example config:
+```js
+{
+    "alpha": {
+        "sources": [
+            {
+                "fileName": "1.jpg", //img name in /img/ folder
+                "title": "_citizen_kane" //title to match to image
+            },
+            {
+                "fileName": "2.jpg",
+                "title": "_vertigo",
+            }
+        ]
+    }
+}
+```
+Other things such as error/ success message can be changed in locale.js
+
+#### Crossword
+Crossword game, guess the phrase and put it into the crossword
+Example config:
+```js
+{
+    "crossword": {
+        "crosswords": {
+            "pl": {
+                "Film crossword": [
+                    {
+                        "definition" : "Film z 1941",
+                        "word": "Obywatel Kane",
+                        "solutionLetter": 3
+                    },
+                    {
+                        "definition" : "Film z 1958",
+                        "word": "Zawrót głowy",
+                        "solutionLetter": 5
+                    },
+                ]
+            },
+            "en": {
+                "Film crossword": [
+                    {
+                        "definition" : "Movie from 1941", //definition
+                        "word": "Citizen Kane",  //word
+                        "solutionLetter": 3    //solution letter (indexing from 1!)
+                    },
+                    {
+                         "definition" : "Movie from 1958",
+                         "word": "Vertigo",
+                         "solutionLetter": 5
+                    }, 
+                ]
+            }
+        }
+    }
+}
+```
+Other things such as error/ success message can be changed in locale.js
