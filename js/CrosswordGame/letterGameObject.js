@@ -2,6 +2,7 @@ class LetterGameObject extends GameObject {
     constructor(letter, i, solutionLetter, word, game) {
         super(game);
         this.letter = letter;
+
         this.filled = false;
         this.letterNumber = i;
         this.solutionLetter = solutionLetter;
@@ -10,6 +11,9 @@ class LetterGameObject extends GameObject {
         this.object.on('click', () => {
             this.click();
         });
+        if (!this.normalize(this.letter).match(/[a-zł]/i)) {
+            this.checkLetter(this.letter);
+        }
         word.object.append(this.object);
     }
 
@@ -24,11 +28,16 @@ class LetterGameObject extends GameObject {
     insertLetter(letter) {
         this.filled = true;
         if (!this.locked && letter.length === 1 && this.normalize(letter).match(/[a-zł]/i)) {
-            this.object.text(letter.toUpperCase());
-            this.unsetActive();
+            this.checkLetter(letter);
             return true;
         }
         return false;
+    }
+
+    checkLetter(letter) {
+        this.object.text(letter.toUpperCase());
+        this.unsetActive();
+        this.word.recordCorrectLetter();
     }
 
     normalize(letter) {

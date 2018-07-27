@@ -259,3 +259,35 @@ Example config:
     }
 }
 ```
+#### Picture
+Picture game, answer the question with the correct picture 
+Example config:
+```js
+    'alpha': { //Version of the game
+        "questions": [
+            {
+                "question": "_film_from_1941", // Question to be displayed (not localized)
+                "answers": [
+                    {
+                        "title": "_citizen_kane", //Title displayed after hovering cursor over the image (not localized)
+                        "picture": "1.jpg" //Image name
+                    },
+                    {
+                        "title": "_vertigo",
+                        "picture": "2.jpg"
+                    },
+                    {
+                        "title": "_la_regle_du_jeu",
+                        "picture": "3.jpg"
+                    },
+                    {
+                        "title": "_2001_a_space_odyssey",
+                        "picture": "4.jpg"
+                    },
+                ],
+                "numberOfAnswersToShow": 3, //How may answers should be chosen from provided list
+                "correct": 0 //The number of the correct answer (beginning from 0)
+            },
+        ]
+    },
+}

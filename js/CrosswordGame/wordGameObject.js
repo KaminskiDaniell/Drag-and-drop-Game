@@ -61,7 +61,9 @@ class WordGameObject extends GameObject {
         else {
             this.focus = letterNumber;
         }
-        this.gameObjects[this.focus].setActive();
+        if(this.getGame().getAllowFocus()) {
+            this.gameObjects[this.focus].setActive();
+        }
     }
 
     removeLetter() {
@@ -94,19 +96,24 @@ class WordGameObject extends GameObject {
     }
 
     click() {
-        this.getGame().setFocus(this.wordNumber, false);
+        if(this.getGame().getFocus() != this.wordNumber) {
+            this.getGame().setFocus(this.wordNumber, false);
+        }
     }
 
     insertLetter(letter) {
         if (this.gameObjects[this.focus].insertLetter(letter)) {
-            if (this.check()) {
-                this.getGame().check();
-            }
-            if (this.focus === this.gameObjects.length - 1) {
+            if (this.focus === this.gameObjects.length - 1 || this.check()) {
                 this.setFocus(0);
                 return 'next';
             }
             this.setFocus(this.focus + 1);
+        }
+    }
+
+    recordCorrectLetter() {
+        if (this.check()) {
+            this.getGame().check(this.wordNumber);
         }
     }
 

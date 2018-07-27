@@ -17,7 +17,7 @@ CrosswordGame.versions = {
                 'Film crossword': [
                     {
                         'definition': "Robi szczek szczek bark bark wof wof, i jest fajny",
-                        'word': 'Pies',
+                        'word': 'Pies:',
                         'solutionLetter': 1
                     },
                     {

@@ -16,6 +16,8 @@ class CrosswordGame extends Game {
         });
 
         this.gameObjects = [];
+        this.checkedWords = {};
+        this.allowFocus = true;
 
         let highestSolutionLetter = this.getHighestSolutionLetter();
 
@@ -26,6 +28,10 @@ class CrosswordGame extends Game {
         this.addHints();
 
         this.setFocus(0);
+    }
+
+    getAllowFocus() {
+        return this.allowFocus;
     }
 
     makeHintsTable() {
@@ -99,7 +105,7 @@ class CrosswordGame extends Game {
         }
         else {
             if (this.gameObjects[this.focus].insertLetter(letter) === 'next') {
-                this.setFocus(this.focus + 1, false);
+                this.nextWord(false);
             }
         }
     }
@@ -112,7 +118,7 @@ class CrosswordGame extends Game {
         if (typeof this.focus == 'undefined') {
             this.focus = wordNumber;
         }
-        else {
+        else if(this.allowFocus) {
             this.gameObjects[this.focus].unsetActive();
             if (!((wordNumber > this.gameObjects.length - 1) || (wordNumber < 0))) {
                 if (letterFocus) {
@@ -124,12 +130,23 @@ class CrosswordGame extends Game {
                 }
             }
         }
-        this.gameObjects[this.focus].setActive();
-        this.gameObjects[this.focus].setFocus();
+        if(this.allowFocus) {
+            this.gameObjects[this.focus].setActive();
+            this.gameObjects[this.focus].setFocus();
+        }
+    }
+
+    unsetFocus() {
+        this.gameObjects[this.focus].unsetActive();
+        this.allowFocus = false;
     }
 
     setLetterFocusOffset(from, to) {
         to.setFocus(from.focus - from.solutionLetter + to.solutionLetter);
+    }
+
+    getFocus() {
+        return this.focus;
     }
 
     setTimer() {
@@ -163,20 +180,32 @@ class CrosswordGame extends Game {
         this.getGameArea().prepend(this.scores);
     }
 
-    prevWord() {
-        this.setFocus(this.focus - 1);
+    prevWord(letterFocus = true) {
+        for(let i = this.focus - 1; i >= 0; i--) {
+            if(!this.checkedWords[i]) {
+                this.setFocus(i, letterFocus);
+                break;
+            }
+        }
     }
 
-    nextWord() {
-        this.setFocus(this.focus + 1);
+    nextWord(letterFocus = true) {
+        for(let i = this.focus + 1; i < this.gameObjects.length; i++) {
+            if(!this.checkedWords[i]) {
+                this.setFocus(i, letterFocus);
+                break;
+            }
+        }
     }
 
-    check() {
+    check(wordNumber) {
+        this.checkedWords[wordNumber] = true;
         this.setScores(true);
         if (this.score === this.gameObjects.length) {
             clearInterval(this.timeInterval);
             Snackbar.removeCallbacks();
             Snackbar.show("success", '_success_header', '_success');
+            this.unsetFocus();
         }
     }
 
