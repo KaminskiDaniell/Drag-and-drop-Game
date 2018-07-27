@@ -139,10 +139,12 @@ class PictureGame extends Game {
     }
 
     static loadImages() {
-        var images = PictureGame.questions;
-        for (var i in images) {
-            for (var j in images[i].answers) {
-                var img = new Image;
+        let length = 0;
+        let images = PictureGame.questions;
+        for (let i in images) {
+            for (let j in images[i].answers) {
+                length++;
+                let img = new Image;
                 img.addEventListener('load', function () {
                     Load.imageLoaded();
                 });
@@ -151,6 +153,6 @@ class PictureGame extends Game {
                 $('body').append(img);
             }
         }
-        return images.length;
+        return length;
     }
 }
