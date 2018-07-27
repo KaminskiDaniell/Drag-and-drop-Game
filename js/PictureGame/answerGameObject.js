@@ -15,6 +15,11 @@ class AnswerGameObject extends GameObject {
 
 
     click() {
-        this.getGame().checkAnswer(this.answerNumber);
+        if(this.getGame().checkAnswer(this.answerNumber)) {
+           this.object.addClass('correct-answer'); 
+        }
+        else {
+           this.object.addClass('incorrect-answer'); 
+        }
     }
 }

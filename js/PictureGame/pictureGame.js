@@ -46,7 +46,7 @@ class PictureGame extends Game {
     endGame() {
         clearInterval(this.timeInterval);
         Snackbar.removeCallbacks();
-        Snackbar.show('success', '_success_header', '_success');
+        Snackbar.show('success', '_success_header', '_success', false, this.scores.text());
     }
 
     getQuestion() {
@@ -88,11 +88,17 @@ class PictureGame extends Game {
     }
 
     checkAnswer(answerNumber) {
-        if(this.correctAnswerNumber === answerNumber) {
+        setTimeout(() => {
             this.newQuestion();
+        }, 2000);
+
+        if(this.correctAnswerNumber === answerNumber) {
+            this.setScores(true);
+            return true;
         }
         else {
             //Snackbar.show("error", '_fail_header', '_fail', false, this.textLocalized);
+            return false;
         }
     }
 

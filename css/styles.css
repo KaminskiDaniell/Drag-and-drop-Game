@@ -708,7 +708,16 @@ html, body {
 }
 
 #picture-game .picture-answer img {
+    border: solid 5px transparent;
     border-radius: 10%;
     max-height: 10%;
     width: auto;
+}
+
+#picture-game .correct-answer img {
+    border: solid 5px forestgreen;
+}
+
+#picture-game .incorrect-answer img {
+    border: solid 5px firebrick;
 }
