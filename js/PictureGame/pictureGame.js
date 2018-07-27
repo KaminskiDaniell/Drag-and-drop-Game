@@ -49,10 +49,10 @@ class PictureGame extends Game {
             }
         }
 
-        let answers = this.getQuestion().answers;
+        let answers = this.getQuestion().answers.slice();
         shuffle(answers)
         for(var i in answers) {
-            this.answerGameObjects.push(new AnswerGameObject(i, this));
+            this.answerGameObjects.push(new AnswerGameObject(this.getQuestion().answers.indexOf(answers[i]), this));
         }
         this.correctAnswerNumber = this.getQuestion().correct;
     }
