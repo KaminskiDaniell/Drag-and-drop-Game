@@ -704,7 +704,11 @@ html, body {
     margin: 10px;
     font: bold 20px 'Lato', Sans-Serif;
     text-align: center;
-    padding: 20px;
+}
+
+#picture-game .picture-answer img {
     border-radius: 100%;
     border: 2px cadetblue solid;
+    max-height: 10%;
+    max-width: 10%;
 }
