@@ -687,7 +687,8 @@ html, body {
     margin: 0 auto;
     max-width: 50%;
     padding: 20px;
-    border: 2px cadetblue solid;
+    color: #484848;
+    background: #e5e5e5;
     border-radius: 20px;
 }
 
@@ -707,8 +708,7 @@ html, body {
 }
 
 #picture-game .picture-answer img {
-    border-radius: 100%;
-    border: 2px cadetblue solid;
+    border-radius: 10%;
     max-height: 10%;
-    max-width: 10%;
+    width: auto;
 }
