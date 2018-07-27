@@ -139,6 +139,18 @@ class PictureGame extends Game {
     }
 
     static loadImages() {
-        return 0;
+        var images = PictureGame.questions;
+        for (var i in images) {
+            for (var j in images[i].answers) {
+                var img = new Image;
+                img.addEventListener('load', function () {
+                    Load.imageLoaded();
+                });
+                img.src = Game.folder + images[i].answers[j].picture;
+                img.style.display = "none";
+                $('body').append(img);
+            }
+        }
+        return images.length;
     }
 }
