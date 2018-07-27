@@ -12,14 +12,18 @@ class PictureGame extends Game {
             this.questionNumber = 0;
         }
 
-        this.createQuestion();
-        this.createAnswers();
+        this.newQuestion();
         
         Snackbar.addCallback(function () {
             GameManager.get().setTimer();
             GameManager.get().setScores();
         });
 
+    }
+
+    newQuestion() {
+        this.createQuestion();
+        this.createAnswers();
     }
 
     getQuestion() {
@@ -39,6 +43,13 @@ class PictureGame extends Game {
         this.answerGameObjects = [];
         for(var i in this.getQuestion().answers) {
             this.answerGameObjects.push(new AnswerGameObject(i, this));
+        }
+        this.correctAnswerNumber = this.getQuestion().correct;
+    }
+
+    checkAnswer(answerNumber) {
+        if(this.correctAnswerNumber === answerNumber) {
+            this.newQuestion();
         }
     }
 
