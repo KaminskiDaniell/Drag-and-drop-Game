@@ -2,6 +2,7 @@ class AnswerGameObject extends GameObject {
     constructor(answerNumber, game) {
         super(game);
 
+        this.canClick = true;
         this.answerNumber = answerNumber;
         this.object = $('<div>', {class: 'picture-answer'});
         this.object.on('click', () => {
@@ -15,11 +16,17 @@ class AnswerGameObject extends GameObject {
 
 
     click() {
-        if(this.getGame().checkAnswer(this.answerNumber)) {
-           this.object.addClass('correct-answer'); 
+        if(this.canClick) {
+            if(this.getGame().checkAnswer(this.answerNumber)) {
+               this.object.addClass('correct-answer'); 
+            }
+            else {
+               this.object.addClass('incorrect-answer'); 
+            }
         }
-        else {
-           this.object.addClass('incorrect-answer'); 
-        }
+    }
+
+    setClick(click) {
+        this.canClick = click;
     }
 }

@@ -92,6 +92,10 @@ class PictureGame extends Game {
             this.newQuestion();
         }, 2000);
 
+        for(var i in this.answerGameObjects) {
+            this.answerGameObjects[i].setClick(false);
+        }
+
         if(this.correctAnswerNumber === answerNumber) {
             this.setScores(true);
             return true;
