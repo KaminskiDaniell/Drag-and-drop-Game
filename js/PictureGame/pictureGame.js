@@ -16,13 +16,13 @@ class PictureGame extends Game {
     }
 
     newQuestion() {
-        if(this.object) {
-            this.object.remove();
-        }
-        this.object = $('<div>', {id: 'picture-game'});
-        this.getGameArea().append(this.object);
-
         if(this.nextQuestion()) {
+            if(this.object) {
+                this.object.remove();
+            }
+            this.object = $('<div>', {id: 'picture-game'});
+            this.getGameArea().append(this.object);
+
             this.createQuestion();
             this.createAnswers();
             this.appendAnswers();
@@ -45,6 +45,7 @@ class PictureGame extends Game {
 
     endGame() {
         clearInterval(this.timeInterval);
+        Snackbar.removeCallbacks();
         Snackbar.show('success', '_success_header', '_success');
     }
 
