@@ -12,15 +12,19 @@ class PictureGame extends Game {
             this.questionNumber = 0;
         }
 
-        this.createQuestion();
-        this.createAnswers();
-        this.appendAnswers();
-
+        this.newQuestion();
+        
         Snackbar.addCallback(function () {
             GameManager.get().setTimer();
             GameManager.get().setScores();
         });
 
+    }
+
+    newQuestion() {
+        this.createQuestion();
+        this.createAnswers();
+        this.appendAnswers();
     }
 
     getQuestion() {
@@ -46,8 +50,25 @@ class PictureGame extends Game {
 
     createAnswers() {
         this.answerGameObjects = [];
-        for (var i in this.getQuestion().answers) {
+
+        var shuffle = function (array) {
+            for (let i = array.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [array[i], array[j]] = [array[j], array[i]];
+            }
+        }
+
+        let answers = this.getQuestion().answers;
+        shuffle(answers)
+        for(var i in answers) {
             this.answerGameObjects.push(new AnswerGameObject(i, this));
+        }
+        this.correctAnswerNumber = this.getQuestion().correct;
+    }
+
+    checkAnswer(answerNumber) {
+        if(this.correctAnswerNumber === answerNumber) {
+            this.newQuestion();
         }
     }
 
