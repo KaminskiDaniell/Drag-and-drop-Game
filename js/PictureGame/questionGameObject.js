@@ -2,14 +2,13 @@ class QuestionGameObject extends GameObject {
     constructor(game) {
         super(game);
 
-        this.object = $('<div>', {class: 'picture-question'}).text(this.getGame().getQuestionNumber());
+        this.object = $('<div>', {class: 'picture-question'});
         this.getGame().object.append(this.object);
 
-        this.setQuestion();
+        this.object.text(this.getLocalizedQuestion());
     }
 
-    setQuestion() {
-        let question = this.getGame().getQuestion().question;
-        this.object.text(question);
+    getLocalizedQuestion() {
+        return Locale.get('question', this.getGame().getQuestion().question);
     }
 }

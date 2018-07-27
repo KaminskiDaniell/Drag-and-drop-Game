@@ -11,7 +11,7 @@ class AnswerGameObject extends GameObject {
         this.getGame().object.append(this.object);
 
         let answer = this.getGame().getQuestion().answers[answerNumber];
-        this.object.append($("<img>", {src: Game.folder + answer.picture, alt: answer.title, title: answer.title}));
+        this.object.append($("<img>", {src: Game.folder + answer.picture, alt: answer.title, title: Locale.get('title', answer.title)}));
     }
 
 
