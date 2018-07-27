@@ -6,10 +6,6 @@ class PictureGame extends Game {
     }
 
     loadGame() {
-        if (!this.questionNumber) {
-            this.questionNumber = 0;
-        }
-
         this.newQuestion();
         
         Snackbar.addCallback(function () {
@@ -26,9 +22,30 @@ class PictureGame extends Game {
         this.object = $('<div>', {id: 'picture-game'});
         this.getGameArea().append(this.object);
 
-        this.createQuestion();
-        this.createAnswers();
-        this.appendAnswers();
+        if(this.nextQuestion()) {
+            this.createQuestion();
+            this.createAnswers();
+            this.appendAnswers();
+        }
+    }
+
+    nextQuestion() {
+        if(this.questionNumber === undefined) {
+            this.questionNumber = 0;
+        }
+        else if(this.questionNumber === PictureGame.questions.length - 1) {
+            this.endGame();
+            return false;
+        }
+        else {
+            this.questionNumber++;
+        }
+        return true;
+    }
+
+    endGame() {
+        clearInterval(this.timeInterval);
+        Snackbar.show('success', '_success_header', '_success');
     }
 
     getQuestion() {
