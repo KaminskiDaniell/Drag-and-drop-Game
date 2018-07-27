@@ -35,7 +35,7 @@ PictureGame.versions = {
                         "picture": "8.jpg"
                     },
                 ],
-                "correct": 0
+                "correct": 1
             }
         ]
     },

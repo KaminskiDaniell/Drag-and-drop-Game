@@ -91,6 +91,9 @@ class PictureGame extends Game {
         if(this.correctAnswerNumber === answerNumber) {
             this.newQuestion();
         }
+        else {
+            //Snackbar.show("error", '_fail_header', '_fail', false, this.textLocalized);
+        }
     }
 
     setTimer() {
