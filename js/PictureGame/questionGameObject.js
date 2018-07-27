@@ -11,4 +11,8 @@ class QuestionGameObject extends GameObject {
     getLocalizedQuestion() {
         return Locale.get('question', this.getGame().getQuestion().question);
     }
+    
+    loadLocale() {
+        this.object.text(this.getLocalizedQuestion());
+    }
 }

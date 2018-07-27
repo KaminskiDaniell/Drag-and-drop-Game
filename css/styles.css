@@ -723,7 +723,7 @@ html, body {
 }
 
 #picture-game .picture-answer img:hover {
-    animation: shake 0.5s;
+    animation: shake 1s;
     animation-iteration-count: infinite;
 }
 

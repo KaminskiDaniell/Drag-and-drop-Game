@@ -24,8 +24,11 @@ case "$1" in
     "crossword")
         name="crossword"
         folder="CrosswordGame" ;;
+    "picture")
+        name="picture"
+        folder="PictureGame" ;;
     "all")
-        for i in hangman pair basket quiz sort memo puzzle crossword
+        for i in hangman pair basket quiz sort memo puzzle crossword picture
         do
             bash ./deploy.sh $i;
         done

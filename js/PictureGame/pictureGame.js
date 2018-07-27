@@ -78,9 +78,19 @@ class PictureGame extends Game {
                 [array[i], array[j]] = [array[j], array[i]];
             }
         }
+        
+        let numberOfAnswersToShow = this.getQuestion().numberOfAnswersToShow;
+        if(!numberOfAnswersToShow) {
+            numberOfAnswersToShow = 3; 
+        }
 
         let answers = this.getQuestion().answers.slice();
-        shuffle(answers)
+        let correctAnswer = answers.splice(this.getQuestion().correct, 1);
+
+        shuffle(answers);
+        answers = correctAnswer.concat(answers.slice(0, numberOfAnswersToShow - 1));
+        shuffle(answers);
+
         for(var i in answers) {
             this.answerGameObjects.push(new AnswerGameObject(this.getQuestion().answers.indexOf(answers[i]), this));
         }
@@ -104,6 +114,15 @@ class PictureGame extends Game {
             //Snackbar.show("error", '_fail_header', '_fail', false, this.textLocalized);
             return false;
         }
+    }
+
+    loadLocale() {
+        super.loadLocale();
+        for(var i in this.answerGameObjects) {
+            let answer = this.answerGameObjects[i];
+            answer.loadLocale();
+        }
+        this.questionGameObject.loadLocale();
     }
 
     setTimer() {

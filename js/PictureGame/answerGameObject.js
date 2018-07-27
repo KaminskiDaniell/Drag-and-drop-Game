@@ -29,4 +29,9 @@ class AnswerGameObject extends GameObject {
     setClick(click) {
         this.canClick = click;
     }
+
+    loadLocale() {
+        let answer = this.getGame().getQuestion().answers[this.answerNumber];
+        this.object.find('img').attr('title', Locale.get('title', answer.title));
+    }
 }

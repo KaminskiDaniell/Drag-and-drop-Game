@@ -15,8 +15,13 @@ PictureGame.versions = {
                     {
                         "title": "_la_regle_du_jeu",
                         "picture": "3.jpg"
-                    }
+                    },
+                    {
+                        "title": "_2001_a_space_odyssey",
+                        "picture": "4.jpg"
+                    },
                 ],
+                "numberOfAnswersToShow": 3,
                 "correct": 0
             },
             {
@@ -42,4 +47,4 @@ PictureGame.versions = {
     'beta': {
         "questions": {}
     }
-};
+}
