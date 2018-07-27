@@ -6,8 +6,6 @@ class PictureGame extends Game {
     }
 
     loadGame() {
-        this.object = $('<div>', {id: 'picture-game'});
-        this.getGameArea().append(this.object);
         if (!this.questionNumber) {
             this.questionNumber = 0;
         }
@@ -22,6 +20,12 @@ class PictureGame extends Game {
     }
 
     newQuestion() {
+        if(this.object) {
+            this.object.remove();
+        }
+        this.object = $('<div>', {id: 'picture-game'});
+        this.getGameArea().append(this.object);
+
         this.createQuestion();
         this.createAnswers();
         this.appendAnswers();
@@ -43,7 +47,6 @@ class PictureGame extends Game {
         let pictureAnswers = $('<div>', {class: 'picture-answers'});
         this.object.append(pictureAnswers);
         this.answerGameObjects.forEach(function (entry) {
-            console.log(entry);
             pictureAnswers.append(entry.object);
         })
     }
