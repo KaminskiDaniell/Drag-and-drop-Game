@@ -8,13 +8,14 @@ class PictureGame extends Game {
     loadGame() {
         this.object = $('<div>', {id: 'picture-game'});
         this.getGameArea().append(this.object);
-        if(!this.questionNumber) {
+        if (!this.questionNumber) {
             this.questionNumber = 0;
         }
 
         this.createQuestion();
         this.createAnswers();
-        
+        this.appendAnswers();
+
         Snackbar.addCallback(function () {
             GameManager.get().setTimer();
             GameManager.get().setScores();
@@ -32,12 +33,20 @@ class PictureGame extends Game {
 
     createQuestion() {
         this.questionGameObject = new QuestionGameObject(this);
-        this.getGameArea().append(this.questionGameObject);
     }
-    
+
+    appendAnswers() {
+        let pictureAnswers = $('<div>', {class: 'picture-answers'});
+        this.object.append(pictureAnswers);
+        this.answerGameObjects.forEach(function (entry) {
+            console.log(entry);
+            pictureAnswers.append(entry.object);
+        })
+    }
+
     createAnswers() {
         this.answerGameObjects = [];
-        for(var i in this.getQuestion().answers) {
+        for (var i in this.getQuestion().answers) {
             this.answerGameObjects.push(new AnswerGameObject(i, this));
         }
     }

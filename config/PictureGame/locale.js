@@ -23,8 +23,6 @@ Locale.locales = {
             '_fail_header': 'Fail',
             '_loading_game': 'Loading game...'
         },
-        'questions': {
-
-        }
+        'questions': {}
     }
 }

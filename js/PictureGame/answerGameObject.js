@@ -3,7 +3,6 @@ class AnswerGameObject extends GameObject {
         super(game);
 
         this.object = $('<div>', {class: 'picture-answer'});
-        this.getGame().object.append(this.object);
 
         this.setAnswer(answerNumber);
     }
