@@ -17,7 +17,7 @@ CrosswordGame.versions = {
                 'Film crossword': [
                     {
                         'definition': "Robi szczek szczek bark bark wof wof, i jest fajny",
-                        'word': 'Pies:',
+                        'word': 'Pies',
                         'solutionLetter': 1
                     },
                     {
@@ -33,7 +33,7 @@ CrosswordGame.versions = {
                     {
                         'definition': 'W bajce ma klapnięte uszko, lubi miód',
                         'word': 'Niedźwiedź',
-                        'solutionLetter': 10,
+                        'solutionLetter': 3,
                     },
                     {
                         'definition': 'Hasło tej krzyżowki',

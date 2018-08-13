@@ -6,6 +6,9 @@ document.addEventListener('keydown', function (event) {
         }
     }
     else {
+        if(event.key === "ArrowUp" || event.key === "ArrowDown") {
+            event.preventDefault();
+        }
         GameManager.get().insertLetter(event.key);
     }
 });
