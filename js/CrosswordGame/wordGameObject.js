@@ -96,7 +96,7 @@ class WordGameObject extends GameObject {
     }
 
     click() {
-        if(this.getGame().getFocus() != this.wordNumber) {
+        if(this.getGame().getFocus() != this.wordNumber && !this.checked) {
             this.getGame().setFocus(this.wordNumber, false);
         }
     }
@@ -127,6 +127,7 @@ class WordGameObject extends GameObject {
             this.gameObjects[i].lock();
         }
         $('#word' + $('.active')[0].id)[0].classList.add('found');
+        this.checked = true;
         return true;
     }
 }
