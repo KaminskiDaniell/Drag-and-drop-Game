@@ -616,10 +616,10 @@ html, body {
 
 #puzzle {
     position: relative;
-    top: 10%;
-    left: 10%;
+    top: 30px;
+    left: 5%;
     max-width: 50%;
-    display: inline-block;
+    display: block;
 }
 
 #puzzle table {
@@ -627,15 +627,22 @@ html, body {
 }
 
 #puzzle table, #puzzle th, #puzzle td, #hints th, #hints td {
-    font: bold 25px 'Lato', Sans-Serif;
-    text-transform: uppercase;
-    text-align: center;
-    padding: 3px;
-    height: 50px;
-    min-width: 50px;
-    justify-content: center;
-    align-items: center;
+    font: bold 20px 'Lato', Sans-Serif;
+    padding: 1px;
+    height: 30px;
+    min-width: 30px;
     vertical-align: middle;
+}
+
+#hints .hidden-answer {
+    display: none;
+}
+
+#puzzle td {
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    text-transform: uppercase;
     border: 3px solid white;
 }
 
@@ -648,11 +655,11 @@ html, body {
 }
 
 #hints {
+    top: 40px;
     position: relative;
-    display: inline-block;
+    display: block;
     float: left;
-    top: 10%;
-    left: 10%;
+    left: 5%;
     height: 50%;
 }
 

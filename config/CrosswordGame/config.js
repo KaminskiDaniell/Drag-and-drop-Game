@@ -31,7 +31,7 @@ CrosswordGame.versions = {
                         'solutionLetter': 1
                     },
                     {
-                        'definition': 'W bajce ma klapnięte uszko, lubi miód',
+                        'definition': 'W bajce ma klapnięte uszko, lubi miód (gatunek)',
                         'word': 'Niedźwiedź',
                         'solutionLetter': 3,
                     },

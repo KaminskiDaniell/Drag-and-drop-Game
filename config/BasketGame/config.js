@@ -6,7 +6,7 @@ BasketGame.versions = {
         "horizontalOffset": 150, //for shuffling on screen
         "verticalOffset": 140, //for shuffling on screen
         "sources": {
-            "_yes":  //first basket name (to localize)
+            "_worth":  //first basket name (to localize)
                 [
                     {
                         "display": "_put", //first element name (to localize)
@@ -19,18 +19,29 @@ BasketGame.versions = {
                         "name": "BAD" //dont put into basket
                     }
                 ],
-            "_no": //second basket name (to localize)
+            "_not_worth": //second basket name (to localize)
+                [
+                    {
+                        "fileName": "2.jpg", //if fileName given, element will be image with src 1.jpg (in /img/ folder)
+                        "display": "_put1",
+                        "name": "GOOD" //dont put into basket
+                    },
+                    {
+                        "fileName": "3.jpg", //if fileName given, element will be image with src 1.jpg (in /img/ folder)
+                        "display": "_put1",
+                        "name": "GOOD" //dont put into basket
+                    },
+                    {
+                        "fileName": "4.jpg", //if fileName given, element will be image with src 1.jpg (in /img/ folder)
+                        "display": "_put1",
+                        "name": "GOOD" //dont put into basket
+                    }
+                ],
+            "_empty": //third basket name (to localize) can add more baskets
                 [
                     {
                         "display": "_dont",
-                        "name": "GOOD"
-                    }
-                ],
-            "_maybe": //third basket name (to localize) can add more baskets
-                [
-                    {
-                        "display": "_maybe",
-                        "name": "GOOD"
+                        "name": "BAD"
                     }
                 ]
         }

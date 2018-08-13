@@ -33,7 +33,8 @@ Locale.locales = {
             '_not_worth': "Słabe filmy",
             '_yes': "Wrzuc co trzeba",
             '_no': 'Wrzuc co nie trzeba',
-            '_maybe': "Moze?"
+            '_maybe': "Moze?",
+            '_empty': "Ten pusty!"
         }
     },
     'en': {
@@ -70,7 +71,8 @@ Locale.locales = {
             '_not_worth': "Do not watch!",
             '_yes': "Put",
             '_no': 'Do not put',
-            '_maybe': "Maybe?"
+            '_maybe': "Maybe?",
+            '_empty': "This should be empty!"
         }
     }
 };

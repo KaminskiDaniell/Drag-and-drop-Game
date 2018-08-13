@@ -1,8 +1,6 @@
 PuzzleGame.versions = {
     "animals": {
         sources: [
-            '_animal1',
-            '_animal2',
             '_animal3',
             '_animal4',
             '_animal5',

@@ -15,8 +15,6 @@ Locale.locales = {
             '_loading_game': 'Ładowanie gry...'
         },
         'words': {
-            '_animal1': 'pies',
-            '_animal2': 'kot',
             '_animal3': 'świnia',
             '_animal4': 'osioł',
             '_animal5': 'słoń',
@@ -49,8 +47,6 @@ Locale.locales = {
             '_loading_game': 'Loading game...'
         },
         "words": {
-            '_animal1': 'dog',
-            '_animal2': 'cat',
             '_animal3': 'pig',
             '_animal4': 'donkey',
             '_animal5': 'elephant',
@@ -65,6 +61,17 @@ Locale.locales = {
             '_food3': 'kebab',
             '_food4': 'pizza',
             '_food5': 'pierogies',
+        },
+        "hints": {
+            '_animal3': 'hint for pig',
+            '_animal4': 'hint for donkey',
+            '_animal5': 'hint for elephant',
+            '_animal6': 'hint for bee',
+            '_animal7': 'hint for bear',
+            '_animal8': 'hint for fish',
+            '_animal9': 'hint for mice',
+            '_animal10': 'hint for rat',
+            '_animal11': 'hint for monkey',
         }
     }
 };

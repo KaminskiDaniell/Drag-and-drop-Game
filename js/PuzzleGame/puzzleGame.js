@@ -3,6 +3,7 @@ class PuzzleGame extends Game {
         super(gameAreaId, version);
         this.toGuess = [];
         this.matrix = [];
+        this.hints = [];
         PuzzleGame.singleDrag = [];
         this.emptyMatrix();
         let ret = false;
@@ -33,11 +34,13 @@ class PuzzleGame extends Game {
 
     putWordIntoArray() {
         this.toGuess = [];
+        this.hints = [];
         this.emptyMatrix();
         this.sources = PuzzleGame.sources.slice();
         while (this.sources.length > 0) {
             let index = Math.floor(Math.random() * (this.sources.length));
             let word = Locale.get('words', this.sources[index]);
+            let rememberedSource = this.sources[index];
             let reversed = Math.random() < 0.6;
             if (reversed)
                 word = word.split("").reverse().join("");
@@ -75,6 +78,7 @@ class PuzzleGame extends Game {
                             iterator++;
                         }
                         this.toGuess.push(idString);
+                        this.hints.push([idString, rememberedSource]);
                     }
                 } else {
                     randy = Math.floor(Math.random() * (PuzzleGame.width - word.length > 0 ? PuzzleGame.width - word.length : 1));
@@ -98,7 +102,8 @@ class PuzzleGame extends Game {
                             this.matrix[randx][y] = new PuzzleGameObject(this, word[iterator], vertical);
                             iterator++;
                         }
-                        this.toGuess.push(idString)
+                        this.toGuess.push(idString);
+                        this.hints.push([idString, rememberedSource]);
                     }
                 }
                 missesAllowed--;
@@ -122,21 +127,25 @@ class PuzzleGame extends Game {
             toReverse += entry.id + ',';
         });
         let reversedString = toReverse.split(",").reverse().join("");
-        let reversedWord = word.split('').reverse().join('');
         let indexReversed = this.toGuess.indexOf(reversedString);
         let index = this.toGuess.indexOf(string);
         if (index >= 0 || indexReversed >= 0) {
             PuzzleGame.singleDrag.forEach(function (entry) {
                 entry.classList.add("correct");
             });
-            let div = document.getElementById(word);
-            if (div) div.classList.add('found');
-            else document.getElementById(reversedWord).classList.add('found');
             if (index >= 0) {
+                let divId = this.hints[index][1];
+                console.log(divId);
+                document.getElementById(divId).classList.add('found');
                 this.toGuess.splice(index, 1);
+                this.hints.splice(index, 1);
             }
             else if (indexReversed >= 0) {
+                let divId = this.hints[indexReversed][1];
+                console.log(divId);
+                document.getElementById(divId).classList.add('found');
                 this.toGuess.splice(indexReversed, 1);
+                this.hints.splice(indexReversed, 1);
             }
             if (this.toGuess.length === 0) {
                 Snackbar.show("success", '_success');
@@ -153,14 +162,29 @@ class PuzzleGame extends Game {
                 .append(this.makeHintsTable()));
     }
 
+    /*  makeHintsTable() {
+          var table = document.createElement('table');
+          table.classList.add('hintsTable');
+          for (var i = 0; i < PuzzleGame.sources.length; i++) {
+              var row = document.createElement('tr');
+              row.id = i;
+              var cell = document.createElement('td');
+              cell.textContent = Locale.get('hints', PuzzleGame.sources[i]);
+              row.appendChild(cell);
+              table.appendChild(row);
+          }
+          return table;
+      }*/
+
     makeHintsTable() {
         var table = document.createElement('table');
         table.classList.add('hintsTable');
-        for (var i = 0; i < PuzzleGame.sources.length; i++) {
+        for (var i = 0; i < this.hints.length; i++) {
             var row = document.createElement('tr');
+            let j = PuzzleGame.sources.indexOf(this.hints[i][1]);
+            row.id = PuzzleGame.sources[j];
             var cell = document.createElement('td');
-            cell.id = Locale.get('words', PuzzleGame.sources[i]);
-            cell.textContent = Locale.get('words', PuzzleGame.sources[i]);
+            cell.textContent = Locale.get('hints', PuzzleGame.sources[j]);
             row.appendChild(cell);
             table.appendChild(row);
         }
