@@ -1,465 +1,181 @@
 // NUMBER OF TOTAL QUESTIONs PER DIFFICULTY LEVEL MUST BE AT LEAST 8!
 QuizGame.versions = {
-    'alpha': {
+    'logistics': {
         sources: {
             'easy': {
-                'bla': [
+                'Film crossword': [
                     {
-                        question: "#question_football",
-                        answers: [
-                            "#answer_football_0",
-                            "#answer_football_1",
-                            "#answer_football_2",
-                            "#answer_football_3"
-                        ],
-                        correctAnswer: '1'
-                    },
-                    {
-                        question: "#question_wojtek",
-                        answers: [
-                            "#answer_wojtek_0",
-                            "#answer_wojtek_1",
-                            "#answer_wojtek_2",
-                            "#answer_wojtek_3"
-                        ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "#question_football1",
-                        answers: [
-                            "#answer_football1_0",
-                            "#answer_football1_1",
-                            "#answer_football1_2",
-                            "#answer_football1_3"
-                        ],
-                        correctAnswer: '1'
-                    },
-                    {
-                        question: "#question_football2",
-                        answers: [
-                            "#answer_football2_0",
-                            "#answer_football2_1",
-                            "#answer_football2_2",
-                            "#answer_football2_3",
-                        ],
-                        correctAnswer: '3'
-                    },
-                ],
-                'category2': [
-                    {
-                        question: "#question1",
+                        question: "#question_1",
                         answers: [
                             "#answer_1_0",
                             "#answer_1_1",
                             "#answer_1_2",
                             "#answer_1_3",
                         ],
-                        correctAnswer: '0'
+                        correctAnswer: '1'
                     },
                     {
-                        question: "#question2",
+                        question: "#question_2",
                         answers: [
                             "#answer_2_0",
                             "#answer_2_1",
                             "#answer_2_2",
-                            "#answer_2_3",
+                            "#answer_2_3"
                         ],
-                        correctAnswer: '2'
+                        correctAnswer: '3'
                     },
                     {
-                        question: "#question3",
+                        question: "#question_3",
                         answers: [
                             "#answer_3_0",
                             "#answer_3_1",
                             "#answer_3_2",
-                            "#answer_3_3",
+                            "#answer_3_3"
                         ],
                         correctAnswer: '1'
                     },
-                ]
-            },
-            'medium': {
-                'piosenki': [
                     {
-                        question: "... miś dla dziewczyny, która kocham ... Jakiego koloru jest ten miś",
+                        question: "#question_4",
                         answers: [
-                            "Brązowego",
-                            "Czarnego",
-                            "Białego",
-                            "Złotego"
+                            "#answer_4_0",
+                            "#answer_4_1",
+                            "#answer_4_2",
+                            "#answer_4_3"
                         ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "Ile jest 2 + 2",
-                        answers: [
-                            "4",
-                            "5",
-                            "3",
-                            "4.5"
-                        ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "Ile jest 2 - 2",
-                        answers: [
-                            "0",
-                            "2",
-                            "-1",
-                            "3"
-                        ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "Ile jest 2 + 3 * 2",
-                        answers: [
-                            "8",
-                            "10",
-                            "6",
-                            "nie można jednocześnie mnożyć i dodawać"
-                        ],
-                        correctAnswer: '0'
+                        correctAnswer: '1'
                     },
                 ],
-                'fizyka': [
+            },
+            'medium': {
+                'logistics': [
                     {
-                        question: "Do czego odnosi się rok świetlny",
+                        question: "#question_5",
                         answers: [
-                            "Czasu",
-                            "Szybkości",
-                            "Długości",
-                            "Przyśpieszenia"
+                            "#answer_5_0",
+                            "#answer_5_1",
+                            "#answer_5_2",
+                            "#answer_5_3"
                         ],
-                        correctAnswer: '2'
+                        correctAnswer: '3'
                     },
                     {
-                        question: "Czego stolicą jest Londyn",
+                        question: "#question_6",
                         answers: [
-                            "Irlandii",
-                            "Wielkiej Brytani",
-                            "Stanów zjednoczonych",
-                            "Polonii"
+                            "#answer_6_0",
+                            "#answer_6_1",
+                            "#answer_6_2",
+                            "#answer_6_3"
+                        ],
+                        correctAnswer: '0'
+                    },
+                    {
+                        question: "#question_7",
+                        answers: [
+                            "#answer_7_0",
+                            "#answer_7_1",
+                            "#answer_7_2",
+                            "#answer_7_3"
                         ],
                         correctAnswer: '1'
                     },
                     {
-                        question: "Co jest stolicą województwa wielkopolskiego?",
+                        question: "#question_8",
                         answers: [
-                            "Warszawa",
-                            "Gniezno",
-                            "Manhatan",
-                            "Poznań"
+                            "#answer_8_0",
+                            "#answer_8_1",
+                            "#answer_8_2",
+                            "#answer_8_3"
+                        ],
+                        correctAnswer: '0'
+                    },
+                    {
+                        question: "#question_9",
+                        answers: [
+                            "#answer_9_0",
+                            "#answer_9_1",
+                            "#answer_9_2",
+                            "#answer_9_3"
+                        ],
+                        correctAnswer: '1'
+                    },
+                    {
+                        question: "#question_10",
+                        answers: [
+                            "#answer_10_0",
+                            "#answer_10_1",
+                            "#answer_10_2",
+                            "#answer_10_3"
                         ],
                         correctAnswer: '3'
-                    }
-                ]
+                    },
+                ],
             },
             'hard': {
-                'category1': [
+                'logistics': [
                     {
-                        question: "hard Question 1 category 1",
+                        question: "#question_11",
                         answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
+                            "#answer_11_0",
+                            "#answer_11_1",
+                            "#answer_11_2",
+                            "#answer_11_3"
                         ],
-                        correctAnswer: '2'
+                        correctAnswer: '0'
                     },
                     {
-                        question: "hard Question 2 category 1",
+                        question: "#question_12",
                         answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
+                            "#answer_12_0",
+                            "#answer_12_1",
+                            "#answer_12_2",
+                            "#answer_12_3"
                         ],
-                        correctAnswer: '2'
+                        correctAnswer: '0'
                     },
                     {
-                        question: "hard Question 3 category 1",
+                        question: "#question_13",
                         answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
+                            "#answer_13_0",
+                            "#answer_13_1",
+                            "#answer_13_2",
+                            "#answer_13_3"
                         ],
-                        correctAnswer: '2'
+                        correctAnswer: '0'
                     },
                     {
-                        question: "hard Question 4 category 1",
+                        question: "#question_15",
                         answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
+                            "#answer_15_0",
+                            "#answer_15_1",
+                            "#answer_15_2",
+                            "#answer_15_3"
                         ],
-                        correctAnswer: '2'
+                        correctAnswer: '0'
                     },
                     {
-                        question: "hard Question 5 category 1",
+                        question: "#question_16",
                         answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
+                            "#answer_16_0",
+                            "#answer_16_1",
+                            "#answer_16_2",
+                            "#answer_16_3"
                         ],
-                        correctAnswer: '2'
+                        correctAnswer: '0'
                     },
                     {
-                        question: "hard Question 6 category 1",
+                        question: "#question_17",
                         answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
+                            "#answer_17_0",
+                            "#answer_17_1",
+                            "#answer_17_2",
+                            "#answer_17_3"
                         ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "hard Question 7 category 1",
-                        answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
-                        ],
-                        correctAnswer: '2'
+                        correctAnswer: '0'
                     },
                 ]
             }
         }
     },
-    'beta': {
-        sources: {
-            'easy': {
-                'bla': [
-                    {
-                        question: "#question_wojtek",
-                        answers: [
-                            "#answer_wojtek_0",
-                            "#answer_wojtek_1",
-                            "#answer_wojtek_2",
-                            "#answer_wojtek_3"
-                        ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "#question_football",
-                        answers: [
-                            "#answer_football_0",
-                            "#answer_football_1",
-                            "#answer_football_2",
-                            "#answer_football_3"
-                        ],
-                        correctAnswer: '1'
-                    },
-                    {
-                        question: "#question_football1",
-                        answers: [
-                            "#answer_football1_0",
-                            "#answer_football1_1",
-                            "#answer_football1_2",
-                            "#answer_football1_3"
-                        ],
-                        correctAnswer: '1'
-                    },
-                    {
-                        question: "#question_football2",
-                        answers: [
-                            "#answer_football2_0",
-                            "#answer_football2_1",
-                            "#answer_football2_2",
-                            "#answer_football2_3",
-                        ],
-                        correctAnswer: '3'
-                    },
-                ],
-                'category2': [
-                    {
-                        question: "#question1",
-                        answers: [
-                            "#answer_1_0",
-                            "#answer_1_1",
-                            "#answer_1_2",
-                            "#answer_1_3",
-                        ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "#question2",
-                        answers: [
-                            "#answer_2_0",
-                            "#answer_2_1",
-                            "#answer_2_2",
-                            "#answer_2_3",
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "#question3",
-                        answers: [
-                            "#answer_3_0",
-                            "#answer_3_1",
-                            "#answer_3_2",
-                            "#answer_3_3",
-                        ],
-                        correctAnswer: '1'
-                    },
-                ]
-            },
-            'medium': {
-                'piosenki': [
-                    {
-                        question: "... miś dla dziewczyny, która kocham ... Jakiego koloru jest ten miś",
-                        answers: [
-                            "Brązowego",
-                            "Czarnego",
-                            "Białego",
-                            "Złotego"
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "Ile jest 2 + 2",
-                        answers: [
-                            "4",
-                            "5",
-                            "3",
-                            "4.5"
-                        ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "Ile jest 2 - 2",
-                        answers: [
-                            "0",
-                            "2",
-                            "-1",
-                            "3"
-                        ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "Ile jest 2 + 3 * 2",
-                        answers: [
-                            "8",
-                            "10",
-                            "6",
-                            "nie można jednocześnie mnożyć i dodawać"
-                        ],
-                        correctAnswer: '0'
-                    },
-                ],
-                'fizyka': [
-                    {
-                        question: "Do czego odnosi się rok świetlny",
-                        answers: [
-                            "Czasu",
-                            "Szybkości",
-                            "Długości",
-                            "Przyśpieszenia"
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "Czego stolicą jest Londyn",
-                        answers: [
-                            "Irlandii",
-                            "Wielkiej Brytani",
-                            "Stanów zjednoczonych",
-                            "Polonii"
-                        ],
-                        correctAnswer: '1'
-                    },
-                    {
-                        question: "Co jest stolicą województwa wielkopolskiego?",
-                        answers: [
-                            "Warszawa",
-                            "Gniezno",
-                            "Manhatan",
-                            "Poznań"
-                        ],
-                        correctAnswer: '3'
-                    }
-                ]
-            },
-            'hard': {
-                'category1': [
-                    {
-                        question: "hard Question 1 category 1",
-                        answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "hard Question 2 category 1",
-                        answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "hard Question 3 category 1",
-                        answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "hard Question 4 category 1",
-                        answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "hard Question 5 category 1",
-                        answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "hard Question 6 category 1",
-                        answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
-                        ],
-                        correctAnswer: '2'
-                    },
-                    {
-                        question: "hard Question 7 category 1",
-                        answers: [
-                            "BAD",
-                            "BAD",
-                            "GOOD",
-                            "BAD"
-                        ],
-                        correctAnswer: '2'
-                    },
-                ]
-            }
-        }
-    }
 };
 QuizGame.gameImagePath = "QuizGame/stage-%d.png";
-QuizGame.maxLevel = 15; //no of stages
+QuizGame.maxLevel = 10; //no of stages
