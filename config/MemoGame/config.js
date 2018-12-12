@@ -1,73 +1,29 @@
 MemoGame.versions = {
-    'alpha': {
+    'drones': {
         sources: [
             {
-                'fileName': '1.jpg',
-                'title': '_citizen_kane'
+                'fileName': 'MemoGame/1.jpg',
+                'title': '_drone_cargo'
             },
             {
-                'fileName': '2.jpg',
-                'title': '_vertigo',
+                'fileName': 'MemoGame/2.jpg',
+                'title': '_drone_rescue',
             },
             {
-                'fileName': '3.jpg',
-                'title': '_la_regle_du_jeu',
+                'fileName': 'MemoGame/3.jpg',
+                'title': '_drone_pizza',
             },
             {
-                'fileName': '4.jpg',
-                'title': '_2001_a_space_odyssey',
+                'fileName': 'MemoGame/4.jpg',
+                'title': '_drone_delivery',
             },
             {
-                'fileName': '5.jpg',
-                'title': '_tokyo_monogatari'
+                'fileName': 'MemoGame/5.jpg',
+                'title': '_drone_taxi'
             },
             {
-                'fileName': '6.jpg',
-                'title': '_otto_e_mezzo'
-            },
-            {
-                'fileName': '7.jpg',
-                'title': '_the_godfather'
-            },
-            {
-                'fileName': '8.jpg',
-                'title': '_sunrise_a_song_of_two_humans'
-            },
-            {
-                'fileName': '9.jpg',
-                'title': '_the_searchers'
-            },
-            {
-                'fileName': '10.jpg',
-                'title': '_shichinin_no_samurai'
-            }
-        ]
-    },
-    'beta': {
-        sources: [
-            {
-                'fileName': '5.jpg',
-                'title': '_tokyo_monogatari'
-            },
-            {
-                'fileName': '6.jpg',
-                'title': '_otto_e_mezzo'
-            },
-            {
-                'fileName': '7.jpg',
-                'title': '_the_godfather'
-            },
-            {
-                'fileName': '8.jpg',
-                'title': '_sunrise_a_song_of_two_humans'
-            },
-            {
-                'fileName': '9.jpg',
-                'title': '_the_searchers'
-            },
-            {
-                'fileName': '10.jpg',
-                'title': '_shichinin_no_samurai'
+                'fileName': 'MemoGame/6.jpg',
+                'title': '_drone_military'
             }
         ]
     }

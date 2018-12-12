@@ -8,69 +8,22 @@ Locale.locales = {
             '_loading_game': 'Ładowanie gry...'
         },
         'phrase': {
-            '_citizen_kane': 'Obywatel Kane',
-            '_vertigo': 'Zawrót głowy',
-            '_la_regle_du_jeu': 'Reguły gry',
-            '_2001_a_space_odyssey': '2001: Odyseja kosmiczna',
-            '_tokyo_monogatari': 'Tokijska opowieść',
-            '_otto_e_mezzo': '8½',
-            '_the_godfather': 'Ojciec Chrzestny',
-            '_sunrise_a_song_of_two_humans': 'Wschód słońca',
-            '_the_searchers': 'Poszukiwacze',
-            '_shichinin_no_samurai': 'Siedmiu samurajów',
-            '_animal1': 'Pies',
-            '_animal2': 'Kot',
+            '_process': 'Proces',
+            '_model': 'Model',
+            '_modeling': 'Modelowanie',
+            '_virtual_reality': 'Rzeczywistość wirtualna',
+            '_augmented_reality': 'Rzeczywistość rozszerzona',
+            '_information_system': 'System informacyjny',
+            '_informatic_system': 'System informatyczny'
         },
         'definition': {
-            '_citizen_kane': 'Film Obywatel Kane',
-            '_vertigo': 'Film Zawrót głowy',
-            '_la_regle_du_jeu': 'Film Reguły gry',
-            '_2001_a_space_odyssey': 'Film 2001: Odyseja kosmiczna',
-            '_tokyo_monogatari': 'Film Tokijska opowieść',
-            '_otto_e_mezzo': 'Film 8½',
-            '_the_godfather': 'Film Ojciec Chrzestny',
-            '_sunrise_a_song_of_two_humans': 'Film Wschód słońca',
-            '_the_searchers': 'Film Poszukiwacze',
-            '_shichinin_no_samurai': 'Film Siedmiu samurajów',
-            '_animal1': 'Ma 4 łapy, szczeka',
-            '_animal2': 'Ma 4 łapy, miałczy',
-        }
-    },
-    'en': {
-        'game': {
-            '_start': 'Guess the phrase!',
-            '_start_header': 'Start',
-            '_success': 'Congratulations, you correctly sorted the phrase!',
-            '_success_header': 'Success!',
-            '_loading_game': 'Loading game...'
-        },
-        'phrase': {
-            '_citizen_kane': 'Citizen Kane',
-            '_vertigo': 'Vertigo',
-            '_la_regle_du_jeu': 'The Rules of the Game',
-            '_2001_a_space_odyssey': '2001: A Space Odyssey',
-            '_tokyo_monogatari': 'Tokyo story',
-            '_otto_e_mezzo': '8½',
-            '_the_godfather': 'The Godfather',
-            '_sunrise_a_song_of_two_humans': 'Sunrise: A Song of two Humans',
-            '_the_searchers': 'The Searchers',
-            '_shichinin_no_samurai': 'Seven samurai',
-            '_animal1': 'Dog',
-            '_animal2': 'Cat'
-        },
-        'definition': {
-            '_citizen_kane': 'There should be hint for movie Citizen Kane',
-            '_vertigo': 'There should be hint for movie Vertigo',
-            '_la_regle_du_jeu': 'There should be hint for movie The Rules of the Game',
-            '_2001_a_space_odyssey': 'There should be hint for movie 2001: A Space Odyssey',
-            '_tokyo_monogatari': 'There should be hint for movie Tokyo story',
-            '_otto_e_mezzo': 'There should be hint for movie 8½',
-            '_the_godfather': 'There should be hint for movie The Godfather',
-            '_sunrise_a_song_of_two_humans': 'There should be hint for movie Sunrise: A Song of two Humans',
-            '_the_searchers': 'There should be hint for movie The Searchers',
-            '_shichinin_no_samurai': 'There should be hint for movie Seven samurai',
-            '_animal1': 'Has 4 paws, wof wof bark bark',
-            '_animal2': 'Has 4 paws, purrrr',
+            '_process': 'Zgodnie z definicją APICS – zaplanowana seria działań, operacji (mechanicznych, elektrycznych, chemicznych, kontrolnych, testowych), która zwiększa wartość wyrobu lub usługi.',
+            '_model': 'Dający się pomyśleć lub materialnie zrealizować układ, który odzwierciedlając lub odtwarzając przedmiot działania, zdolny jest zastępować go tak, że jego badanie dostarcza nam nowej informacji o tym obiekcie.',
+            '_modeling': 'Ciąg czynności, w wyniku których zostaje utworzony określony model',
+            '_virtual_reality': 'Obraz sztucznej rzeczywistości stworzony przy wykorzystaniu technologii informatycznej. Polega na multimedialnym kreowaniu komputerowej wizji przedmiotów, przestrzeni i zdarzeń. Może on reprezentować zarówno elementy świata realnego (symulacje komputerowe), jak i zupełnie fikcyjnego (gry komputerowe science-fiction).',
+            '_augmented_reality': 'System łączący świat rzeczywisty z generowanym komputerowo. Zazwyczaj wykorzystuje się obraz z kamery, na który nałożona jest, generowana w czasie rzeczywistym, grafika 3D.',
+            '_information_system': 'Usystematyzowany (wewnętrznie ustalony) sposób obiegu informacji w przedsiębiorstwie (zazwyczaj ma charakter nieformalny) oraz dokumentów (zazwyczaj ma charakter formalny)',
+            '_informatic_system': 'System informacyjny wspomagany technologiami informatycznymi'
         }
     }
 };

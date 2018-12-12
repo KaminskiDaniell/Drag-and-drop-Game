@@ -8,16 +8,12 @@ Locale.locales = {
             '_loading_game': 'Ładowanie gry...'
         },
         'title': {
-            '_citizen_kane': 'Obywatel Kane (1941)',
-            '_vertigo': 'Zawrót głowy (1958)',
-            '_la_regle_du_jeu': 'Reguły gry (1939)',
-            '_2001_a_space_odyssey': '2001: Odyseja kosmiczna (1968)',
-            '_tokyo_monogatari': 'Tokijska opowieść (1953)',
-            '_otto_e_mezzo': '8½ (1963)',
-            '_the_godfather': 'Ojciec Chrzestny (1972)',
-            '_sunrise_a_song_of_two_humans': 'Wschód słońca (1927)',
-            '_the_searchers': 'Poszukiwacze (1956)',
-            '_shichinin_no_samurai': 'Siedmiu samurajów (1954)'
+            '_drone_cargo': 'Dron cargo',
+            '_drone_rescue': 'Dron ratowniczy',
+            '_drone_pizza': 'Dron z pizzą',
+            '_drone_delivery': 'Dron dostawczy',
+            '_drone_taxi': 'Dron taksówka',
+            '_drone_military': 'Dron wojskowy'
         }
     },
     'en' : {
@@ -29,16 +25,12 @@ Locale.locales = {
             '_loading_game': 'Loading game...'
         },
         'title': {
-            '_citizen_kane': 'Citizen Kane (1941)',
-            '_vertigo': 'Vertigo (1958)',
-            '_la_regle_du_jeu': 'The Rules of the Game (1939)',
-            '_2001_a_space_odyssey': '2001: A Space Odyssey (1968)',
-            '_tokyo_monogatari': 'Tokyo story (1953)',
-            '_otto_e_mezzo': '8½ (1963)',
-            '_the_godfather': 'The Godfather (1972)',
-            '_sunrise_a_song_of_two_humans': 'Sunrise: A Song of two Humans (1927)',
-            '_the_searchers': 'The Searchers (1956)',
-            '_shichinin_no_samurai': 'Seven samurai (1954)'
+            '_drone_cargo': 'Cargo drone',
+            '_drone_rescue': 'Rescue drone',
+            '_drone_pizza': 'Drone with pizza',
+            '_drone_delivery': 'Delivery drone',
+            '_drone_taxi': 'Taxi drone',
+            '_drone_military': 'Military drone'
         }
     }
 }
