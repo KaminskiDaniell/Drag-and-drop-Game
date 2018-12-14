@@ -44,6 +44,36 @@ QuizGame.versions = {
                         ],
                         correctAnswer: '1'
                     },
+                    {
+                        question: "#question_11",
+                        answers: [
+                            "#answer_11_0",
+                            "#answer_11_1",
+                            "#answer_11_2",
+                            "#answer_11_3",
+                        ],
+                        correctAnswer: '0'
+                    },
+                    {
+                        question: "#question_12",
+                        answers: [
+                            "#answer_12_0",
+                            "#answer_12_1",
+                            "#answer_12_2",
+                            "#answer_12_3",
+                        ],
+                        correctAnswer: '3'
+                    },
+                    {
+                        question: "#question_13",
+                        answers: [
+                            "#answer_13_0",
+                            "#answer_13_1",
+                            "#answer_13_2",
+                            "#answer_13_3",
+                        ],
+                        correctAnswer: '2'
+                    },
                 ],
             },
             'medium': {
@@ -108,6 +138,26 @@ QuizGame.versions = {
                         ],
                         correctAnswer: '3'
                     },
+                    {
+                        question: "#question_14",
+                        answers: [
+                            "#answer_14_0",
+                            "#answer_14_1",
+                            "#answer_14_2",
+                            "#answer_14_3"
+                        ],
+                        correctAnswer: '1'
+                    },
+                    {
+                        question: "#question_15",
+                        answers: [
+                            "#answer_15_0",
+                            "#answer_15_1",
+                            "#answer_15_2",
+                            "#answer_15_3"
+                        ],
+                        correctAnswer: '1'
+                    },
                 ],
             },
             'hard': {
@@ -130,7 +180,7 @@ QuizGame.versions = {
                             "#answer_12_2",
                             "#answer_12_3"
                         ],
-                        correctAnswer: '0'
+                        correctAnswer: '3'
                     },
                     {
                         question: "#question_13",
@@ -140,7 +190,17 @@ QuizGame.versions = {
                             "#answer_13_2",
                             "#answer_13_3"
                         ],
-                        correctAnswer: '0'
+                        correctAnswer: '2'
+                    },
+                    {
+                        question: "#question_14",
+                        answers: [
+                            "#answer_14_0",
+                            "#answer_14_1",
+                            "#answer_14_2",
+                            "#answer_14_3"
+                        ],
+                        correctAnswer: '1'
                     },
                     {
                         question: "#question_15",
@@ -150,27 +210,7 @@ QuizGame.versions = {
                             "#answer_15_2",
                             "#answer_15_3"
                         ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "#question_16",
-                        answers: [
-                            "#answer_16_0",
-                            "#answer_16_1",
-                            "#answer_16_2",
-                            "#answer_16_3"
-                        ],
-                        correctAnswer: '0'
-                    },
-                    {
-                        question: "#question_17",
-                        answers: [
-                            "#answer_17_0",
-                            "#answer_17_1",
-                            "#answer_17_2",
-                            "#answer_17_3"
-                        ],
-                        correctAnswer: '0'
+                        correctAnswer: '1'
                     },
                 ]
             }

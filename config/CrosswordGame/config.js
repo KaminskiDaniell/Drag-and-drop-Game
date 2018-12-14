@@ -4,13 +4,50 @@ CrosswordGame.versions = {
             'pl': {
                 'Film crossword': [
                     {
-                        'word': 'Obywatel Kane',
+                        'definition': "Nośnik informacji charakteryzujący się dużym zasięgiem i masowością",
+			'word': 'Telewizja',
                         'solutionLetter': 3
                     },
                     {
-                        'word': 'Zawrót głowy',
+                        'definition': "Strona będąca adresatem komunikatu",
+			'word': 'Odbiorca',
+                        'solutionLetter': 1
+                    },
+                    {
+                        'definition': "Procedura dokonania podziału rynku na względnie jednorodne grupy konsumentów",
+			'word': 'Segmentacja',
+                        'solutionLetter': 3
+                    },
+                    {
+                        'definition': "Jedno z głównych działań public relations",
+			'word': 'Lobbing',
                         'solutionLetter': 5
                     },
+                    {
+                        'definition': "Nośnik informacji charakteryzujący się najkrótszym czasem życia reklamy",
+			'word': 'Prasa',
+                        'solutionLetter': 4
+                    },
+                    {
+                        'definition': "Przemieszczanie produktów z miejsc ich wytworzenia i sprzedaży do miejsc ich konsumpcyjnego lub produkcyjnego użytkowania",
+			'word': 'Dystrybucja',
+                        'solutionLetter': 4
+                    },
+                    {
+                        'definition': "Osoba, której celem działania jest organizowanie przewozu ładunków",
+			'word': 'Spedytor',
+                        'solutionLetter': 5
+                    },
+                    {
+                        'definition': "Pozostawienie umysłowi czasu, aby przepracował problem na poziomie świadomym",
+			'word': 'Inkubacja',
+                        'solutionLetter': 3
+                    },
+  		    {
+                        'definition': "Zachowanie odbiorcy będące wynikiem otrzymanego zdekodowanego komunikatu",
+			'word': 'Reakcja',
+                        'solutionLetter': 3
+                    }
                 ]
             },
             'en': {

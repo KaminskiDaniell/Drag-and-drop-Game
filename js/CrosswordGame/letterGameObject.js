@@ -22,9 +22,7 @@ class LetterGameObject extends GameObject {
     }
 
     click() {
-        if(!this.object.hasClass('locked')) {
-            this.word.setFocus(this.letterNumber);
-        }
+        this.word.setFocus(this.letterNumber);
     }
 
     insertLetter(letter) {
@@ -37,7 +35,7 @@ class LetterGameObject extends GameObject {
     }
 
     checkLetter(letter) {
-        this.object.text(this.letter.toUpperCase());
+        this.object.text(letter.toUpperCase());
         this.unsetActive();
         this.word.recordCorrectLetter();
     }
